@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="f97862f1a6b74236b0172c29fe74850b" Name="Diagram1">
+        <EntityTypeShape EntityType="DayTideModel.Admin" Width="1.5" PointX="3" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DayTideModel.Application" Width="1.5" PointX="3" PointY="12.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DayTideModel.Cart" Width="1.5" PointX="5.25" PointY="15.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DayTideModel.Category" Width="1.5" PointX="0.75" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DayTideModel.Customer" Width="1.5" PointX="3" PointY="14.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DayTideModel.Delevary_Man_Rating" Width="1.5" PointX="5.25" PointY="19.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DayTideModel.DeleveryMan" Width="1.5" PointX="3" PointY="19.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DayTideModel.Moderator" Width="1.5" PointX="3" PointY="23" IsExpanded="true" />
+        <EntityTypeShape EntityType="DayTideModel.Notice" Width="1.5" PointX="5.25" PointY="12.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DayTideModel.Order_Detail" Width="1.5" PointX="7.5" PointY="19.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DayTideModel.OrderRequest" Width="1.5" PointX="5.25" PointY="25.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DayTideModel.Product" Width="1.5" PointX="3" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="DayTideModel.Product_Rating" Width="1.5" PointX="8.25" PointY="15.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DayTideModel.TrackProfit" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DayTideModel.User" Width="1.5" PointX="0.75" PointY="15.625" IsExpanded="true" />
+        <AssociationConnector Association="DayTideModel.FK_Admin_User" ManuallyRouted="false" />
+        <AssociationConnector Association="DayTideModel.FK_Notice_User" ManuallyRouted="false" />
+        <AssociationConnector Association="DayTideModel.FK_Application_User" ManuallyRouted="false" />
+        <AssociationConnector Association="DayTideModel.FK_Cart_Product" ManuallyRouted="false" />
+        <AssociationConnector Association="DayTideModel.FK_Cart_Product1" ManuallyRouted="false" />
+        <AssociationConnector Association="DayTideModel.FK_Product_Catagory" ManuallyRouted="false" />
+        <AssociationConnector Association="DayTideModel.FK_Customer_User" ManuallyRouted="false" />
+        <AssociationConnector Association="DayTideModel.FK_Delevary_Man_Rating_Customer" ManuallyRouted="false" />
+        <AssociationConnector Association="DayTideModel.FK_Order_Detail_Customer" ManuallyRouted="false" />
+        <AssociationConnector Association="DayTideModel.FK_OrderRequest_Customer" ManuallyRouted="false" />
+        <AssociationConnector Association="DayTideModel.FK_Product_Rating_Customer" ManuallyRouted="false" />
+        <AssociationConnector Association="DayTideModel.FK_Delevary_Man_Rating_DeleveryMan" ManuallyRouted="false" />
+        <AssociationConnector Association="DayTideModel.FK_DeleveryMan_User" ManuallyRouted="false" />
+        <AssociationConnector Association="DayTideModel.FK_Order_Detail_DeleveryMan" ManuallyRouted="false" />
+        <AssociationConnector Association="DayTideModel.FK_Moderator_User" ManuallyRouted="false" />
+        <AssociationConnector Association="DayTideModel.FK_Notice_User1" ManuallyRouted="false" />
+        <AssociationConnector Association="DayTideModel.FK_Order_Detail_OrderRequest" ManuallyRouted="false" />
+        <AssociationConnector Association="DayTideModel.FK_Product_Rating_Product_Rating" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

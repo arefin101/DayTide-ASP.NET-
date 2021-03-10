@@ -1,0 +1,173 @@
+﻿
+<!DOCTYPE html>
+
+<html>
+<head>
+    @*<meta name="viewport" content="width=device-width" />*@
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1,shrink-to-fit=no">
+    <title>@ViewBag.Title</title>
+    <!-- CSS only -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+
+</head>
+<body>
+
+    <div>
+        @* Navbar *@
+
+        <nav class="navbar navbar-light bg-primary fixed-top flex-md-nowrap p-0 shadow" style="background-color:gray;">
+            <!-- Navbar content -->
+            <a href="#" class="navbar-brand col-sm-3 col-md-2 mr-0">&nbsp;&nbsp; DayTide </a>
+
+            <!---search box-->
+
+            <input class="form-control form-control-primary w-100" type="search" id="myInput" placeholder="Search" aria-label="Search">
+            <ul class="navbar-nav px-3">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Day Tide
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="#">Change Password</a>
+                        <a class="dropdown-item" href="#">Log out</a>
+                        <!--<a class="dropdown-item" href="#">Something else here</a>-->
+                    </div>
+                </li>
+            </ul>
+        </nav>
+
+        @* End of navbar *@
+        <div style="margin-top:50px;"></div>
+
+        @* START Menu*@
+
+        <nav class="navbar navbar-dark bg-dark navbar-expand-md">
+            <div class="container">
+                <button class="navbar-toggler d-none" data-toggle="collapse" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navcol-1">
+                    <ul class="nav navbar-nav w-100 justify-content-between">
+                        <li class="nav-item dropdown">
+                            <a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#">Navbar link 1</a>
+                            <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="#">This is a very very long dropdown item and it may overflow the viewport</a><a class="dropdown-item" role="presentation" href="#">Second Item</a><a class="dropdown-item" role="presentation" href="#">Third Item</a></div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#">Navbar link 2</a>
+                            <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="#">This is a very very long dropdown item and it may overflow the viewport</a><a class="dropdown-item" role="presentation" href="#">Second Item</a><a class="dropdown-item" role="presentation" href="#">Third Item</a></div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="dropdown-toggle nav-link" data-toggle="dropdown" data-display="static" aria-expanded="false" href="#">Navbar link 3</a>
+                            <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="#">This is a very very long dropdown item and it may overflow the viewport</a><a class="dropdown-item" role="presentation" href="#">Second Item</a><a class="dropdown-item" role="presentation" href="#">Third Item</a></div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="dropdown-toggle nav-link" data-toggle="dropdown" data-display="static" aria-expanded="false" href="#">Navbar link 4</a>
+                            <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="#">This is a very very long dropdown item and it may overflow the viewport</a><a class="dropdown-item" role="presentation" href="#">Second Item</a><a class="dropdown-item" role="presentation" href="#">Third Item</a></div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="dropdown-toggle nav-link" data-toggle="dropdown" data-display="static" aria-expanded="false" href="#">Navbar link 5</a>
+                            <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="#">This is a very very long dropdown item and it may overflow the viewport</a><a class="dropdown-item" role="presentation" href="#">Second Item</a><a class="dropdown-item" role="presentation" href="#">Third Item</a></div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div class="text-center mt-4">
+            <button type="button" id="trigger-btn" class="btn btn-lg btn-danger">Click me</button>
+            <hr class="my-4">
+            <p>Click the button above to position the drop-down menus and keep them from getting out of the viewport</p>
+            <p>Dropdown menus will be centered if possible, or left/right aligned if not</p>
+        </div>
+
+
+        @* End of Second Menu*@
+
+
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+    <div style="margin-left:10px; margin-right:10px;">
+        @RenderBody()
+    </div>
+
+
+
+    <!----My JS----->
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    <script>
+        var $maxWidthElement = $('.navbar'),
+            maxWidth = $maxWidthElement.width();
+
+        function positionDropdowns() {
+            $('.dropdown-menu').each(function () {
+                $(this).removeClass('dropdown-menu-right');
+                var $navItem = $(this).closest('.dropdown'),
+                    dropdownWidth = $(this).outerWidth(),
+                    dropdownOffsetLeft = $navItem.offset().left,
+                    dropdownOffsetRight = maxWidth - (dropdownOffsetLeft + dropdownWidth),
+                    linkCenterOffsetLeft = dropdownOffsetLeft + $navItem.outerWidth() / 2,
+                    outputCss = {
+                        left: 0,
+                        right: '',
+                        width: ''
+                    };
+
+                if ((linkCenterOffsetLeft - dropdownWidth / 2 > 0) & (linkCenterOffsetLeft + dropdownWidth / 2 < maxWidth)) {
+                    // center the dropdown menu if possible
+                    outputCss.left = -(dropdownWidth / 2 - $navItem.outerWidth() / 2);
+                } else if ((dropdownOffsetRight < 0) & (dropdownWidth < dropdownOffsetLeft + $navItem.outerWidth())) {
+                    // set the dropdown menu to left if it exceeds the viewport on the right
+                    $(this).addClass('dropdown-menu-right');
+                    outputCss.left = '';
+                } else if (dropdownOffsetLeft + dropdownWidth > maxWidth) {
+                    // full width if the dropdown is too large to fit on the right
+                    outputCss.left = 0;
+                    outputCss.right = 0;
+                    outputCss.width = maxWidth + 'px';
+                }
+                $(this).css({
+                    left: outputCss.left,
+                    right: outputCss.right,
+                    width: outputCss.width
+                });
+            });
+        }
+
+        $("#trigger-btn").on("click", function () {
+            positionDropdowns();
+            $(this)
+                .text("Done!")
+                .addClass("btn-success")
+                .removeClass("btn-danger");
+        });
+
+        var resizeTimer;
+
+        $(window).on("resize", function (e) {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(function () {
+                maxWidth = $maxWidthElement.width();
+                positionDropdowns();
+            }, 250);
+        });
+
+
+    </script>
+
+
+</body>
+</html>

@@ -31,7 +31,7 @@ namespace DayTide.Controllers
                 }
                 else if (usr.Type == "Moderator")
                 {
-                    return RedirectToAction("Index", "Moderator");
+                    return RedirectToAction("Index" , "Moderator");
                 }
                 // else if (usr.Type == "Deleveryman")
                 // {
