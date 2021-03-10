@@ -1,0 +1,107 @@
+﻿@model IEnumerable<DayTide.Models.Product>
+@{
+    Layout = "~/Views/Shared/_Layout_Moderator.cshtml";
+}
+
+<style>
+    div.gallery {
+        margin: 5px;
+        border: 1px solid #ccc;
+        float: left;
+        width: 120px;
+    }
+
+    div.gallery img {
+        width: 100%;
+        height: auto;
+    }
+
+    div.desc {
+        padding: 15px;
+        text-align: center;
+    }
+</style>
+
+<div class="container-fluid">
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <div class="row">
+                <div class="col-sm-12 col-md-6">
+                    <h1 class="m-0 font-weight-bold text-primary">Products</h1>
+                </div>
+                <div class="col-sm-12 col-md-6">
+                    <div id="dataTable_filter" class="dataTables_filter">
+                        <label>Search:<input type="search" class="form-control form-control-sm" placeholder="" aria-controls="dataTable"></label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <table class="table table-bordered dataTable" id="dataTable" width="100%" cellspacing="0" role="grid" aria-describedby="dataTable_info" style="width: 100%;">
+                                <thead>
+                                    <tr role="row">
+                                        <th class="sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 93px;">Name</th>
+                                        <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 143px;">Description</th>
+                                        <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 65px;">Buying Price</th>
+                                        <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending" style="width: 31px;">Selling Price</th>
+                                        <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Start date: activate to sort column ascending" style="width: 69px;">Categroy</th>
+                                        <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Start date: activate to sort column ascending" style="width: 69px;">Quantity</th>
+                                        <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Start date: activate to sort column ascending" style="width: 69px;">Picture</th>
+                                        <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Start date: activate to sort column ascending" style="width: 69px;">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tfoot>
+                                    <tr>
+                                        <th rowspan="1" colspan="1">Name</th>
+                                        <th rowspan="1" colspan="1">Description</th>
+                                        <th rowspan="1" colspan="1">Buying Price</th>
+                                        <th rowspan="1" colspan="1">Selling Price</th>
+                                        <th rowspan="1" colspan="1">Category</th>
+                                        <th rowspan="1" colspan="1">Quantity</th>
+                                        <th rowspan="1" colspan="1">Picture</th>
+                                        <th rowspan="1" colspan="1">Actions</th>
+                                    </tr>
+                                </tfoot>
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                    <tr role="row" class="odd">
+                                        <td>@item.ProductName</td>
+                                        <td>@item.Description</td>
+                                        <td>@item.Buying_Price</td>
+                                        <td>@item.Selling_Price</td>
+                                        @foreach (var cat in ViewData["categories"] as IList<DayTide.Models.Category>)
+                                        {
+                                            if (@cat.CategoryId == @item.CategoryId)
+                                            {
+                                                <td>@cat.CategoryName</td>
+                                            }
+                                        }
+                                        <td>@item.Quantity</td>
+                                        <td>
+                                            <div class="gallery">
+                                                <a target="_blank" href="img_5terre.jpg">
+                                                    <img src="~/Content/Products/@item.Picture" alt="@item.Picture" width="400" height="250">
+                                                </a>
+                                                @*<div class="desc">Add a description of the image here</div>*@
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <a href="/Moderator/EditProduct/@item.ProductId" class="btn btn-primary">Edit</a>
+                                            <a href="/Moderator/DeleteProduct/@item.ProductId" class="btn btn-danger">Delete</a>
+                                        </td>
+                                    </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,59 @@
+﻿@model DayTide.Models.Product
+@{
+    Layout = "~/Views/Shared/_Layout_Moderator.cshtml";
+}
+
+<div>
+
+    <div class="container">
+
+        <div class="card o-hidden border-0 shadow-lg my-5">
+            <div class="card-body p-0">
+                <!-- Nested Row within Card Body -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <img id="myImg" src="~/Content/Products/@Model.Picture" alt="your image" class="thumb">
+                        <div class="p-5">
+                            <div class="text-center">
+                                <br><br>
+                                <h1 class="h4 text-gray-900 mb-4">product Name : @Model.ProductName</h1>
+                            </div>
+                            <form class="user" method="post">
+                                @Html.AntiForgeryToken()
+                                <div class="form-group row">
+                                    <div class="col-sm-12 mb-3 mb-sm-0 text-center">
+                                        <h3>Category : @ViewData["CategoryName"]</h3>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-sm-12 mb-3 mb-sm-0 text-center">
+                                        <h3>Buying Price : @Model.Buying_Price</h3>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-sm-12 mb-3 mb-sm-0 text-center">
+                                        <h3>Selling Price : @Model.Selling_Price</h3>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-sm-12 mb-3 mb-sm-0 text-center">
+                                        <h3>Description : @Model.Description</h3>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-sm-12 mb-3 mb-sm-0 text-center">
+                                        <h2 style="color: red;">Do You Really Want to Delete This Product??</h2>
+                                    </div>
+                                </div><hr>
+                                <button class="btn btn-danger btn-user btn-block">Delete</button>
+                                <a href="{{route('customizeProducts')}}" class="btn btn-warning btn-user btn-block">
+                                    No
+                                </a>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>

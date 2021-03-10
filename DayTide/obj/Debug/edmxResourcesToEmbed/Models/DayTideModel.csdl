@@ -1,0 +1,506 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DayTideModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Admin">
+    <Key>
+      <PropertyRef Name="AdminId" />
+    </Key>
+    <Property Name="AdminId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Phone" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Address" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Salary" Type="Double" Nullable="false" />
+    <Property Name="Picture" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="User" Relationship="Self.FK_Admin_User" FromRole="Admin" ToRole="User" />
+    <NavigationProperty Name="Notices" Relationship="Self.FK_Notice_User" FromRole="Admin" ToRole="Notice" />
+  </EntityType>
+  <EntityType Name="Application">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="ApplicationType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Massage" Type="String" MaxLength="100" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="SentBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="User" Relationship="Self.FK_Application_User" FromRole="Application" ToRole="User" />
+  </EntityType>
+  <EntityType Name="Cart">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CustomerId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ProductId" Type="Int32" Nullable="false" />
+    <Property Name="Quantiry" Type="Int32" Nullable="false" />
+    <Property Name="Price_unit_" Type="Double" />
+    <NavigationProperty Name="Customer" Relationship="Self.FK_Cart_Product" FromRole="Cart" ToRole="Customer" />
+    <NavigationProperty Name="Product" Relationship="Self.FK_Cart_Product1" FromRole="Cart" ToRole="Product" />
+  </EntityType>
+  <EntityType Name="Category">
+    <Key>
+      <PropertyRef Name="CategoryId" />
+    </Key>
+    <Property Name="CategoryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CategoryName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Products" Relationship="Self.FK_Product_Catagory" FromRole="Category" ToRole="Product" />
+  </EntityType>
+  <EntityType Name="Customer">
+    <Key>
+      <PropertyRef Name="CustomerId" />
+    </Key>
+    <Property Name="CustomerId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Phone" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Address" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Salary" Type="Double" Nullable="false" />
+    <Property Name="Picture" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Carts" Relationship="Self.FK_Cart_Product" FromRole="Customer" ToRole="Cart" />
+    <NavigationProperty Name="User" Relationship="Self.FK_Customer_User" FromRole="Customer" ToRole="User" />
+    <NavigationProperty Name="Delevary_Man_Rating" Relationship="Self.FK_Delevary_Man_Rating_Customer" FromRole="Customer" ToRole="Delevary_Man_Rating" />
+    <NavigationProperty Name="Order_Detail" Relationship="Self.FK_Order_Detail_Customer" FromRole="Customer" ToRole="Order_Detail" />
+    <NavigationProperty Name="OrderRequests" Relationship="Self.FK_OrderRequest_Customer" FromRole="Customer" ToRole="OrderRequest" />
+    <NavigationProperty Name="Product_Rating" Relationship="Self.FK_Product_Rating_Customer" FromRole="Customer" ToRole="Product_Rating" />
+  </EntityType>
+  <EntityType Name="Delevary_Man_Rating">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="DelManID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Rating" Type="Int32" Nullable="false" />
+    <Property Name="Comments" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CustomerId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Customer" Relationship="Self.FK_Delevary_Man_Rating_Customer" FromRole="Delevary_Man_Rating" ToRole="Customer" />
+    <NavigationProperty Name="DeleveryMan" Relationship="Self.FK_Delevary_Man_Rating_DeleveryMan" FromRole="Delevary_Man_Rating" ToRole="DeleveryMan" />
+  </EntityType>
+  <EntityType Name="DeleveryMan">
+    <Key>
+      <PropertyRef Name="DelManId" />
+    </Key>
+    <Property Name="DelManId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Phone" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Address" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Salary" Type="Double" Nullable="false" />
+    <Property Name="Picture" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Complete_Task" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Delevary_Man_Rating" Relationship="Self.FK_Delevary_Man_Rating_DeleveryMan" FromRole="DeleveryMan" ToRole="Delevary_Man_Rating" />
+    <NavigationProperty Name="User" Relationship="Self.FK_DeleveryMan_User" FromRole="DeleveryMan" ToRole="User" />
+    <NavigationProperty Name="Order_Detail" Relationship="Self.FK_Order_Detail_DeleveryMan" FromRole="DeleveryMan" ToRole="Order_Detail" />
+  </EntityType>
+  <EntityType Name="Moderator">
+    <Key>
+      <PropertyRef Name="ModeratorId" />
+    </Key>
+    <Property Name="ModeratorId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Phone" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Address" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Salary" Type="Double" Nullable="false" />
+    <Property Name="Picture" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="User" Relationship="Self.FK_Moderator_User" FromRole="Moderator" ToRole="User" />
+  </EntityType>
+  <EntityType Name="Notice">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Massage" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Send_For" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Send_by" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Admin" Relationship="Self.FK_Notice_User" FromRole="Notice" ToRole="Admin" />
+    <NavigationProperty Name="User" Relationship="Self.FK_Notice_User1" FromRole="Notice" ToRole="User" />
+  </EntityType>
+  <EntityType Name="Order_Detail">
+    <Key>
+      <PropertyRef Name="OrderId" />
+    </Key>
+    <Property Name="OrderId" Type="Int32" Nullable="false" />
+    <Property Name="Date" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Address" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="District" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Amount" Type="Double" Nullable="false" />
+    <Property Name="Payment_Type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CustomerId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="DelManId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Customer" Relationship="Self.FK_Order_Detail_Customer" FromRole="Order_Detail" ToRole="Customer" />
+    <NavigationProperty Name="DeleveryMan" Relationship="Self.FK_Order_Detail_DeleveryMan" FromRole="Order_Detail" ToRole="DeleveryMan" />
+    <NavigationProperty Name="OrderRequest" Relationship="Self.FK_Order_Detail_OrderRequest" FromRole="Order_Detail" ToRole="OrderRequest" />
+  </EntityType>
+  <EntityType Name="OrderRequest">
+    <Key>
+      <PropertyRef Name="OrderId" />
+    </Key>
+    <Property Name="OrderId" Type="Int32" Nullable="false" />
+    <Property Name="Date" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Address" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="District" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Amount" Type="Double" Nullable="false" />
+    <Property Name="Payment_Type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CustomerId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Customer" Relationship="Self.FK_OrderRequest_Customer" FromRole="OrderRequest" ToRole="Customer" />
+    <NavigationProperty Name="Order_Detail" Relationship="Self.FK_Order_Detail_OrderRequest" FromRole="OrderRequest" ToRole="Order_Detail" />
+  </EntityType>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="ProductId" />
+    </Key>
+    <Property Name="ProductId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProductName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CategoryId" Type="Int32" Nullable="false" />
+    <Property Name="Buying_Price" Type="Double" Nullable="false" />
+    <Property Name="Selling_Price" Type="Double" Nullable="false" />
+    <Property Name="Quantity" Type="Int32" Nullable="false" />
+    <Property Name="Picture" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Carts" Relationship="Self.FK_Cart_Product1" FromRole="Product" ToRole="Cart" />
+    <NavigationProperty Name="Category" Relationship="Self.FK_Product_Catagory" FromRole="Product" ToRole="Category" />
+    <NavigationProperty Name="Product_Rating" Relationship="Self.FK_Product_Rating_Product_Rating" FromRole="Product" ToRole="Product_Rating" />
+  </EntityType>
+  <EntityType Name="Product_Rating">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProductId" Type="Int32" Nullable="false" />
+    <Property Name="Rating" Type="Int32" Nullable="false" />
+    <Property Name="Comments" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CustomerId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Customer" Relationship="Self.FK_Product_Rating_Customer" FromRole="Product_Rating" ToRole="Customer" />
+    <NavigationProperty Name="Product" Relationship="Self.FK_Product_Rating_Product_Rating" FromRole="Product_Rating" ToRole="Product" />
+  </EntityType>
+  <EntityType Name="TrackProfit">
+    <Key>
+      <PropertyRef Name="ProductId" />
+    </Key>
+    <Property Name="ProductId" Type="Int32" Nullable="false" />
+    <Property Name="SelledQuantity" Type="Int32" Nullable="false" />
+    <Property Name="Per_unitPrice" Type="Double" Nullable="false" />
+    <Property Name="Total_Price" Type="Double" Nullable="false" />
+    <Property Name="Profit" Type="Double" Nullable="false" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Admin" Relationship="Self.FK_Admin_User" FromRole="User" ToRole="Admin" />
+    <NavigationProperty Name="Applications" Relationship="Self.FK_Application_User" FromRole="User" ToRole="Application" />
+    <NavigationProperty Name="Customer" Relationship="Self.FK_Customer_User" FromRole="User" ToRole="Customer" />
+    <NavigationProperty Name="DeleveryMan" Relationship="Self.FK_DeleveryMan_User" FromRole="User" ToRole="DeleveryMan" />
+    <NavigationProperty Name="Moderator" Relationship="Self.FK_Moderator_User" FromRole="User" ToRole="Moderator" />
+    <NavigationProperty Name="Notices" Relationship="Self.FK_Notice_User1" FromRole="User" ToRole="Notice" />
+  </EntityType>
+  <Association Name="FK_Admin_User">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="Admin" Type="Self.Admin" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="Admin">
+        <PropertyRef Name="AdminId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Notice_User">
+    <End Role="Admin" Type="Self.Admin" Multiplicity="1" />
+    <End Role="Notice" Type="Self.Notice" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Admin">
+        <PropertyRef Name="AdminId" />
+      </Principal>
+      <Dependent Role="Notice">
+        <PropertyRef Name="Send_by" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Application_User">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="Application" Type="Self.Application" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="Application">
+        <PropertyRef Name="SentBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Cart_Product">
+    <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
+    <End Role="Cart" Type="Self.Cart" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customer">
+        <PropertyRef Name="CustomerId" />
+      </Principal>
+      <Dependent Role="Cart">
+        <PropertyRef Name="CustomerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Cart_Product1">
+    <End Role="Product" Type="Self.Product" Multiplicity="1" />
+    <End Role="Cart" Type="Self.Cart" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="ProductId" />
+      </Principal>
+      <Dependent Role="Cart">
+        <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Product_Catagory">
+    <End Role="Category" Type="Self.Category" Multiplicity="1" />
+    <End Role="Product" Type="Self.Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Category">
+        <PropertyRef Name="CategoryId" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="CategoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Customer_User">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="Customer">
+        <PropertyRef Name="CustomerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Delevary_Man_Rating_Customer">
+    <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
+    <End Role="Delevary_Man_Rating" Type="Self.Delevary_Man_Rating" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customer">
+        <PropertyRef Name="CustomerId" />
+      </Principal>
+      <Dependent Role="Delevary_Man_Rating">
+        <PropertyRef Name="CustomerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Order_Detail_Customer">
+    <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
+    <End Role="Order_Detail" Type="Self.Order_Detail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customer">
+        <PropertyRef Name="CustomerId" />
+      </Principal>
+      <Dependent Role="Order_Detail">
+        <PropertyRef Name="CustomerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OrderRequest_Customer">
+    <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
+    <End Role="OrderRequest" Type="Self.OrderRequest" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customer">
+        <PropertyRef Name="CustomerId" />
+      </Principal>
+      <Dependent Role="OrderRequest">
+        <PropertyRef Name="CustomerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Product_Rating_Customer">
+    <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
+    <End Role="Product_Rating" Type="Self.Product_Rating" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customer">
+        <PropertyRef Name="CustomerId" />
+      </Principal>
+      <Dependent Role="Product_Rating">
+        <PropertyRef Name="CustomerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Delevary_Man_Rating_DeleveryMan">
+    <End Role="DeleveryMan" Type="Self.DeleveryMan" Multiplicity="1" />
+    <End Role="Delevary_Man_Rating" Type="Self.Delevary_Man_Rating" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DeleveryMan">
+        <PropertyRef Name="DelManId" />
+      </Principal>
+      <Dependent Role="Delevary_Man_Rating">
+        <PropertyRef Name="DelManID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DeleveryMan_User">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="DeleveryMan" Type="Self.DeleveryMan" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="DeleveryMan">
+        <PropertyRef Name="DelManId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Order_Detail_DeleveryMan">
+    <End Role="DeleveryMan" Type="Self.DeleveryMan" Multiplicity="1" />
+    <End Role="Order_Detail" Type="Self.Order_Detail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DeleveryMan">
+        <PropertyRef Name="DelManId" />
+      </Principal>
+      <Dependent Role="Order_Detail">
+        <PropertyRef Name="DelManId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Moderator_User">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="Moderator" Type="Self.Moderator" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="Moderator">
+        <PropertyRef Name="ModeratorId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Notice_User1">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="Notice" Type="Self.Notice" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="Notice">
+        <PropertyRef Name="Send_For" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Order_Detail_OrderRequest">
+    <End Role="OrderRequest" Type="Self.OrderRequest" Multiplicity="1" />
+    <End Role="Order_Detail" Type="Self.Order_Detail" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="OrderRequest">
+        <PropertyRef Name="OrderId" />
+      </Principal>
+      <Dependent Role="Order_Detail">
+        <PropertyRef Name="OrderId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Product_Rating_Product_Rating">
+    <End Role="Product" Type="Self.Product" Multiplicity="1" />
+    <End Role="Product_Rating" Type="Self.Product_Rating" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="ProductId" />
+      </Principal>
+      <Dependent Role="Product_Rating">
+        <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DayTideEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Admins" EntityType="Self.Admin" />
+    <EntitySet Name="Applications" EntityType="Self.Application" />
+    <EntitySet Name="Carts" EntityType="Self.Cart" />
+    <EntitySet Name="Categories" EntityType="Self.Category" />
+    <EntitySet Name="Customers" EntityType="Self.Customer" />
+    <EntitySet Name="Delevary_Man_Rating" EntityType="Self.Delevary_Man_Rating" />
+    <EntitySet Name="DeleveryMen" EntityType="Self.DeleveryMan" />
+    <EntitySet Name="Moderators" EntityType="Self.Moderator" />
+    <EntitySet Name="Notices" EntityType="Self.Notice" />
+    <EntitySet Name="Order_Detail" EntityType="Self.Order_Detail" />
+    <EntitySet Name="OrderRequests" EntityType="Self.OrderRequest" />
+    <EntitySet Name="Products" EntityType="Self.Product" />
+    <EntitySet Name="Product_Rating" EntityType="Self.Product_Rating" />
+    <EntitySet Name="TrackProfits" EntityType="Self.TrackProfit" />
+    <EntitySet Name="Users" EntityType="Self.User" />
+    <AssociationSet Name="FK_Admin_User" Association="Self.FK_Admin_User">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Admin" EntitySet="Admins" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Notice_User" Association="Self.FK_Notice_User">
+      <End Role="Admin" EntitySet="Admins" />
+      <End Role="Notice" EntitySet="Notices" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Application_User" Association="Self.FK_Application_User">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Application" EntitySet="Applications" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Cart_Product" Association="Self.FK_Cart_Product">
+      <End Role="Customer" EntitySet="Customers" />
+      <End Role="Cart" EntitySet="Carts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Cart_Product1" Association="Self.FK_Cart_Product1">
+      <End Role="Product" EntitySet="Products" />
+      <End Role="Cart" EntitySet="Carts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Product_Catagory" Association="Self.FK_Product_Catagory">
+      <End Role="Category" EntitySet="Categories" />
+      <End Role="Product" EntitySet="Products" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Customer_User" Association="Self.FK_Customer_User">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Customer" EntitySet="Customers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Delevary_Man_Rating_Customer" Association="Self.FK_Delevary_Man_Rating_Customer">
+      <End Role="Customer" EntitySet="Customers" />
+      <End Role="Delevary_Man_Rating" EntitySet="Delevary_Man_Rating" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Order_Detail_Customer" Association="Self.FK_Order_Detail_Customer">
+      <End Role="Customer" EntitySet="Customers" />
+      <End Role="Order_Detail" EntitySet="Order_Detail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OrderRequest_Customer" Association="Self.FK_OrderRequest_Customer">
+      <End Role="Customer" EntitySet="Customers" />
+      <End Role="OrderRequest" EntitySet="OrderRequests" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Product_Rating_Customer" Association="Self.FK_Product_Rating_Customer">
+      <End Role="Customer" EntitySet="Customers" />
+      <End Role="Product_Rating" EntitySet="Product_Rating" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Delevary_Man_Rating_DeleveryMan" Association="Self.FK_Delevary_Man_Rating_DeleveryMan">
+      <End Role="DeleveryMan" EntitySet="DeleveryMen" />
+      <End Role="Delevary_Man_Rating" EntitySet="Delevary_Man_Rating" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DeleveryMan_User" Association="Self.FK_DeleveryMan_User">
+      <End Role="User" EntitySet="Users" />
+      <End Role="DeleveryMan" EntitySet="DeleveryMen" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Order_Detail_DeleveryMan" Association="Self.FK_Order_Detail_DeleveryMan">
+      <End Role="DeleveryMan" EntitySet="DeleveryMen" />
+      <End Role="Order_Detail" EntitySet="Order_Detail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Moderator_User" Association="Self.FK_Moderator_User">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Moderator" EntitySet="Moderators" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Notice_User1" Association="Self.FK_Notice_User1">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Notice" EntitySet="Notices" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Order_Detail_OrderRequest" Association="Self.FK_Order_Detail_OrderRequest">
+      <End Role="OrderRequest" EntitySet="OrderRequests" />
+      <End Role="Order_Detail" EntitySet="Order_Detail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Product_Rating_Product_Rating" Association="Self.FK_Product_Rating_Product_Rating">
+      <End Role="Product" EntitySet="Products" />
+      <End Role="Product_Rating" EntitySet="Product_Rating" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

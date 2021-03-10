@@ -1,0 +1,36 @@
+﻿@model DayTide.Models.Category
+@{
+    Layout = "~/Views/Shared/_Layout_Moderator.cshtml";
+}
+
+<div>
+    <div class="container">
+        <div class="card o-hidden border-0 shadow-lg my-5">
+            <div class="card-body p-0">
+                <!-- Nested Row within Card Body -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="p-5">
+                            <div class="text-center">
+                                <br><br>
+                                <h1 class="h4 text-gray-900 mb-4">Catagory Name : @Model.CategoryName</h1>
+                            </div>
+                            <form class="user" method="post">
+                                @Html.AntiForgeryToken()
+                                <div class="form-group">
+                                    <div class="col-sm-12 mb-3 mb-sm-0 text-center">
+                                        <h2 style="color: red;">Do You Really Want to Delete This Catagory??</h2>
+                                    </div>
+                                </div><hr>
+                                <button class="btn btn-danger btn-user btn-block">YES</button>
+                                <a href="/Moderator/CustomizeCategory" class="btn btn-warning btn-user btn-block">
+                                    NO
+                                </a>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
