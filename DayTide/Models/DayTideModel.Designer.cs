@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'F:\OTHER\A.I.U.B\10th semister\ADVANCED PROGRAMMING WITH .NET [A]\Mid\Mid Project\project\DayTide-ASP.NET-\DayTide\Models\DayTideModel.edmx'. 
+﻿// T4 code generation is enabled for model 'E:\.net\DayTide\DayTide-ASP.NET-\DayTide\Models\DayTideModel.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

@@ -52,7 +52,6 @@
           <Property Name="Email" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="Phone" Type="varchar" MaxLength="11" Nullable="false" />
           <Property Name="Address" Type="varchar" MaxLength="500" Nullable="false" />
-          <Property Name="Salary" Type="float" Nullable="false" />
           <Property Name="Picture" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Delevary_Man_Rating">
@@ -530,7 +529,6 @@
           <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Phone" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Address" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Salary" Type="Double" Nullable="false" />
           <Property Name="Picture" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Carts" Relationship="Self.FK_Cart_Product" FromRole="Customer" ToRole="Cart" />
           <NavigationProperty Name="User" Relationship="Self.FK_Customer_User" FromRole="Customer" ToRole="User" />
@@ -1036,7 +1034,6 @@
                 <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="Phone" ColumnName="Phone" />
                 <ScalarProperty Name="Address" ColumnName="Address" />
-                <ScalarProperty Name="Salary" ColumnName="Salary" />
                 <ScalarProperty Name="Picture" ColumnName="Picture" />
               </MappingFragment>
             </EntityTypeMapping>

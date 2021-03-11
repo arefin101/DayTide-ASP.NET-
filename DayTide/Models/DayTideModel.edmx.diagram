@@ -4,19 +4,19 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="cb20f017fdaa42f1a70dad322774d4e0" Name="Diagram1">
-        <EntityTypeShape EntityType="DayTideModel.Admin" Width="1.5" PointX="3" PointY="8.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="DayTideModel.Application" Width="1.5" PointX="3" PointY="12.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="DayTideModel.Cart" Width="1.5" PointX="5.25" PointY="15.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="DayTideModel.Category" Width="1.5" PointX="0.75" PointY="4.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="DayTideModel.Customer" Width="1.5" PointX="3" PointY="14.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="DayTideModel.Delevary_Man_Rating" Width="1.5" PointX="5.25" PointY="19.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="DayTideModel.DeleveryMan" Width="1.5" PointX="3" PointY="19.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="DayTideModel.Moderator" Width="1.5" PointX="3" PointY="23" IsExpanded="true" />
-        <EntityTypeShape EntityType="DayTideModel.Notice" Width="1.5" PointX="5.25" PointY="12.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="DayTideModel.Order_Detail" Width="1.5" PointX="7.5" PointY="19.875" IsExpanded="true" />
+      <Diagram DiagramId="43058c068a7b4063ac3d8349d2581e00" Name="Diagram1">
+        <EntityTypeShape EntityType="DayTideModel.Admin" Width="1.5" PointX="3" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DayTideModel.Application" Width="1.5" PointX="3" PointY="12.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DayTideModel.Cart" Width="1.5" PointX="5.25" PointY="16.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DayTideModel.Category" Width="1.5" PointX="3.75" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DayTideModel.Customer" Width="1.5" PointX="3" PointY="15" IsExpanded="true" />
+        <EntityTypeShape EntityType="DayTideModel.Delevary_Man_Rating" Width="1.5" PointX="5.25" PointY="20.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DayTideModel.DeleveryMan" Width="1.5" PointX="3" PointY="19" IsExpanded="true" />
+        <EntityTypeShape EntityType="DayTideModel.Moderator" Width="1.5" PointX="3" PointY="22.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DayTideModel.Notice" Width="1.5" PointX="5.25" PointY="12.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DayTideModel.Order_Detail" Width="1.5" PointX="7.5" PointY="20" IsExpanded="true" />
         <EntityTypeShape EntityType="DayTideModel.OrderRequest" Width="1.5" PointX="5.25" PointY="25.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="DayTideModel.Product" Width="1.5" PointX="3" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="DayTideModel.Product" Width="1.5" PointX="6" PointY="4" IsExpanded="true" />
         <EntityTypeShape EntityType="DayTideModel.Product_Rating" Width="1.5" PointX="8.25" PointY="15.375" IsExpanded="true" />
         <EntityTypeShape EntityType="DayTideModel.TrackProfit" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="DayTideModel.User" Width="1.5" PointX="0.75" PointY="15.625" IsExpanded="true" />

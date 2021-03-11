@@ -51,7 +51,6 @@
           <ScalarProperty Name="Email" ColumnName="Email" />
           <ScalarProperty Name="Phone" ColumnName="Phone" />
           <ScalarProperty Name="Address" ColumnName="Address" />
-          <ScalarProperty Name="Salary" ColumnName="Salary" />
           <ScalarProperty Name="Picture" ColumnName="Picture" />
         </MappingFragment>
       </EntityTypeMapping>

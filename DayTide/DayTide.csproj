@@ -1926,11 +1926,15 @@
     <Compile Include="Repositories\AdminRepository.cs" />
     <Compile Include="Repositories\CartRepository.cs" />
     <Compile Include="Repositories\CategoryRepository.cs" />
+    <Compile Include="Repositories\CustomerRepository.cs" />
+    <Compile Include="Repositories\DeleveryManRepository.cs" />
     <Compile Include="Repositories\IRepository.cs" />
     <Compile Include="Repositories\LoginRepository.cs" />
     <Compile Include="Repositories\ModeratorRepository.cs" />
+    <Compile Include="Repositories\NoticeRepository.cs" />
     <Compile Include="Repositories\ProductRepository.cs" />
     <Compile Include="Repositories\Repository.cs" />
+    <Compile Include="Repositories\UserRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
@@ -2180,6 +2184,14 @@
     <Content Include="Views\Home\FullView.cshtml" />
     <Content Include="Views\Cart\ShowCartData.cshtml" />
     <Content Include="Views\DelevaryMan\Index.cshtml" />
+    <Content Include="Views\Admin\AdminHome.cshtml" />
+    <Content Include="Views\Admin\AdminList.cshtml" />
+    <Content Include="Views\Admin\CustomerList.cshtml" />
+    <Content Include="Views\Admin\DeleveryManList.cshtml" />
+    <Content Include="Views\Admin\ModeratorList.cshtml" />
+    <Content Include="Views\Admin\Notify.cshtml" />
+    <Content Include="Views\Shared\_Layout_Admin.cshtml" />
+    <Content Include="Views\Admin\AddAdmin.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
