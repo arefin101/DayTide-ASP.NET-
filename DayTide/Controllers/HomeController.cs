@@ -28,5 +28,12 @@ namespace DayTide.Controllers
             productRepository.Insert(product);
             return View();
         }
+        [HttpGet]
+        public ActionResult FullView(int id)
+        {
+            
+            return View(productRepository.GetCategoryById(id));
+        }
+
     }
 }

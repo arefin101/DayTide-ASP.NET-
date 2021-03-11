@@ -31,6 +31,7 @@ namespace DayTide.Models
     
         public virtual ICollection<Cart> Carts { get; set; }
         public virtual Category Category { get; set; }
+        
         public virtual ICollection<Product_Rating> Product_Rating { get; set; }
     }
 }

@@ -1,0 +1,111 @@
+﻿@model DayTide.Models.Product
+@{
+    ViewBag.Title = "Product Full View";
+    Layout = "~/Views/Shared/_site.cshtml";
+
+}
+
+<div class="container">
+
+    <div class="row">
+
+        <div class="col-lg-3">
+            <h1 class="my-4"><u>Category</u></h1>
+            <h3 class="my-4">@Model.Category.CategoryName</h3>
+            @*<div class="list-group">
+                <a href="#" class="list-group-item active">Category 1</a>
+                <a href="#" class="list-group-item">Category 2</a>
+                <a href="#" class="list-group-item">Category 3</a>
+            </div>*@
+        </div>
+        <!-- /.col-lg-3 -->
+        @{ 
+            double addRatingValue = 0.0;
+            double avrageRating = 0.0;
+        } 
+
+        <div class="col-lg-9">
+
+            <div class="card mt-0">
+                <img class="card-img-top img-fluid img-thumbnail w-50 mx-auto"  src="~/Content/Products/@Model.Picture" alt="">
+                <div class="card-body">
+                    <h3 class="card-title">@Model.ProductName</h3>
+                    <h4>$@Model.Selling_Price</h4>
+                    <p class="card-text">@Model.Description</p>
+
+                    @foreach (var items in Model.Product_Rating)
+                    {
+
+                        { addRatingValue += items.Rating; }
+
+
+
+                    }
+
+                    @{
+                        avrageRating = addRatingValue / 2;
+                    }
+                    <span class="text-warning">&#9733; &#9733; &#9733; &#9733; &#9734;</span>
+                    @avrageRating stars
+                    <br />
+                    <br />
+
+                    @if (Model.Quantity == 0)
+                    {
+                        <input type="text" class="form-control" placeholder="Product is not avalible" aria-label="Username" aria-describedby="basic-addon1" disabled>
+                    }
+                    else
+                    {
+                        <br />
+
+
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <label class="input-group-text" for="inputGroupSelect01">Quantity</label>
+                            </div>
+                            <select class="custom-select" id="inputGroupSelect01">
+                                <option selected>Choose...</option>
+                                @for (int i = 1; i <= Model.Quantity; i++)
+                                {
+                                    <option value="@i">@i</option>
+                                }
+                            </select>
+                        </div>
+
+                        <br />
+                        <button type="button" class="btn btn-info btn-lg btn-block" style="float:right">Add To Cart</button>
+                    }
+
+
+
+
+                </div>
+            </div>
+
+
+
+            <!-- /.card -->
+
+            <div class="card card-outline-secondary my-4">
+                <div class="card-header">
+                    Product Reviews
+                </div>
+                <div class="card-body">
+                    @foreach (var item in Model.Product_Rating)
+                    {
+                        <p>@item.Comments</p>
+                        <small class="text-muted">Posted by Anonymous</small>
+                        <hr>
+                    }
+
+                    <a href="#" class="btn btn-success">Leave a Review</a>
+                </div>
+            </div>
+            <!-- /.card -->
+
+        </div>
+        <!-- /.col-lg-9 -->
+
+    </div>
+
+</div>
