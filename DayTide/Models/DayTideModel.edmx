@@ -52,7 +52,7 @@
           <Property Name="Email" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="Phone" Type="varchar" MaxLength="11" Nullable="false" />
           <Property Name="Address" Type="varchar" MaxLength="500" Nullable="false" />
-          <Property Name="Picture" Type="varchar" MaxLength="50" />
+          <Property Name="Picture" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="Delevary_Man_Rating">
           <Key>
@@ -529,7 +529,7 @@
           <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Phone" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Address" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Picture" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Picture" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Carts" Relationship="Self.FK_Cart_Product" FromRole="Customer" ToRole="Cart" />
           <NavigationProperty Name="User" Relationship="Self.FK_Customer_User" FromRole="Customer" ToRole="User" />
           <NavigationProperty Name="Delevary_Man_Rating" Relationship="Self.FK_Delevary_Man_Rating_Customer" FromRole="Customer" ToRole="Delevary_Man_Rating" />

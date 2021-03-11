@@ -101,7 +101,7 @@ namespace DayTide.Controllers
                 productRepository.Update(product);
                 return RedirectToAction("CustomizeProduct", "Moderator");
             }
-            else if(Picture != null)
+            else if (Picture != null)
             {
                 string path = Server.MapPath("~/Content/Products");
                 string filename = Path.GetFileName(Picture.FileName);
@@ -122,15 +122,14 @@ namespace DayTide.Controllers
         [HttpGet]
         public ActionResult DeleteProduct(int id)
         {
-            ViewData["CategoryName"] = categoryRepository.GetCategoryById(1).CategoryName.ToString();
-            return View("aru");
-            //return View(productRepository.GetProductById(id));
+            ViewData["CategoryName"] = categoryRepository.GetCategoryById(productRepository.GetProductById(id).CategoryId).CategoryName;
+            return View(productRepository.GetProductById(id));
         }
         [HttpPost, ActionName("DeleteProduct")]
         public ActionResult ConfirmProductDelete(int id)
         {
-            categoryRepository.Delete(id);
-            return RedirectToAction("CustomizeCategory", "Moderator");
+            productRepository.DeleteProduct(id);
+            return RedirectToAction("CustomizeProduct", "Moderator");
         }
     }
 }

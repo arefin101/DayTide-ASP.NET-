@@ -3,6 +3,25 @@
     Layout = "~/Views/Shared/_Layout_Moderator.cshtml";
 }
 
+<style>
+    div.gallery {
+        margin: 5px;
+        border: 1px solid #ccc;
+        float: left;
+        width: 120px;
+    }
+
+    div.gallery img {
+        width: 100%;
+        height: auto;
+    }
+
+    div.desc {
+        padding: 15px;
+        text-align: center;
+    }
+</style>
+
 <div>
 
     <div class="container">
@@ -12,14 +31,21 @@
                 <!-- Nested Row within Card Body -->
                 <div class="row">
                     <div class="col-lg-12">
-                        <img id="myImg" src="~/Content/Products/@Model.Picture" alt="your image" class="thumb">
+                        @*<img id="myImg" src="~/Content/Products/@Model.Picture" alt="your image" class="thumb">*@
                         <div class="p-5">
-                            <div class="text-center">
-                                <br><br>
-                                <h1 class="h4 text-gray-900 mb-4">product Name : @Model.ProductName</h1>
-                            </div>
                             <form class="user" method="post">
                                 @Html.AntiForgeryToken()
+                                <div class="form-group">
+                                    <div class="col-sm-12 mb-3 mb-sm-0 text-center">
+                                        <h3><span style="color:red">Delete @Model.ProductName</span></h3>
+                                        <h3><img src="~/Content/Products/@Model.Picture" alt="alala" width="350" height="350" style=" margin:5px; border: 3px solid #ccc;"></h3>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-12 mb-3 mb-sm-0 text-center">
+                                        <h3>Product Name : @Model.ProductName</h3>
+                                    </div>
+                                </div>
                                 <div class="form-group row">
                                     <div class="col-sm-12 mb-3 mb-sm-0 text-center">
                                         <h3>Category : @ViewData["CategoryName"]</h3>
@@ -46,7 +72,7 @@
                                     </div>
                                 </div><hr>
                                 <button class="btn btn-danger btn-user btn-block">Delete</button>
-                                <a href="{{route('customizeProducts')}}" class="btn btn-warning btn-user btn-block">
+                                <a href="/Moderator/CustomizeProduct" class="btn btn-warning btn-user btn-block">
                                     No
                                 </a>
                             </form>
