@@ -8,5 +8,6 @@ namespace DayTide.Repositories
 {
     public class ProductRepository: Repository<Product>
     {
+
     }
 }
