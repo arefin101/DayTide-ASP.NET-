@@ -1855,6 +1855,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\CartController.cs" />
+    <Compile Include="Controllers\DelevaryManController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\ModeratorController.cs" />
@@ -2178,6 +2179,7 @@
     <Content Include="Views\Cart\Index.cshtml" />
     <Content Include="Views\Home\FullView.cshtml" />
     <Content Include="Views\Cart\ShowCartData.cshtml" />
+    <Content Include="Views\DelevaryMan\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
