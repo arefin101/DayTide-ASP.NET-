@@ -27,6 +27,9 @@ namespace DayTide.Controllers
 
             if (usr != null && usr.Password == user.Password)
             {
+                Session["UserId"] = user.UserId;
+                Session["type"] = user.Type;
+
                 if (usr.Type == "Admin")
                 {
                     return RedirectToAction("Index", "Admin");
