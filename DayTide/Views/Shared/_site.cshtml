@@ -1,4 +1,8 @@
-﻿
+﻿@{ 
+    var afterLogin = Session["userid"];
+}
+
+
 <!DOCTYPE html>
 
 <html>
@@ -27,7 +31,14 @@
             <ul class="navbar-nav px-3">
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Day Tide
+                        @if(afterLogin==null)
+                        {
+                            <em>Daytide Not login</em>
+                        }
+                        else
+                        {
+                            <em>Welcome </em>@afterLogin.ToString()
+                        }
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                         <a class="dropdown-item" href="#">Change Password</a>

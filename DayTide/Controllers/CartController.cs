@@ -20,32 +20,49 @@ namespace DayTide.Controllers
         public ActionResult Index(Cart cart)
         {
           
-            cartRepository.Insert(cart);
+            
 
             string cid = cart.CustomerId;
-         
+
+            cartRepository.Insert(cart);
 
             var products = productRepository.GetProductById(cart.ProductId);
             products.Quantity -= cart.Quantiry;
 
             productRepository.Update(products);
+            double totalPrice = 0.0;
+
+            var multi = cartRepository.GetCartById(cid);
+            foreach(var item in multi)
+            {
+                totalPrice += Convert.ToDouble((item.Price_unit_ * item.Quantiry));
+            }
+
+            TempData["totalPrice"] = totalPrice;
 
 
+            TempData["customerIdData"] = cartRepository.GetCartById(cid);
+            //  TempData["customerIdData"] = cid;
 
+            //return RedirectToAction("ShowCartData","Cart");
 
-            return View(cartRepository.GetCartById(cid));
+            return View();
+
         }
-        //[HttpGet]
-        //public ActionResult ShowCartData(string cid)
-        //{
+        
+        [HttpGet]
+        public ActionResult Edit(int id)
+        {
 
-        //    return View(cartRepository.GetCartById(cid));
-        //}
-        //[HttpPost]
-        //public ActionResult ShowCartData()
-        //{
+            return View(cartRepository.GetProductById(id));
+        }
+        [HttpPost]
+        public ActionResult Edit(int id, Cart cart)
+        {
+            cartRepository.Update(cart);
 
-        //    return View();
-        //}
+            return RedirectToAction("Index");
+            //return View(cartRepository.GetProductById(id));
+        }
     }
 }

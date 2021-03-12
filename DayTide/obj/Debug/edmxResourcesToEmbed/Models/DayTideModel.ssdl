@@ -47,7 +47,7 @@
     <Property Name="Email" Type="varchar" MaxLength="100" Nullable="false" />
     <Property Name="Phone" Type="varchar" MaxLength="11" Nullable="false" />
     <Property Name="Address" Type="varchar" MaxLength="500" Nullable="false" />
-    <Property Name="Picture" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Picture" Type="varchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="Delevary_Man_Rating">
     <Key>

@@ -1,0 +1,23 @@
+﻿@model DayTide.Models.Cart
+@{
+    ViewBag.Title = "Check Out";
+    Layout = "~/Views/Shared/_site.cshtml";
+
+}
+
+<form method="post">
+    <label>ID</label>
+    <input type="text" name="Id" value="@Model.Id"  disabled/>
+    <label>Price</label>
+    <input type="text" name="Price_unit_" value="@Model.Price_unit_" disabled/>
+    <label>Quantiry</label>
+    <input type="text" name="Quantiry" value="@Model.Quantiry" />
+    
+    <input type="hidden" name="Product" value="@Model.Product" />
+    
+    <input type="hidden" name="ProductId" value="@Model.ProductId" />
+
+    <input type="hidden" name="CustomerId" value="@Model.CustomerId" />
+
+    <input type="submit" name="submit" value="Edit" />
+</form>

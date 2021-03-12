@@ -2167,10 +2167,7 @@
     <None Include="packages.config" />
     <Content Include="Views\Shared\_Layout_Moderator.cshtml" />
     <Content Include="Views\Login\Index.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Shared\_site.cshtml" />
     <Content Include="Views\Home\Create.cshtml" />
-    <Content Include="Views\Cart\Index.cshtml" />
     <Content Include="Views\Home\FullView.cshtml" />
     <Content Include="Views\Cart\ShowCartData.cshtml" />
     <Content Include="Views\DelevaryMan\Index.cshtml" />
@@ -2192,6 +2189,11 @@
     <Content Include="Views\Moderator\EditCategory.cshtml" />
     <Content Include="Views\Moderator\EditProduct.cshtml" />
     <Content Include="Views\Moderator\Index.cshtml" />
+    <Content Include="Views\Cart\Edit.cshtml" />
+    <Content Include="Views\Cart\Index.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\OnlyView.cshtml" />
+    <Content Include="Views\Shared\_site.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

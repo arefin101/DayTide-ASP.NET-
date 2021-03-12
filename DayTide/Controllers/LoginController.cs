@@ -23,6 +23,8 @@ namespace DayTide.Controllers
 
             User usr= loginRepository.GetUserById(user.UserId);
 
+            string userid = user.UserId;
+
             if (usr != null && usr.Password == user.Password)
             {
                 if (usr.Type == "Admin")
@@ -33,12 +35,16 @@ namespace DayTide.Controllers
                 {
                     return RedirectToAction("Index" , "Moderator");
                 }
-                // else if (usr.Type == "Deleveryman")
-                // {
-
-                // }
+                else if (usr.Type == "Customer")
+                {
+                    Session["userid"] = userid;
+                    return RedirectToAction("Index", "Home");
+                }
                 else
+                {
                     return RedirectToAction("Login");
+                }
+                    
 
             }
             else

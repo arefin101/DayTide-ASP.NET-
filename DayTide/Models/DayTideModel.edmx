@@ -52,7 +52,7 @@
           <Property Name="Email" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="Phone" Type="varchar" MaxLength="11" Nullable="false" />
           <Property Name="Address" Type="varchar" MaxLength="500" Nullable="false" />
-          <Property Name="Picture" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Picture" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Delevary_Man_Rating">
           <Key>
@@ -529,7 +529,7 @@
           <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Phone" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Address" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Picture" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Picture" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Carts" Relationship="Self.FK_Cart_Product" FromRole="Customer" ToRole="Cart" />
           <NavigationProperty Name="User" Relationship="Self.FK_Customer_User" FromRole="Customer" ToRole="User" />
           <NavigationProperty Name="Delevary_Man_Rating" Relationship="Self.FK_Delevary_Man_Rating_Customer" FromRole="Customer" ToRole="Delevary_Man_Rating" />
@@ -889,7 +889,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="DayTideEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="DayTideEntities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Admins" EntityType="Self.Admin" />
           <EntitySet Name="Applications" EntityType="Self.Application" />
           <EntitySet Name="Carts" EntityType="Self.Cart" />
@@ -983,7 +983,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="DayTideModelStoreContainer" CdmEntityContainer="DayTideEntities">
+        <EntityContainerMapping StorageEntityContainer="DayTideModelStoreContainer" CdmEntityContainer="DayTideEntities1">
           <EntitySetMapping Name="Admins">
             <EntityTypeMapping TypeName="DayTideModel.Admin">
               <MappingFragment StoreEntitySet="Admin">
