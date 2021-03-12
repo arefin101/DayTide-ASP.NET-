@@ -90,10 +90,45 @@ namespace DayTide.Controllers
         {
             return View();
         }
+        [HttpPost]
+        public ActionResult AddModerator(Moderator moderator)
+        {
+            if (userRepository.GetUserById(moderator.ModeratorId) == null)
+            {
+                User usr = new User();
+                usr.UserId = moderator.ModeratorId;
+                usr.Password = "1";
+                usr.Type = "Moderator";
+                usr.Status = "valid";
+                userRepository.Insert(usr);
+                moderatorRepository.Insert(moderator);
+                return RedirectToAction("ModeratorList", "Admin");
+            }
+            else ViewBag.errmsg = "Invalid USerID";
+            return View(moderator);
+        }
         [HttpGet]
         public ActionResult DelMan()
         {
             return View();
+        }
+        [HttpPost]
+        public ActionResult AddDelMan(DeleveryMan delman)
+        {
+            if (userRepository.GetUserById(delman.DelManId) == null)
+            {
+                User usr = new User();
+                usr.UserId = delman.DelManId;
+                usr.Password = "1";
+                usr.Type = "Delivery Man";
+                usr.Status = "valid";
+                userRepository.Insert(usr);
+                delmanRepository.Insert(delman);
+                return RedirectToAction("DeleveryManList", "Admin");
+            }
+            else ViewBag.errmsg = "Invalid USerID";
+            return View(delman);
+
         }
 
         /* public ActionResult AddUser()
