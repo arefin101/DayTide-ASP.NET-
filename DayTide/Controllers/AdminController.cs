@@ -53,6 +53,40 @@ namespace DayTide.Controllers
 
         }
         [HttpGet]
+        public ActionResult Notifymod(string id)
+        {
+            Notice notice = new Notice();
+            notice.Send_For = id;
+            notice.Send_by = Session["UserId"].ToString();
+            ViewBag.ids = notice;
+            return View("Notify");
+
+        }
+        [HttpPost]
+        public ActionResult Notifymod(Notice notice)
+        {
+            noticeRepository.Insert(notice);
+            return RedirectToAction("ModeratorList", "Admin");
+
+        }
+        [HttpGet]
+        public ActionResult Notifydelman(string id)
+        {
+            Notice notice = new Notice();
+            notice.Send_For = id;
+            notice.Send_by = Session["UserId"].ToString();
+            ViewBag.ids = notice;
+            return View("Notify");
+
+        }
+        [HttpPost]
+        public ActionResult Notifydelman(Notice notice)
+        {
+            noticeRepository.Insert(notice);
+            return RedirectToAction("DeleveryManList", "Admin");
+
+        }
+        [HttpGet]
         public ActionResult ModeratorList()
         {
             return View(moderatorRepository.GetAll());
@@ -131,30 +165,7 @@ namespace DayTide.Controllers
 
         }
 
-        /* public ActionResult AddUser()
-         {
-             return View();
-         }
-         [HttpPost]
-         public ActionResult AddUser(PendingSignup pendingSignup)
-         {
-             if (userRepository.GetUserById(pendingSignup.UserId) == null)
-             {
-                 if (pensignupRepo.GetUserById(pendingSignup.UserId) == null)
-                 {
-                     pensignupRepo.Insert(pendingSignup);
-                     return RedirectToAction("Index", "Admin");
-                 }
-                 else
-                 {
-                     ViewBag.errmsg = "UserID Already Taken/Invalid ID";
-                     return View("AddUSer", pendingSignup);
-                 }
+       
 
-             }
-             ViewBag.errmsg = "UserID Already Taken/Invalid ID";
-             return View("AddUSer", pendingSignup);
-         }
- */
     }
 }

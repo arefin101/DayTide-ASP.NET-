@@ -33,9 +33,9 @@
         <th>
             @Html.DisplayNameFor(model => model.Complete_Task)
         </th>
-        <th>
+        @*<th>
             @Html.DisplayNameFor(model => model.User.Password)
-        </th>
+        </th>*@
         <th></th>
     </tr>
 
@@ -62,13 +62,13 @@
         <td>
             @Html.DisplayFor(modelItem => item.Complete_Task)
         </td>
-        <td>
+        @*<td>
             @Html.DisplayFor(modelItem => item.User.Password)
-        </td>
+        </td>*@
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.DelManId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.DelManId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.DelManId })
+            @Html.ActionLink("Notify", "Notifydelman", new { id=item.DelManId }) |
+            @Html.ActionLink("Block", "Detailsdelman", new { id=item.DelManId }) |
+            @Html.ActionLink("Delete", "Deletedelman", new { id=item.DelManId })
         </td>
     </tr>
 }
