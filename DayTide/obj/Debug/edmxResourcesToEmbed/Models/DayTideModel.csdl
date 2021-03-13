@@ -413,7 +413,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="DayTideEntities1" annotation:LazyLoadingEnabled="true">
+  <EntityContainer Name="DayTideEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="Admins" EntityType="Self.Admin" />
     <EntitySet Name="Applications" EntityType="Self.Application" />
     <EntitySet Name="Carts" EntityType="Self.Cart" />

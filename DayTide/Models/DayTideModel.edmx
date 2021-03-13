@@ -889,7 +889,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="DayTideEntities1" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="DayTideEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Admins" EntityType="Self.Admin" />
           <EntitySet Name="Applications" EntityType="Self.Application" />
           <EntitySet Name="Carts" EntityType="Self.Cart" />
@@ -983,7 +983,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="DayTideModelStoreContainer" CdmEntityContainer="DayTideEntities1">
+        <EntityContainerMapping StorageEntityContainer="DayTideModelStoreContainer" CdmEntityContainer="DayTideEntities">
           <EntitySetMapping Name="Admins">
             <EntityTypeMapping TypeName="DayTideModel.Admin">
               <MappingFragment StoreEntitySet="Admin">

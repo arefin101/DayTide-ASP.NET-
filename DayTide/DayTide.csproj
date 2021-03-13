@@ -2194,6 +2194,7 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\OnlyView.cshtml" />
     <Content Include="Views\Shared\_site.cshtml" />
+    <Content Include="Views\Admin\Detailscus.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
