@@ -160,6 +160,20 @@ namespace DayTide.Controllers
 
         }
         [HttpGet]
+        public ActionResult Deletemod(string id)
+        {
+            moderatorRepository.DeleteUser(id);
+            userRepository.DeleteUser(id);
+            return RedirectToAction("ModeratorList", "Admin");
+        }
+        [HttpGet]
+        public ActionResult Deletedelman(string id)
+        {
+            delmanRepository.DeleteUser(id);
+            userRepository.DeleteUser(id);
+            return RedirectToAction("ModeratorList", "Admin");
+        }
+        [HttpGet]
         public ActionResult AddModerator()
         {
             return View();
