@@ -87,6 +87,30 @@ namespace DayTide.Controllers
 
         }
         [HttpGet]
+        public ActionResult Notifycus(string id)
+        {
+            Notice notice = new Notice();
+            notice.Send_For = id;
+            notice.Send_by = Session["UserId"].ToString();
+            ViewBag.ids = notice;
+            return View("Notify");
+
+        }
+        [HttpPost]
+        public ActionResult Notifycus(Notice notice)
+        {
+            noticeRepository.Insert(notice);
+            return RedirectToAction("CustomerList", "Admin");
+
+        }
+        [HttpGet]
+        public ActionResult Detailscus(string id)
+        {
+            return View(customerrRepository.GetUserById(id));
+        }
+   
+      
+        [HttpGet]
         public ActionResult ModeratorList()
         {
             return View(moderatorRepository.GetAll());

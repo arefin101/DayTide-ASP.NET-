@@ -10,7 +10,7 @@ namespace DayTide.Repositories
 {
     public class Repository<TEntity> : IRepository<TEntity> where TEntity : class
     {
-        protected DayTideEntities1 context = new DayTideEntities1();
+        protected DayTideEntities context = new DayTideEntities();
         public void DeleteProduct(int id)
         {
             context.Set<TEntity>().Remove(GetProductById(id));
