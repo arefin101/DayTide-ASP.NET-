@@ -97,6 +97,46 @@ namespace DayTide.Controllers
             return View(delmanRepository.GetAll());
         }
         [HttpGet]
+        public ActionResult Blockmod(string id)
+        {
+            User usr = new User();
+            usr=userRepository.GetUserById(id);
+            usr.Status = "invalid";
+            userRepository.Update(usr);
+            return RedirectToAction("ModeratorList", "Admin");
+
+        }
+        [HttpGet]
+        public ActionResult UnBlockmod(string id)
+        {
+            User usr = new User();
+            usr = userRepository.GetUserById(id);
+            usr.Status = "valid";
+            userRepository.Update(usr);
+            return RedirectToAction("ModeratorList", "Admin");
+
+        }
+        [HttpGet]
+        public ActionResult Blockdel(string id)
+        {
+            User usr = new User();
+            usr = userRepository.GetUserById(id);
+            usr.Status = "invalid";
+            userRepository.Update(usr);
+            return RedirectToAction("ModeratorList", "Admin");
+
+        }
+        [HttpGet]
+        public ActionResult UnBlockdel(string id)
+        {
+            User usr = new User();
+            usr = userRepository.GetUserById(id);
+            usr.Status = "valid";
+            userRepository.Update(usr);
+            return RedirectToAction("ModeratorList", "Admin");
+
+        }
+        [HttpGet]
         public ActionResult AddAdmin()
         {
             return View();

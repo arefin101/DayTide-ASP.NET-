@@ -8,8 +8,8 @@
 <h2>DeleveryManList</h2>
 
 @*<p>
-    @Html.ActionLink("Create New", "Create")
-</p>*@
+        @Html.ActionLink("Create New", "Create")
+    </p>*@
 <table class="table">
     <tr>
         <th>
@@ -34,43 +34,119 @@
             @Html.DisplayNameFor(model => model.Complete_Task)
         </th>
         @*<th>
-            @Html.DisplayNameFor(model => model.User.Password)
-        </th>*@
+                @Html.DisplayNameFor(model => model.User.Password)
+            </th>*@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Email)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Phone)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Address)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Salary)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Picture)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Complete_Task)
-        </td>
-        @*<td>
-            @Html.DisplayFor(modelItem => item.User.Password)
-        </td>*@
-        <td>
-            @Html.ActionLink("Notify", "Notifydelman", new { id=item.DelManId }) |
-            @Html.ActionLink("Block", "Detailsdelman", new { id=item.DelManId }) |
-            @Html.ActionLink("Delete", "Deletedelman", new { id=item.DelManId })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        if (item.User.Status == "valid")
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Phone)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Address)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Salary)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Picture)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Complete_Task)
+                </td>
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.User.Password)
+                    </td>*@
+                <td>
+                    @Html.ActionLink("Notify", "Notifydelman", new { id = item.DelManId }) |
+                    @Html.ActionLink("Block", "Blockdel", new { id = item.DelManId }) |
+                    @Html.ActionLink("Delete", "Deletedelman", new { id = item.DelManId })
+                </td>
+            </tr>
+        }
+    }
+</table>
 
+<h2>Blocked DeleveryManList</h2>
+
+@*<p>
+        @Html.ActionLink("Create New", "Create")
+    </p>*@
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Phone)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Address)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Salary)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Picture)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Complete_Task)
+        </th>
+        @*<th>
+                @Html.DisplayNameFor(model => model.User.Password)
+            </th>*@
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        if (item.User.Status == "invalid")
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Phone)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Address)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Salary)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Picture)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Complete_Task)
+                </td>
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.User.Password)
+                    </td>*@
+                <td>
+                    
+                    @Html.ActionLink("UnBlock", "UnBlockdel", new { id = item.DelManId }) |
+                    @Html.ActionLink("Delete", "Deletedelman", new { id = item.DelManId })
+                </td>
+            </tr>
+        }
+    }
 </table>
