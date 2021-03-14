@@ -31,6 +31,24 @@
     <Property Name="Quantiry" Type="int" Nullable="false" />
     <Property Name="Price(unit)" Type="float" />
   </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'DayTide.dbo.CartBackup' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="CartBackup">
+    <Key>
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="CustomerId" />
+      <PropertyRef Name="ProductId" />
+      <PropertyRef Name="Quantity" />
+      <PropertyRef Name="Price" />
+      <PropertyRef Name="OrderId" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CustomerId" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ProductId" Type="int" Nullable="false" />
+    <Property Name="Quantity" Type="int" Nullable="false" />
+    <Property Name="Price" Type="float" Nullable="false" />
+    <Property Name="OrderId" Type="int" Nullable="false" />
+  </EntityType>
   <EntityType Name="Category">
     <Key>
       <PropertyRef Name="CategoryId" />
@@ -141,6 +159,14 @@
     <Property Name="Rating" Type="int" Nullable="false" />
     <Property Name="Comments" Type="varchar" MaxLength="150" Nullable="false" />
     <Property Name="CustomerId" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="StudentInfo">
+    <Key>
+      <PropertyRef Name="StuId" />
+    </Key>
+    <Property Name="StuId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="StuName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Semester" Type="nvarchar" MaxLength="10" Nullable="false" />
   </EntityType>
   <EntityType Name="TrackProfit">
     <Key>
@@ -270,18 +296,6 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Notice_User">
-    <End Role="Admin" Type="Self.Admin" Multiplicity="1" />
-    <End Role="Notice" Type="Self.Notice" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Admin">
-        <PropertyRef Name="AdminId" />
-      </Principal>
-      <Dependent Role="Notice">
-        <PropertyRef Name="Send_by" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Notice_User1">
     <End Role="User" Type="Self.User" Multiplicity="1" />
     <End Role="Notice" Type="Self.Notice" Multiplicity="*" />
     <ReferentialConstraint>
@@ -289,7 +303,7 @@
         <PropertyRef Name="UserId" />
       </Principal>
       <Dependent Role="Notice">
-        <PropertyRef Name="Send_For" />
+        <PropertyRef Name="Send_by" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -391,8 +405,19 @@
     <EntitySet Name="OrderRequest" EntityType="Self.OrderRequest" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Product_Rating" EntityType="Self.Product_Rating" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="StudentInfo" EntityType="Self.StudentInfo" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TrackProfit" EntityType="Self.TrackProfit" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CartBackup" EntityType="Self.CartBackup" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [CartBackup].[ID] AS [ID], 
+    [CartBackup].[CustomerId] AS [CustomerId], 
+    [CartBackup].[ProductId] AS [ProductId], 
+    [CartBackup].[Quantity] AS [Quantity], 
+    [CartBackup].[Price] AS [Price], 
+    [CartBackup].[OrderId] AS [OrderId]
+    FROM [dbo].[CartBackup] AS [CartBackup]</DefiningQuery>
+    </EntitySet>
     <AssociationSet Name="FK_Admin_User" Association="Self.FK_Admin_User">
       <End Role="User" EntitySet="User" />
       <End Role="Admin" EntitySet="Admin" />
@@ -430,10 +455,6 @@
       <End Role="Moderator" EntitySet="Moderator" />
     </AssociationSet>
     <AssociationSet Name="FK_Notice_User" Association="Self.FK_Notice_User">
-      <End Role="Admin" EntitySet="Admin" />
-      <End Role="Notice" EntitySet="Notice" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Notice_User1" Association="Self.FK_Notice_User1">
       <End Role="User" EntitySet="User" />
       <End Role="Notice" EntitySet="Notice" />
     </AssociationSet>

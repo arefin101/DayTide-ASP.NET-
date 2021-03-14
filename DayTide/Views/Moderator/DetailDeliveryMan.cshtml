@@ -1,0 +1,79 @@
+﻿@model DayTide.Models.DeleveryMan
+
+@{
+    ViewBag.Title = "DetailDeliveryMan";
+    Layout = "~/Views/Shared/_Layout_Moderator.cshtml";
+}
+
+<div class="container">
+    <h2 style="color:#4e73df"><b>DetailDeliveryMan</b></h2>
+
+    <div>
+        <h4 style="color:#4e73df">DeleveryMan</h4>
+        <hr />
+        <dl class="dl-horizontal">
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Picture, htmlAttributes: new { @class = "control-label col-md-2" })
+                <input type="hidden" name="Picture" value="@Model.Picture" />
+                <div class="col-md-10">
+                    <img style=" border: 1px solid #ccc; width: 250px; height: auto" src="~/Content/Users/@Model.Picture" alt="@Model.Picture" width="400" height="250">
+                </div>
+            </div>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Name)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Name)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Email)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Email)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Phone)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Phone)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Address)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Address)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Salary)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Salary)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Complete_Task)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Complete_Task)
+            </dd>
+
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "EditDeliveryMan", new { id = Model.DelManId }, new { @class = "btn btn-outline-primary" }) |
+        @Html.ActionLink("Back to List", "CustomizeDeliveryMan", new { }, new { @class = "btn btn-outline-primary" })
+    </p>
+
+</div>

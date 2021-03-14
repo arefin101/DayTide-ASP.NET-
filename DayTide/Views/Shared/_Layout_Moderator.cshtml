@@ -68,22 +68,7 @@
             </div>
 
             <!-- Nav Item - Pages Collapse Menu -->
-            
-
             <!-- Nav Item - Utilities Collapse Menu -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
-                   aria-expanded="true" aria-controls="collapsePages">
-                    <i class="fa fa-plus"></i>
-                    <span>Add Users</span>
-                </a>
-                <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="#">Add Delivery Man</a>
-                    </div>
-                </div>
-            </li>
-
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
@@ -94,7 +79,7 @@
                 <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
                      data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="{{route('customizeSeller')}}">Delivery Man</a>
+                        <a class="collapse-item" href="/Moderator/CustomizeDeliveryMan">Delivery Man</a>
                     </div>
                 </div>
             </li>
@@ -186,18 +171,18 @@
                     </button>
 
                     <!-- Topbar Search -->
-                    {{-- <form method="post"
-                        class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                    <form method="post"
+                          class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                         <div class="input-group">
                             <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
-                                aria-label="Search" aria-describedby="basic-addon2" name="user">
+                                   aria-label="Search" aria-describedby="basic-addon2" name="user">
                             <div class="input-group-append">
                                 <button class="btn btn-primary" type="button">
                                     <i class="fas fa-search fa-sm"></i>
                                 </button>
                             </div>
                         </div>
-                    </form> --}}
+                    </form>
 
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
@@ -232,14 +217,14 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{$name}}</span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">@Session["Name"]</span>
                                 <img class="img-profile rounded-circle"
-                                     src="~/Content/Users/me.jpg">
+                                     src="~/Content/Users/@Session["Picture"]">
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                  aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="{{route('profile')}}">
+                                <a class="dropdown-item" href="/Moderator/Profile/@Session["UserId"]">
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Profile
                                 </a>
@@ -312,7 +297,7 @@
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="{{route('logout')}}">Logout</a>
+                    <a class="btn btn-primary" href="/Logout/Logout">Logout</a>
                 </div>
             </div>
         </div>

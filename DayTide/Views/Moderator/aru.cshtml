@@ -1,18 +1,63 @@
-﻿
-@{
-    Layout = null;
-}
+﻿@model IEnumerable<DayTide.Models.DeleveryMan>
+<br />
+<br />
+<div class="container">
+    <b>Search By : </b>
+    <select id="SearchBy">
+        <option value="Name">Name</option>
+        <option value="ID">ID</option>
+    </select><br /><br />
+    @Html.TextBox("Search")<input type="submit" id="SearchBtn" value="Search" /><br /><br />
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Phone</th>
+            </tr>
+        </thead>
+        <tbody id="DataSearching">
+            @foreach (var Item in Model)
+            {
+                <tr>
+                    <td>@Item.DelManId</td>
+                    <td>@Item.Name</td>
+                    <td>@Item.Phone</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+<script>
+    $(document).ready(function () {
+        $("#SearchBtn").click(function () {
+            var SearchBy = $("#SearchBy").val();
+            var SearchValue = $("#Search").val();
+            var SetData = $("#DataSearching");
+            SetData.html("");
+            $.ajax({
 
-<!DOCTYPE html>
+                type: "post",
+                url: "/Moderator/GetSearchingData?SearchBy=" + SearchBy + "&SearchValue=" + SearchValue,
+                contentType: "html",
+                success: function (result) {
+                    if (result.length > 0) {
+                        SetData.append('<tr style="color:red"><td colspan="3">No Match Data</td></tr>')
+                    }
+                    else {
+                        $.each(result, function (index, value) {
+                            var Data = "<tr>" +
+                                "<td>" + value.DelManId + "</td>" +
+                                "<td>" + value.Name + "</td>" +
+                                "<td>" + value.Phone + "</td>" +
+                                "</tr>";
+                            SetData.append(Data);
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>AddProductsas</title>
-</head>
-<body>
-    <div> 
-        <p>@ViewData["CategoryName"]</p>
-    </div>
-</body>
-</html>
+                        });
+                    }
+                },
+            });
+        });
+    });
+</script>

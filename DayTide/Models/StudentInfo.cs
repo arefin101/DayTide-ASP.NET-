@@ -12,16 +12,10 @@ namespace DayTide.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Admin
+    public partial class StudentInfo
     {
-        public string AdminId { get; set; }
-        public string Name { get; set; }
-        public string Email { get; set; }
-        public string Phone { get; set; }
-        public string Address { get; set; }
-        public double Salary { get; set; }
-        public string Picture { get; set; }
-    
-        public virtual User User { get; set; }
+        public int StuId { get; set; }
+        public string StuName { get; set; }
+        public string Semester { get; set; }
     }
 }

@@ -12,16 +12,13 @@ namespace DayTide.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Admin
+    public partial class CartBackup
     {
-        public string AdminId { get; set; }
-        public string Name { get; set; }
-        public string Email { get; set; }
-        public string Phone { get; set; }
-        public string Address { get; set; }
-        public double Salary { get; set; }
-        public string Picture { get; set; }
-    
-        public virtual User User { get; set; }
+        public int ID { get; set; }
+        public string CustomerId { get; set; }
+        public int ProductId { get; set; }
+        public int Quantity { get; set; }
+        public double Price { get; set; }
+        public int OrderId { get; set; }
     }
 }

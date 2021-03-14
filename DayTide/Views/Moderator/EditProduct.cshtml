@@ -6,6 +6,10 @@
 <script src="~/scripts/jquery/jquery-3.5.1.js"></script>
 <link href="~/scripts/css/productImage.css" rel="stylesheet">
 <link href="~/scripts/'js/productImage.js" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.11/jquery.validate.unobtrusive.min.js"></script>
+
 
 <div class="container tm-mt-big tm-mb-big">
     <div class="row">
@@ -21,26 +25,18 @@
                         <form method="post" class="tm-edit-product-form" enctype="multipart/form-data">
                             @Html.AntiForgeryToken()
                             <div class="form-group mb-3">
-                                <label for="name">
-                                    Product Name
-                                </label>
-                                <input id="name"
-                                       name="ProductName"
-                                       type="text"
-                                       class="form-control validate" 
-                                       value="@Model.ProductName"/>
-                                @*@error('productName')
-                                    <div style="color:red; text-align:center">{{$message}}</div>
-                                    @enderror*@
+                                <label for="Product Name">Product Name</label>
+                                <div class="form">
+                                    @Html.EditorFor(model => model.ProductName, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.ProductName, "", new { @class = "text-danger" })
+                                </div>
                             </div>
                             <div class="form-group mb-3">
                                 <label for="description">Description</label>
-                                <textarea class="form-control validate"
-                                          rows="3"
-                                          name="Description">@Model.Description</textarea>
-                                @*@error('description')
-                                    <div style="color:red; text-align:center">{{$message}}</div>
-                                    @enderror*@
+                                <div class="form">
+                                    @Html.TextAreaFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+                                </div>
                             </div>
                             <div class="form-group mb-3">
                                 <label for="category">Category</label>
@@ -64,55 +60,38 @@
                                     <label for="Buying_Price">
                                         Buying Price
                                     </label>
-                                    <input id="Buying_Price"
-                                           name="Buying_Price"
-                                           type="text"
-                                           class="form-control validate"
-                                           data-large-mode="true" 
-                                           value="@Model.Buying_Price"/>
-                                    @* @error('expDate')
-                                        <div style="color:red; text-align:center">{{$message}}</div>
-                                        @enderror*@
+                                    @Html.EditorFor(model => model.Buying_Price, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Buying_Price, "", new { @class = "text-danger" })
                                 </div>
                                 <div class="form-group mb-3 col-xs-12 col-sm-6">
                                     <label for="stock">
                                         Selling Price
                                     </label>
-                                    <input id="stock"
-                                           name="Selling_Price"
-                                           type="text"
-                                           class="form-control validate" 
-                                           value="@Model.Selling_Price"/>
-                                    @*@error('quantity')
-                                        <div style="color:red; text-align:center">{{$message}}</div>
-                                        @enderror*@
+                                    @Html.EditorFor(model => model.Selling_Price, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Selling_Price, "", new { @class = "text-danger" })
                                 </div>
                             </div>
                             <div class="form-group mb-3">
                                 <label for="name">
                                     Quantity
                                 </label>
-                                <input id="Quantity"
-                                       name="Quantity"
-                                       type="text"
-                                       class="form-control validate" 
-                                       value="@Model.Quantity"/>
-                                @*@error('price')
-                                    <div style="color:red; text-align:center">{{$message}}</div>
-                                    @enderror*@
+                                @Html.EditorFor(model => model.Quantity, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Quantity, "", new { @class = "text-danger" })
                             </div>
                     </div>
                     <div class="col-xl-6 col-lg-6 col-md-12 mx-auto mb-4">
                         <img id="myImg" src="~/Content/Products/@Model.Picture" alt="your image" class="thumb">
                         </br>
-                        <input type="file" name="Picture" id="img" style="display:none;"/><br />
-                         <label for="img" class="btn btn-warning">Change Image</label>
-                        @*@error('productImage')
-                            <div style="color:red;">{{$message}}</div>
-                            @enderror*@
+                        <input type="file" name="Picture" id="img" style="display:none;" /><br />
+                        <input type="hidden" name="Picture" id="img" value="@Model.Picture" style="display:none;" /><br />
+                        <label for="img" class="btn btn-warning">Change Image</label>
+                        <p style="color:red">@TempData["File"]</p>
                     </div>
                     <div class="col-12">
                         <button type="submit" class="btn btn-primary btn-block text-uppercase">Edit Product Now</button>
+                    </div><br /><br />
+                    <div class="col-12">
+                        @Html.ActionLink("Go to List", "CustomizeProduct", new { }, new { @class = "btn btn-outline-info btn-block" })
                     </div>
                     </form>
                 </div>

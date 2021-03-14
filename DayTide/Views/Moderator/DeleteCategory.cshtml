@@ -3,6 +3,16 @@
     Layout = "~/Views/Shared/_Layout_Moderator.cshtml";
 }
 
+<style>
+    .warn {
+        color: #756e15;
+        background: #fffbd1;
+        border: 1px solid #87803e;
+        width: 100%;
+        text-align: center;
+    }
+</style>
+
 <div>
     <div class="container">
         <div class="card o-hidden border-0 shadow-lg my-5">
@@ -21,7 +31,11 @@
                                     <div class="col-sm-12 mb-3 mb-sm-0 text-center">
                                         <h2 style="color: red;">Do You Really Want to Delete This Catagory??</h2>
                                     </div>
-                                </div><hr>
+                                </div>
+                                <div class="bar warn">
+                                    @TempData["Error"]
+                                </div><br />
+                               
                                 <button class="btn btn-danger btn-user btn-block">YES</button>
                                 <a href="/Moderator/CustomizeCategory" class="btn btn-warning btn-user btn-block">
                                     NO

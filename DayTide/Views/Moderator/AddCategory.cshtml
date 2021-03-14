@@ -1,9 +1,12 @@
-﻿
+﻿@model DayTide.Models.Category
 @{
     Layout = "~/Views/Shared/_Layout_Moderator.cshtml";
 }
 
-<script src="~/scripts/jquery/jquery-3.5.1.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.11/jquery.validate.unobtrusive.min.js"></script>
+
 
 <div class="container tm-mt-big tm-mb-big">
     <div class="row">
@@ -19,19 +22,25 @@
                         <form method="post" class="tm-edit-product-form">
                             @Html.AntiForgeryToken()
                             <div class="form-group mb-3">
-                                <label for="name">
-                                    Category Name
-                                </label>
-                                <input id="name"
-                                       name="CategoryName"
-                                       type="text"
-                                       class="form-control validate" />
-                                @*@error('name')
-            <div style="color:red; text-align:center">{{$message}}</div>
-            @enderror*@
+                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.CategoryName, "DelManId", htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.CategoryName, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.CategoryName, "", new { @class = "text-danger" })
+                                        @*<p style="color:red">@TempData["UserError"]</p>*@
+                                    </div>
+                                </div>
                             </div>
-                            <div class="col-12">
-                                <button type="submit" class="btn btn-primary btn-block text-uppercase">Add Category Now</button>
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-sm">
+                                        <button type="submit" class="btn btn-primary btn-block text-uppercase">Add Category</button>
+                                    </div>
+                                    <div class="col-sm">
+                                        @Html.ActionLink("Go to List", "CustomizeCategory", new { }, new { @class = "btn btn-outline-info" })
+                                    </div>
+                                </div>
                             </div>
                         </form>
                     </div>

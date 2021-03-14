@@ -1,0 +1,156 @@
+﻿@model DayTide.Models.Moderator
+@{
+    ViewBag.Title = "Profile";
+    Layout = "~/Views/Shared/_Layout_Moderator.cshtml";
+}
+
+<script src="~/scripts/jquery/jquery-3.5.1.js"></script>
+<link href="~/scripts/css/productImage.css" rel="stylesheet">
+<link href="~/scripts/'js/productImage.js" rel="stylesheet">
+<style>
+    /* Image Designing Propoerties */
+    .thumb {
+        height: 200px;
+        width:200px;
+        border: 1px solid #000;
+        border-radius: 100%;
+    }
+</style>
+
+<div>
+
+    <div class="container">
+
+        <div class="card o-hidden border-0 shadow-lg my-5">
+            <div class="card-body p-0">
+                <!-- Nested Row within Card Body -->
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="p-5">
+                            <div class="text-center">
+                                <br><br>
+                                <h1 class="h4 text-gray-900 mb-4">Hi @Model.ModeratorId</h1>
+                            </div>
+                            <form class="user" enctype="multipart/form-data">
+                                <div class="form-group row">
+                                    <div class="col-sm-12 mb-3 mb-sm-0 text-center">
+                                        <h3>@Model.Name</h3>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-sm-12 mb-3 mb-sm-0 text-center">
+                                        <h3>@Model.Email</h3>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-sm-12 mb-3 mb-sm-0 text-center">
+                                        <h3>@Model.Address</h3>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-sm-12 mb-3 mb-sm-0 text-center">
+                                        <h3>@Model.Phone</h3>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-sm-12 mb-3 mb-sm-0 text-center">
+                                        <h3>@Model.User.Type</h3>
+                                    </div>
+                                </div><hr>
+                                <a href="/Moderator/Index" class="btn btn-primary btn-user btn-block">
+                                    Home
+                                </a>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="p-5">
+                            <div class="text-center">
+                                <br>
+                                <h1 class="h4 text-gray-900 mb-4">Update Your Information</h1>
+                            </div>
+                            <form class="user" method="post" enctype="multipart/form-data">
+                                @Html.AntiForgeryToken()
+                                <input type="hidden" class="form-control form-control-user" id="exampleUsername"
+                                       placeholder="userName" name="ModeratorId" value="@Model.ModeratorId">
+                                <div class="form-group">
+                                    <input type="text" class="form-control form-control-user" id="exampleFirstName"
+                                           placeholder="Name" name="Name" value="@Model.Name">
+                                    @*@error('name')
+                                        <div style="color:red; text-align:center">{{$message}}</div>
+                                        @enderror*@
+                                </div>
+                                <div class="form-group">
+                                    <input type="email" class="form-control form-control-user" id="exampleInputEmail"
+                                           placeholder="Email Address" name="Email" value="@Model.Email">
+                                    @*@error('email')
+                                        <div style="color:red; text-align:center">{{$message}}</div>
+                                        @enderror*@
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control form-control-user" id="exampleInputDOB"
+                                           placeholder="Address" name="Address" value="@Model.Address">
+                                    @*@error('DOB')
+                                        <div style="color:red; text-align:center">{{$message}}</div>
+                                        @enderror*@
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control form-control-user" id="exampleInputphoneNo"
+                                           placeholder="Mobile Number" name="Phone" value="@Model.Phone">
+                                    @*@error('contact')
+                                        <div style="color:red; text-align:center">{{$message}}</div>
+                                        @enderror*@
+                                </div>
+
+                                <hr>
+                                <!-- <a href="/login/register" class="btn btn-primary btn-user btn-block">
+                                    Update Account
+                                </a> -->
+                                <button class="btn btn-warning btn-user btn-block">Update Account</button>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 container">
+                        <div class="p-5 conatiner">
+                            <div class="text-center">
+                                <br>
+                                <h1 class="h4 text-gray-900 mb-4">Update Your Profile Picture</h1>
+                            </div>
+                            <div class="form-group container">
+                                <img id="myImg" src="~/Content/Users/@Model.Picture" alt="your image" class="thumb">
+                                </br>
+                                <input type="file" name="Picture" id="img" style="display:none;" /><br />
+                                <input type="hidden" name="Picture" id="img" value="@Model.Picture" style="display:none;" /><br />
+                                <label for="img" class="btn btn-info container">Change Image</label>
+                                @*@error('productImage')
+                                    <div style="color:red;">{{$message}}</div>
+                                    @enderror*@
+                            </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script type="text/javascript">
+        /* The uploader form */
+        $(function () {
+            $(":file").change(function () {
+                if (this.files && this.files[0]) {
+                    var reader = new FileReader();
+
+                    reader.onload = imageIsLoaded;
+                    reader.readAsDataURL(this.files[0]);
+                }
+            });
+        });
+
+        function imageIsLoaded(e) {
+            $('#myImg').attr('src', e.target.result);
+            $('#yourImage').attr('src', e.target.result);
+        };
+
+    </script>
+

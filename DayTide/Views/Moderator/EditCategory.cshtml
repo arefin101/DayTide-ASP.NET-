@@ -31,8 +31,15 @@
                                     <div style="color:red; text-align:center">{{$message}}</div>
                                     @enderror*@
                             </div>
-                            <div class="col-12">
-                                <button type="submit" class="btn btn-primary btn-block text-uppercase">Edit Category Now</button>
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-sm">
+                                        <button type="submit" class="btn btn-primary btn-block text-uppercase">Update Category</button>
+                                    </div>
+                                    <div class="col-sm">
+                                        @Html.ActionLink("Go to List", "CustomizeCategory", new { }, new { @class = "btn btn-outline-info" })
+                                    </div>
+                                </div>
                             </div>
                         </form>
                     </div>

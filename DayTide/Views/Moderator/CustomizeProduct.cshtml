@@ -11,31 +11,66 @@
         width: 120px;
     }
 
-    div.gallery img {
-        width: 100%;
-        height: auto;
-    }
+        div.gallery img {
+            width: 100%;
+            height: auto;
+        }
 
     div.desc {
         padding: 15px;
         text-align: center;
     }
+
+    .warn {
+        color: #756e15;
+        background: #fffbd1;
+        border: 1px solid #87803e;
+        width: 100%;
+        text-align: center;
+    }
 </style>
+
 
 <div class="container-fluid">
     <div class="card shadow mb-4">
         <div class="card-header py-3">
             <div class="row">
-                <div class="col-sm-12 col-md-6">
+                <div class="col-sm-12 col-md-5">
                     <h1 class="m-0 font-weight-bold text-primary">Products</h1>
                 </div>
-                <div class="col-sm-12 col-md-6">
+                <div class="col-sm-12 col-md-5">
                     <div id="dataTable_filter" class="dataTables_filter">
-                        <label>Search:<input type="search" class="form-control form-control-sm" placeholder="" aria-controls="dataTable"></label>
+                        <label>Search By Category:
+                            <select name="CategoryId" onchange="location = this.value;" class="custom-select tm-select-accounts">
+                                @foreach (var item in ViewData["categories"] as IList<DayTide.Models.Category>)
+                                {
+                                    if (@item == ViewData["Category"])
+                                    {
+                                        <option value="/Moderator/SeeProduct/@item.CategoryId" selected>@item.CategoryName</option>
+                                        continue;
+                                    }
+                                    <option value="/Moderator/SeeProduct/@item.CategoryId">@item.CategoryName</option>
+                                }
+                                @if (ViewData["Category"] == null)
+                                {
+                                    <option selected value="/Moderator/CustomizeProduct">ALL</option>
+                                }
+                                else
+                                {
+                                    <option value="/Moderator/CustomizeProduct">ALL</option>
+                                }
+                            </select>
+                        </label>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-2">
+                    <span style="float:right">@Html.ActionLink("Back to Home", "Index", new { }, new { @class = "btn btn-outline-primary" })</span>
+                </div>
+                    <div class="bar warn">
+                        @TempData["Error"]
                     </div>
                 </div>
             </div>
-        </div>
         <div class="card-body">
             <div class="table-responsive">
                 <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4">
@@ -69,32 +104,40 @@
                                 <tbody>
                                     @foreach (var item in Model)
                                     {
-                                    <tr role="row" class="odd">
-                                        <td>@item.ProductName</td>
-                                        <td>@item.Description</td>
-                                        <td>@item.Buying_Price</td>
-                                        <td>@item.Selling_Price</td>
-                                        @foreach (var cat in ViewData["categories"] as IList<DayTide.Models.Category>)
-                                        {
-                                            if (@cat.CategoryId == @item.CategoryId)
+                                        <tr role="row" class="odd">
+                                            <td>@item.ProductName</td>
+                                            <td>@item.Description</td>
+                                            <td>@item.Buying_Price</td>
+                                            <td>@item.Selling_Price</td>
+                                            @foreach (var cat in ViewData["categories"] as IList<DayTide.Models.Category>)
                                             {
-                                                <td>@cat.CategoryName</td>
+                                                if (@cat.CategoryId == @item.CategoryId)
+                                                {
+                                                    <td>@cat.CategoryName</td>
+                                                }
                                             }
-                                        }
-                                        <td>@item.Quantity</td>
-                                        <td>
-                                            <div class="gallery">
-                                                <a target="_blank" href="img_5terre.jpg">
-                                                    <img src="~/Content/Products/@item.Picture" alt="@item.Picture" width="400" height="250">
-                                                </a>
-                                                @*<div class="desc">Add a description of the image here</div>*@
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <a href="/Moderator/EditProduct/@item.ProductId" class="btn btn-primary">Edit</a>
-                                            <a href="/Moderator/DeleteProduct/@item.ProductId" class="btn btn-danger">Delete</a>
-                                        </td>
-                                    </tr>
+                                            <td>@item.Quantity</td>
+                                            <td>
+                                                <div class="gallery">
+                                                    <a target="_blank" href="img_5terre.jpg">
+                                                        <img src="~/Content/Products/@item.Picture" alt="@item.Picture" width="400" height="250">
+                                                    </a>
+                                                    @*<div class="desc">Add a description of the image here</div>*@
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <a href="/Moderator/EditProduct/@item.ProductId" class="btn btn-primary">Edit</a>                                          
+                                                <a href="/Moderator/DeleteProduct/@item.ProductId" class="btn btn-danger">Delete</a>
+                                                @if (@item.Quantity > 0)
+                                                {
+                                                    <a href="/Moderator/StockCheckProduct/@item.ProductId" class="btn btn-success">In Service</a>
+                                                }
+                                                else
+                                                {
+                                                    <a href="/Moderator/StockCheckProduct/@item.ProductId" class="btn btn-dark">Stock Out</a>
+                                                }
+                                            </td>
+                                        </tr>
                                     }
                                 </tbody>
                             </table>

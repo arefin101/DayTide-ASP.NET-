@@ -13,10 +13,10 @@ namespace DayTide.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class DayTideEntities : DbContext
+    public partial class DayTideEntities2 : DbContext
     {
-        public DayTideEntities()
-            : base("name=DayTideEntities")
+        public DayTideEntities2()
+            : base("name=DayTideEntities2")
         {
         }
     
@@ -38,7 +38,9 @@ namespace DayTide.Models
         public virtual DbSet<OrderRequest> OrderRequests { get; set; }
         public virtual DbSet<Product> Products { get; set; }
         public virtual DbSet<Product_Rating> Product_Rating { get; set; }
+        public virtual DbSet<StudentInfo> StudentInfoes { get; set; }
         public virtual DbSet<TrackProfit> TrackProfits { get; set; }
         public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<CartBackup> CartBackups { get; set; }
     }
 }
