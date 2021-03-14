@@ -1,5 +1,7 @@
 ﻿@{ 
     var afterLogin = Session["userid"];
+
+    
 }
 
 
@@ -12,7 +14,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1,shrink-to-fit=no">
     <title>@ViewBag.Title</title>
     <!-- CSS only -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.css" integrity="sha512-C7hOmCgGzihKXzyPU/z4nv97W0d9bv4ALuuEbSf6hm93myico9qa0hv4dODThvCsqQUmKmLcJmlpRmCaApr83g==" crossorigin="anonymous" />
+
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+
+
+
 
 
 </head>
@@ -27,11 +35,11 @@
 
             <!---search box-->
 
-            <input class="form-control form-control-primary w-100" type="search" id="myInput" placeholder="Search" aria-label="Search">
+            <input class="form-control form-control-primary w-100" type="text" id="myInput" placeholder="Search" aria-label="Search">
             <ul class="navbar-nav px-3">
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        @if(afterLogin==null)
+                        @if (afterLogin == null)
                         {
                             <em>Daytide Not login</em>
                         }
@@ -61,34 +69,39 @@
                     <ul class="nav navbar-nav w-100 justify-content-between">
                         <li class="nav-item dropdown">
                             <a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#">Navbar link 1</a>
-                            <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="#">This is a very very long dropdown item and it may overflow the viewport</a><a class="dropdown-item" role="presentation" href="#">Second Item</a><a class="dropdown-item" role="presentation" href="#">Third Item</a></div>
+                            <div class="dropdown-menu" role="menu">
+                                <a class="dropdown-item" role="presentation" href="#">This is a very very long dropdown item and it may overflow the viewport</a>
+                                @*<a class="dropdown-item" role="presentation" href="#">Second Item</a><a class="dropdown-item" role="presentation" href="#">Third Item</a>*@
+                            </div>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#">Navbar link 2</a>
-                            <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="#">This is a very very long dropdown item and it may overflow the viewport</a><a class="dropdown-item" role="presentation" href="#">Second Item</a><a class="dropdown-item" role="presentation" href="#">Third Item</a></div>
+                            
+                            
                         </li>
-                        <li class="nav-item dropdown">
-                            <a class="dropdown-toggle nav-link" data-toggle="dropdown" data-display="static" aria-expanded="false" href="#">Navbar link 3</a>
-                            <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="#">This is a very very long dropdown item and it may overflow the viewport</a><a class="dropdown-item" role="presentation" href="#">Second Item</a><a class="dropdown-item" role="presentation" href="#">Third Item</a></div>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="dropdown-toggle nav-link" data-toggle="dropdown" data-display="static" aria-expanded="false" href="#">Navbar link 4</a>
-                            <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="#">This is a very very long dropdown item and it may overflow the viewport</a><a class="dropdown-item" role="presentation" href="#">Second Item</a><a class="dropdown-item" role="presentation" href="#">Third Item</a></div>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="dropdown-toggle nav-link" data-toggle="dropdown" data-display="static" aria-expanded="false" href="#">Navbar link 5</a>
-                            <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="#">This is a very very long dropdown item and it may overflow the viewport</a><a class="dropdown-item" role="presentation" href="#">Second Item</a><a class="dropdown-item" role="presentation" href="#">Third Item</a></div>
-                        </li>
+
+                        @*
+                            <li class="nav-item dropdown">
+                                <a class="dropdown-toggle nav-link" data-toggle="dropdown" data-display="static" aria-expanded="false" href="#">Navbar link 3</a>
+                                <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="#">This is a very very long dropdown item and it may overflow the viewport</a><a class="dropdown-item" role="presentation" href="#">Second Item</a><a class="dropdown-item" role="presentation" href="#">Third Item</a></div>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="dropdown-toggle nav-link" data-toggle="dropdown" data-display="static" aria-expanded="false" href="#">Navbar link 4</a>
+                                <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="#">This is a very very long dropdown item and it may overflow the viewport</a><a class="dropdown-item" role="presentation" href="#">Second Item</a><a class="dropdown-item" role="presentation" href="#">Third Item</a></div>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="dropdown-toggle nav-link" data-toggle="dropdown" data-display="static" aria-expanded="false" href="#">Navbar link 5</a>
+                                <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="#">This is a very very long dropdown item and it may overflow the viewport</a><a class="dropdown-item" role="presentation" href="#">Second Item</a><a class="dropdown-item" role="presentation" href="#">Third Item</a></div>
+                            </li>*@
                     </ul>
                 </div>
             </div>
         </nav>
-        <div class="text-center mt-4">
-            <button type="button" id="trigger-btn" class="btn btn-lg btn-danger">Click me</button>
-            <hr class="my-4">
-            <p>Click the button above to position the drop-down menus and keep them from getting out of the viewport</p>
-            <p>Dropdown menus will be centered if possible, or left/right aligned if not</p>
-        </div>
+        @*<div class="text-center mt-4">
+                <button type="button" id="trigger-btn" class="btn btn-lg btn-danger">Click me</button>
+                <hr class="my-4">
+                <p>Click the button above to position the drop-down menus and keep them from getting out of the viewport</p>
+                <p>Dropdown menus will be centered if possible, or left/right aligned if not</p>
+            </div>*@
 
 
         @* End of Second Menu*@
@@ -114,10 +127,20 @@
 
 
     <!----My JS----->
-
+    <!---
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        -->
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js" integrity="sha512-d9xgZrVZpmmQlfonhQUvTR7lMPtO7NkZMkA0ABN3PHCbKA5nqylQ/yWlFAyY6hYgdF1Qh6nYiuADWwKB4C2WSw==" crossorigin="anonymous"></script>
 
     <script>
         var $maxWidthElement = $('.navbar'),
@@ -178,6 +201,116 @@
 
 
     </script>
+
+    <script>
+        $(document).ready(function () {
+            $("#myInput").on("keyup", function () {
+                var value = $(this).val().toLowerCase();
+                $("#myDIV *").filter(function () {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
+        });
+
+        function myFunction() {
+            alert("Hello Joy")
+        }
+
+
+
+        ////////////////////////////////////////////////////////////////
+
+
+
+
+            function myff() {
+                var iii = $("#adess").val();
+                var amnt = $("#amnt").val();
+                var payType = $("#payTy").val();
+                var cname = $("#cc-name").val();
+                var cnumber = $("#cc-number").val();
+
+
+                var ooo = true;
+                if (iii == "") {
+                    ooo = false;
+                    $("#adess").focus();
+                    $("#errAdess").text("Please Enter Address");
+                    $("#errAdess").css("color", "red");
+                }
+                else {
+                    $("#errAdess").text(" ");
+                }
+
+
+                if (amnt == "") {
+                    ooo = false;
+                    $("#amnt").focus();
+                    $("#errAmnt").text("Order Amount is not available");
+                    $("#errAmnt").css("color", "red");
+                }
+                else {
+                    $("#errAmnt").text("");
+                }
+
+                if (payType == "") {
+
+                    ooo = false;
+                    $("#payTy").focus();
+                    $("#errPay").text("Please select Card type");
+                    $("#errPay").css("color", "red");
+                }
+                else {
+                    $("#errPay").text("");
+                }
+
+                if (cname == "") {
+                    ooo = false;
+                    $("#cc-name").focus();
+                    $("#errNam").text("Name on card is required");
+                    $("#errNam").css("color", "red");
+                }
+                else {
+                    $("#errNam").text("");
+                }
+
+                if (cnumber == "") {
+                    ooo = false;
+                    $("#cc-number").focus();
+                    $("#errcNum").text("Please Enter Credit Card Number");
+                    $("#errcNum").css("color", "red");
+                }
+                else {
+                    $("#errcNum").text("");
+                }
+
+
+
+                return ooo;
+            }
+
+
+
+        
+
+
+
+
+
+
+
+
+
+        //////////////////////////MyChart///////////////////////////
+
+
+        
+
+
+
+    </script>
+
+
 
 
 </body>

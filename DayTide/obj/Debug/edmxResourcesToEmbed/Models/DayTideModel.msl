@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="DayTideModelStoreContainer" CdmEntityContainer="DayTideEntities2">
+  <EntityContainerMapping StorageEntityContainer="DayTideModelStoreContainer" CdmEntityContainer="DayTideEntities3">
     <EntitySetMapping Name="Admins">
       <EntityTypeMapping TypeName="DayTideModel.Admin">
         <MappingFragment StoreEntitySet="Admin">
@@ -32,6 +32,18 @@
           <ScalarProperty Name="ProductId" ColumnName="ProductId" />
           <ScalarProperty Name="Quantiry" ColumnName="Quantiry" />
           <ScalarProperty Name="Price_unit_" ColumnName="Price(unit)" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CartBackups">
+      <EntityTypeMapping TypeName="DayTideModel.CartBackup">
+        <MappingFragment StoreEntitySet="CartBackup">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+          <ScalarProperty Name="Quantiry" ColumnName="Quantiry" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="OrderId" ColumnName="OrderId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -156,15 +168,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="StudentInfoes">
-      <EntityTypeMapping TypeName="DayTideModel.StudentInfo">
-        <MappingFragment StoreEntitySet="StudentInfo">
-          <ScalarProperty Name="StuId" ColumnName="StuId" />
-          <ScalarProperty Name="StuName" ColumnName="StuName" />
-          <ScalarProperty Name="Semester" ColumnName="Semester" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="TrackProfits">
       <EntityTypeMapping TypeName="DayTideModel.TrackProfit">
         <MappingFragment StoreEntitySet="TrackProfit">
@@ -183,18 +186,6 @@
           <ScalarProperty Name="Password" ColumnName="Password" />
           <ScalarProperty Name="Type" ColumnName="Type" />
           <ScalarProperty Name="Status" ColumnName="Status" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="CartBackups">
-      <EntityTypeMapping TypeName="DayTideModel.CartBackup">
-        <MappingFragment StoreEntitySet="CartBackup">
-          <ScalarProperty Name="ID" ColumnName="ID" />
-          <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
-          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
-          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
-          <ScalarProperty Name="Price" ColumnName="Price" />
-          <ScalarProperty Name="OrderId" ColumnName="OrderId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

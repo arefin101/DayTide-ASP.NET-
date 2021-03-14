@@ -1,0 +1,26 @@
+﻿@model DayTide.Models.OrderRequest
+@{
+    ViewBag.Title = "Confirmation";
+    Layout = "~/Views/Shared/_site.cshtml";
+
+}
+<table>
+    <tr>
+        <th>Order ID</th>
+        <th>Date</th>
+        <th>Address</th>
+        <th>District</th>
+        <th>Amount</th>
+        <th>Payment Type</th>
+        <th>Customer ID</th>
+    </tr>
+    <tr>
+        <td>@Model.OrderId</td>
+        <td>@Model.Date</td>
+        <td>@Model.Address</td>
+        <td>@Model.District</td>
+        <td>@Model.Amount</td>
+        <td>@Model.Payment_Type</td>
+        <td>@Model.CustomerId</td>
+    </tr>
+</table>

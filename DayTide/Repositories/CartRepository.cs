@@ -25,5 +25,29 @@ namespace DayTide.Repositories
             return this.context.Carts.Where(x => x.ProductId == id).FirstOrDefault();
         }
 
+
+        public void DeleteCustomerCart(string id)
+        {
+            var itemss = context.Carts.Where(q => q.CustomerId == id).ToList();
+
+            context.Carts.RemoveRange(itemss);
+            context.SaveChanges();
+            //var itemss = GetCartById(id);
+            //foreach (var customer in itemss)
+            //{
+            //    context.Carts.RemoveRange(customer);
+            //}
+
+            //GetCartById(cid)
+
+            //var table1 = context.Carts.Where(x => itemss.Contains(Convert.ToString(x.CustomerId)).ToList();
+            //if (table1 != null && table1.Count > 0)
+            //{
+            //    _context.table1.RemoveRange(table1);
+            //    _context.SaveChanges();
+            //}
+
+        }
+
     }
 }

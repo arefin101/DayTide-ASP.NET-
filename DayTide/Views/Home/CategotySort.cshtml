@@ -1,50 +1,13 @@
 ﻿@model IEnumerable<DayTide.Models.Product>
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Category Sort";
     Layout = "~/Views/Shared/_site.cshtml";
 
 }
 
 @*<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>*@
-
-
-
-
-
-<div class="">
-    <form method="post" action="/home/categotySort">
-
-        <div class="input-group">
-            <select class="custom-select" id="inputGroupSelect04" name="categoryId">
-                <option selected>Category...</option>
-                @foreach (var items in TempData["categotyProd"] as IList<DayTide.Models.Category>)
-                {
-
-                    <option value="@items.CategoryId">@items.CategoryName</option>
-                }
-            </select>
-            <div class="input-group-append">
-                <button class="btn btn-outline-secondary" type="submit">Sort</button>
-            </div>
-        </div>
-    </form>
-</div>
-
-<br />
-
-
-    <form method="post" action="/home/priceSort">
-
-
-        <input type="hidden" name="pricesSort" />
-
-        <button class="btn btn-outline-dark" type="submit">Top (5) Product</button>
-
-
-    </form>
-    <a href="/Cart/CustomerCart" type="button" class="btn btn-outline-info" style="float:right;">Customer Cart</a>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>*@
 
 
 
@@ -54,10 +17,9 @@
 
 
 <div style="margin-bottom:20px;">
-
-    @*<p>
+    <p>
         @Html.ActionLink("Create New", "Create")
-    </p>*@
+    </p>
 
 
 
@@ -155,25 +117,25 @@
                 </div>
             </div>
 
-            
+
 
         }
 
 
     </div>
 
-    </div>
+</div>
 
-        @*</form>*@
+@*</form>*@
 
 
-        <div>
-            
-        </div>
+<div>
 
-        <button id="joy" onclick="myFunction()">Hello</button>
-        <br />
-        
+</div>
+
+<button id="joy" onclick="myFunction()">Hello</button>
+<br />
+<a href="/Cart/CustomerCart">Customer Cart</a>
 
 
 

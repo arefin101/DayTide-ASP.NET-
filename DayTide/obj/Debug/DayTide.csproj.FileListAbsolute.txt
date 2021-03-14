@@ -295,3 +295,4 @@ G:\ASP.NET Project(Mid)\DayTide-ASP.NET-\DayTide\obj\Debug\DayTide.csproj.CoreCo
 G:\ASP.NET Project(Mid)\DayTide-ASP.NET-\DayTide\obj\Debug\DayTide.csproj.CopyComplete
 G:\ASP.NET Project(Mid)\DayTide-ASP.NET-\DayTide\obj\Debug\DayTide.dll
 G:\ASP.NET Project(Mid)\DayTide-ASP.NET-\DayTide\obj\Debug\DayTide.pdb
+F:\ASP Project file\DayTide-ASP.NET-\DayTide\obj\Debug\DayTide.csprojAssemblyReference.cache

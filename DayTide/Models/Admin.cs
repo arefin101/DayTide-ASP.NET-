@@ -14,6 +14,12 @@ namespace DayTide.Models
     
     public partial class Admin
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Admin()
+        {
+            this.Notices = new HashSet<Notice>();
+        }
+    
         public string AdminId { get; set; }
         public string Name { get; set; }
         public string Email { get; set; }
@@ -23,5 +29,7 @@ namespace DayTide.Models
         public string Picture { get; set; }
     
         public virtual User User { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Notice> Notices { get; set; }
     }
 }

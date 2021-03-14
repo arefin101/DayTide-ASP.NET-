@@ -15,7 +15,7 @@ namespace DayTide.Controllers
         List<Product> productCartList = new List<Product>();
 
         //string cid = "";
-
+        
         [HttpPost]
         public ActionResult Index(Cart cart)
         {
@@ -32,14 +32,23 @@ namespace DayTide.Controllers
             productRepository.Update(products);
             double totalPrice = 0.0;
 
+            List<double> listPrice = new List<double>();
+
+
             var multi = cartRepository.GetCartById(cid);
             foreach(var item in multi)
             {
                 totalPrice += Convert.ToDouble((item.Price_unit_ * item.Quantiry));
+
+                listPrice.Add(Convert.ToDouble(item.Price_unit_));
             }
 
             TempData["totalPrice"] = totalPrice;
 
+            listPrice.Sort();
+
+            TempData["chartPrice"] = listPrice.ToList();
+            TempData["tempo"] = listPrice.ToList();
 
             TempData["customerIdData"] = cartRepository.GetCartById(cid);
             //  TempData["customerIdData"] = cid;
@@ -63,6 +72,23 @@ namespace DayTide.Controllers
 
             return RedirectToAction("Index");
             //return View(cartRepository.GetProductById(id));
+        }
+
+        public ActionResult CustomerCart()
+        {
+
+            if (Session["userid"] == null)
+            {
+                return RedirectToAction("Index","Home");
+            }
+
+            string customeID = Session["userid"].ToString();
+
+            TempData["customerIdData"] = cartRepository.GetCartById(customeID);
+
+            TempData["chartPrice"] = TempData["tempo"];
+
+            return View();
         }
     }
 }

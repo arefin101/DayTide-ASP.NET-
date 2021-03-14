@@ -1861,6 +1861,8 @@
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\CartController.cs" />
+    <Compile Include="Controllers\CheckoutController.cs" />
+    <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\DelevaryManController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
@@ -1932,9 +1934,6 @@
     <Compile Include="Models\Product_Rating.cs">
       <DependentUpon>DayTideModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\StudentInfo.cs">
-      <DependentUpon>DayTideModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\TrackProfit.cs">
       <DependentUpon>DayTideModel.tt</DependentUpon>
     </Compile>
@@ -1943,6 +1942,7 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\AdminRepository.cs" />
+    <Compile Include="Repositories\CartBackupRepository.cs" />
     <Compile Include="Repositories\CartRepository.cs" />
     <Compile Include="Repositories\CategoryRepository.cs" />
     <Compile Include="Repositories\CustomerRepository.cs" />
@@ -1951,6 +1951,7 @@
     <Compile Include="Repositories\LoginRepository.cs" />
     <Compile Include="Repositories\ModeratorRepository.cs" />
     <Compile Include="Repositories\NoticeRepository.cs" />
+    <Compile Include="Repositories\OrderRequestRepository.cs" />
     <Compile Include="Repositories\ProductRepository.cs" />
     <Compile Include="Repositories\Repository.cs" />
     <Compile Include="Repositories\UserRepository.cs" />
@@ -2198,10 +2199,7 @@
     <Content Include="Views\Shared\_Layout_Admin.cshtml" />
     <Content Include="Views\Admin\AddAdmin.cshtml" />
     <Content Include="Views\Cart\Edit.cshtml" />
-    <Content Include="Views\Cart\Index.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\OnlyView.cshtml" />
-    <Content Include="Views\Shared\_site.cshtml" />
     <Content Include="Views\Admin\Detailscus.cshtml" />
     <Content Include="Views\Shared\_Layout_Moderator.cshtml" />
     <Content Include="Views\Moderator\AddCategory.cshtml" />
@@ -2221,6 +2219,15 @@
     <Content Include="Views\Moderator\Index.cshtml" />
     <Content Include="Views\Moderator\Notify.cshtml" />
     <Content Include="Views\Moderator\Profile.cshtml" />
+    <Content Include="Views\Cart\Index.cshtml" />
+    <Content Include="Views\Cart\CustomerCart.cshtml" />
+    <Content Include="Views\Checkout\Confirm.cshtml" />
+    <Content Include="Views\Customer\Create.cshtml" />
+    <Content Include="Views\Customer\Index.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\CategotySort.cshtml" />
+    <Content Include="Views\Home\PriceSort.cshtml" />
+    <Content Include="Views\Shared\_site.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

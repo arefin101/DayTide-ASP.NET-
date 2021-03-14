@@ -14,6 +14,7 @@
 else
 {
 
+
     <table border="1">
         <tr>
             @*<th>Customer Name</th>*@
@@ -83,7 +84,6 @@ else
     <canvas id="bar_chart" style=" display:block; height:400px;width:400px;"></canvas>
 </div>
 
-
 <br />
 <h2>Total price: @TempData["totalPrice"]</h2>
 <br />
@@ -125,7 +125,7 @@ else
                 <div class="row">
                     <div class="col-md-5 mb-3">
                         <label for="district">District</label>
-                        <select name="District" class="custom-select d-block w-100" id="district">
+                        <select name="District" class="custom-select d-block w-100" id="district" required>
                             <option value="" disabled>Choose...</option>
                             <option value="Dhaka">Dhaka</option>
                             <option value="Chittagong">Chittagong</option>
@@ -196,11 +196,17 @@ else
 </div>
 
 @* End Billing form *@
+
+@*<form method="post"  onsubmit="return myff()">
+        <input type="text" name="Address" id="adess" placeholder="Address" />
+
+        <input type="submit" />
+    </form>*@
+
+
 <div style="margin-top:10px; margin-bottom:10px;"></div>
 
-
-
-@{
+@{ 
     var data = TempData["chartPrice"];
 }
 
@@ -305,4 +311,3 @@ else
 
 
 </script>
-
