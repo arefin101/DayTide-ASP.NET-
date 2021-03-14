@@ -2228,6 +2228,8 @@
     <Content Include="Views\Home\CategotySort.cshtml" />
     <Content Include="Views\Home\PriceSort.cshtml" />
     <Content Include="Views\Shared\_site.cshtml" />
+    <Content Include="Views\Customer\Edit.cshtml" />
+    <Content Include="Views\Customer\Delete.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

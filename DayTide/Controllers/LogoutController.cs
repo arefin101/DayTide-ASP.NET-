@@ -14,5 +14,13 @@ namespace DayTide.Controllers
             Session.Clear();
             return RedirectToAction("Login", "Login");
         }
+
+        public ActionResult LogoutUser()
+        {
+            Session.Clear();
+
+            return RedirectToAction("Index", "Home");
+        }
+
     }
 }

@@ -66,13 +66,13 @@
                         {
                             <br />
 
-                            <form action="~/Cart/Index" method="post">
+                            <form action="~/Cart/Index" method="post" onsubmit="return myProView()">
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
                                         <label class="input-group-text" for="inputGroupSelect01">Quantity</label>
                                     </div>
                                     <select class="custom-select" id="inputGroupSelect01" name="Quantiry">
-                                        <option selected>Choose...</option>
+                                        <option value="" selected>Choose...</option>
                                         @for (int i = 1; i <= Model.Quantity; i++)
                                         {
                                             <option value="@i">@i</option>

@@ -50,7 +50,7 @@
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                         <a class="dropdown-item" href="#">Change Password</a>
-                        <a class="dropdown-item" href="#">Log out</a>
+                        <a class="dropdown-item" href="/logout/LogoutUser">Log out</a>
                         <!--<a class="dropdown-item" href="#">Something else here</a>-->
                     </div>
                 </li>
@@ -289,7 +289,24 @@
                 return ooo;
             }
 
+        function myProView() {
 
+            var inpPro = $("#inputGroupSelect01").val();
+
+
+            var ppp = true;
+
+            if (inpPro == "") {
+                ppp = false;
+                $("#inputGroupSelect01").focus();
+               
+            }
+
+            return ppp;
+           
+
+
+        }
 
         
 

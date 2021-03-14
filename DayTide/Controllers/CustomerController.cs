@@ -16,7 +16,7 @@ namespace DayTide.Controllers
 
         public ActionResult Index()
         {
-            
+
             return View(customerRepository.GetAll());
         }
         [HttpGet]
@@ -46,11 +46,41 @@ namespace DayTide.Controllers
 
             customerRepository.Insert(customer1);
 
-           // customerRepository.Insert(customer);
+            // customerRepository.Insert(customer);
 
             return RedirectToAction("Index");
 
         }
+        [HttpGet]
+        public ActionResult Edit(string id)
+        {
 
+
+            return View(customerRepository.GetUserById(id));
+        }
+        [HttpPost]
+        public ActionResult Edit(string id, Customer customer)
+        {
+            customerRepository.Update(customer);
+
+            return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public ActionResult Delete(string id)
+        {
+            //customerRepository.DeleteUser(id);
+
+            return View(customerRepository.GetUserById(id));
+
+        }
+
+        [HttpPost, ActionName("Delete")]
+        public ActionResult ConfirmDelete(string id)
+        {
+            customerRepository.DeleteUser(id);
+
+            return RedirectToAction("Index");
+        }
     }
 }
