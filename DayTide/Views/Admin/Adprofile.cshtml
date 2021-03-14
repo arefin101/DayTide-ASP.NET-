@@ -1,0 +1,72 @@
+﻿@model DayTide.Models.Admin
+
+@{
+    ViewBag.Title = "Adprofile";
+    Layout = "~/Views/Shared/_Layout_Admin.cshtml";
+}
+
+<h2 style="margin-left:40px">Admin profile</h2>
+
+<div>
+    <h4 style="margin-left:40px">Admin</h4>
+    <hr />
+    <table>
+        <tr>
+            <td>
+                <img class="img-profile " style="height: 400px; width: 450px; margin-left: 40px "
+                     src="~/Content/Users/@Session["picture"]">
+            </td>
+            <td>
+                <dl class="dl-horizontal" style="margin-left:30%;">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Name)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Name)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Email)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Email)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Phone)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Phone)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Address)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Address)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Salary)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Salary)
+                    </dd>
+
+                </dl>
+            </td>
+        </tr>
+       
+    </table>
+    
+</div>
+<p class=""style="margin-left:50%">
+   
+            @Html.ActionLink("Edit Bio", "EditBio", new { id = Model.AdminId }) |
+            @Html.ActionLink("Back", "Index")
+  </p>

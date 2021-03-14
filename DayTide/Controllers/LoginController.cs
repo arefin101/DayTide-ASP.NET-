@@ -32,6 +32,8 @@ namespace DayTide.Controllers
 
                 if (usr.Type == "Admin")
                 {
+                    Session["UserId"] = user.UserId;
+                    Session["type"] = user.Type;
                     return RedirectToAction("Index", "Admin");
                 }
                 else if (usr.Type == "Moderator")
@@ -55,5 +57,11 @@ namespace DayTide.Controllers
                  return RedirectToAction("Login");
         }
         //ActionName()
+        [HttpGet]
+        public ActionResult Logout()
+        {
+            Session.Clear();
+            return RedirectToAction("Login", "Login");
+        }
     }
 }

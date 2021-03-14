@@ -1,0 +1,69 @@
+﻿@model IEnumerable<DayTide.Models.OrderRequest>
+
+@{
+    ViewBag.Title = "OrderRequest";
+    Layout = "~/Views/Shared/_Layout_Admin.cshtml";
+}
+
+<h2>OrderRequest</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Address)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.District)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Amount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Payment_Type)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CustomerId)
+        </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.Order_Detail.Date)
+        </th>*@
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Address)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.District)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Amount)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Payment_Type)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CustomerId)
+        </td>
+       @* <td>
+            @Html.DisplayFor(modelItem => item.Order_Detail.Date)
+        </td>*@
+        <td>
+            @Html.ActionLink("Edit", "Editdelreq", new { id=item.OrderId }) |
+            @Html.ActionLink("Delete", "Deletedelreq", new { id=item.OrderId })
+        </td>
+    </tr>
+}
+
+</table>

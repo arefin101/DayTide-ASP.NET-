@@ -2,6 +2,8 @@
 using DayTide.Repositories;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -18,6 +20,8 @@ namespace DayTide.Controllers
         UserRepository userRepository = new UserRepository();
         //PendingSignupRepository pensignupRepo = new PendingSignupRepository();
         NoticeRepository noticeRepository = new NoticeRepository();
+        Order_DetailRepository order_detailRepo = new Order_DetailRepository();
+        OrderRequestRepository orderreqRepo = new OrderRequestRepository();
         User usr = new User();
         // GET: Admin
         [HttpGet]
@@ -108,8 +112,40 @@ namespace DayTide.Controllers
         {
             return View(customerrRepository.GetUserById(id));
         }
-   
-      
+        [HttpGet]
+        public ActionResult OrderDetailcus(string id)
+        {
+            return View(order_detailRepo.GetOrderDetailByUsertId(id));
+        }
+
+        [HttpGet]
+        public ActionResult Mynotification()
+        {
+            return View(noticeRepository.GetNoticeByIdSend_For(Session["UserId"].ToString()));
+        }
+        [HttpGet]
+        public ActionResult EditNotice(int id)
+        {
+            return View(noticeRepository.GetNoticeById(id));
+        }
+        [HttpPost]
+        public ActionResult EditNotice(Notice notice)
+        {
+            noticeRepository.Update(notice);
+            return RedirectToAction("PostedNotification", "Admin");
+        }
+        [HttpGet]
+        public ActionResult DeleteNotice(int id)
+        {
+            noticeRepository.Delete(id);
+            return RedirectToAction("PostedNotification", "Admin");
+        }
+        [HttpGet]
+        public ActionResult PostedNotification()
+        {
+            return View(noticeRepository.GetNoticeByIdSend_by(Session["UserId"].ToString()));
+        }
+
         [HttpGet]
         public ActionResult ModeratorList()
         {
@@ -121,10 +157,59 @@ namespace DayTide.Controllers
             return View(delmanRepository.GetAll());
         }
         [HttpGet]
+        public ActionResult OrderRequest()
+        {
+            return View(orderreqRepo.GetAll());
+        }
+        [HttpGet]
+        public ActionResult Editdelreq(int id)
+        {
+            OrderRequest ordrreq = new OrderRequest();
+            ordrreq = orderreqRepo.GetOrderRequestById(id);
+
+            ViewBag.delman = delmanRepository.GetDeleveryMenByAdd(ordrreq.District);
+
+            return View(orderreqRepo.GetOrderRequestById(id));
+        }
+        [HttpPost]
+        public ActionResult Editdelreq(OrderRequest orderreq, string DelManId)
+        {
+            Order_Detail order_detail = new Order_Detail();
+            order_detail.OrderId = orderreq.OrderId;
+            order_detail.Date = orderreq.Date;
+            order_detail.Address = orderreq.Address;
+            order_detail.District = orderreq.District;
+            order_detail.Amount = orderreq.Amount;
+            order_detail.Payment_Type = orderreq.Payment_Type;
+            order_detail.CustomerId = orderreq.CustomerId;
+            order_detail.Status = "Processing";
+            order_detail.DelManId = DelManId;
+            OrderRequest ordrreq = new OrderRequest();
+            order_detailRepo.Insert(order_detail);
+            orderreqRepo.Delete(orderreq.OrderId);
+
+            return RedirectToAction("OrderHistory", "Admin");
+        }
+        [HttpGet]
+        public ActionResult Deletedelreq(int id)
+        {
+
+            orderreqRepo.Delete(id);
+            return RedirectToAction("OrderRequest", "Admin");
+
+        }
+        [HttpGet]
+        public ActionResult OrderHistory()
+        {
+
+            return View(order_detailRepo.GetAll());
+
+        }
+        [HttpGet]
         public ActionResult Blockmod(string id)
         {
             User usr = new User();
-            usr=userRepository.GetUserById(id);
+            usr = userRepository.GetUserById(id);
             usr.Status = "invalid";
             userRepository.Update(usr);
             return RedirectToAction("ModeratorList", "Admin");
@@ -198,6 +283,11 @@ namespace DayTide.Controllers
             return RedirectToAction("ModeratorList", "Admin");
         }
         [HttpGet]
+        public ActionResult Adprofile(string id)
+        {
+            return View(adminRepository.GetUserById(id));
+        }
+        [HttpGet]
         public ActionResult AddModerator()
         {
             return View();
@@ -242,8 +332,41 @@ namespace DayTide.Controllers
             return View(delman);
 
         }
+        [HttpGet]
+        public ActionResult EditBio(string id)
+        {
+            return View(adminRepository.GetUserById(id));
+        }
+        [HttpPost]
+        public ActionResult EditBio(Admin admin, HttpPostedFileBase Picture)
+        {
+            if (Picture == null)
+            {
+                Session["Name"] = admin.Name;
+                adminRepository.Update(admin);
+                return RedirectToAction("Adprofile", "Admin", Session["UserId"]);
+            }
+            else if (Picture != null)
+            {
+                string path = Server.MapPath("~/Content/Users");
+                string filename = Path.GetFileName(Picture.FileName);
+                string fullpath = Path.Combine(path, filename);
+                Picture.SaveAs(fullpath);
 
-       
+                admin.Picture = filename;
+
+                Session["Name"] = admin.Name;
+                Session["Picture"] = filename;
+
+                adminRepository.Update(admin);
+
+                return RedirectToAction("AdProfile", "Admin", Session["UserId"]);
+            }
+            else
+                return RedirectToAction("AdProfile", "Admin", Session["UserId"]);
+        }
+
+
 
     }
 }

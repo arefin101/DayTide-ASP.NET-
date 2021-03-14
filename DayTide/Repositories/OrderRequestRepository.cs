@@ -8,5 +8,9 @@ namespace DayTide.Repositories
 {
     public class OrderRequestRepository: Repository<OrderRequest>
     {
+        public OrderRequest GetOrderRequestById(int id)
+        {
+            return this.context.OrderRequests.Where(x => x.OrderId == id).FirstOrDefault();
+        }
     }
 }
