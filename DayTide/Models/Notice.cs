@@ -19,7 +19,7 @@ namespace DayTide.Models
         public string Send_For { get; set; }
         public string Send_by { get; set; }
     
-        public virtual Admin Admin { get; set; }
         public virtual User User { get; set; }
+        public virtual User User1 { get; set; }
     }
 }

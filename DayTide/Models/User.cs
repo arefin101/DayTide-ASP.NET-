@@ -19,6 +19,7 @@ namespace DayTide.Models
         {
             this.Applications = new HashSet<Application>();
             this.Notices = new HashSet<Notice>();
+            this.Notices1 = new HashSet<Notice>();
         }
     
         public string UserId { get; set; }
@@ -34,5 +35,7 @@ namespace DayTide.Models
         public virtual Moderator Moderator { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Notice> Notices { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Notice> Notices1 { get; set; }
     }
 }

@@ -23,6 +23,5 @@ namespace DayTide.Models
         public string CustomerId { get; set; }
     
         public virtual Customer Customer { get; set; }
-        public virtual Order_Detail Order_Detail { get; set; }
     }
 }

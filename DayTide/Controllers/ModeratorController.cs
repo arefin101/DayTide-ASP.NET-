@@ -11,7 +11,7 @@ namespace DayTide.Controllers
 {
     public class ModeratorController : BaseController
     {
-        protected DayTideEntities3 context1 = new DayTideEntities3();
+        protected DayTideEntities context1 = new DayTideEntities();
         UserRepository userRepository = new UserRepository(); 
         ModeratorRepository moderatorRepository = new ModeratorRepository();
         CategoryRepository categoryRepository = new CategoryRepository();
@@ -344,7 +344,7 @@ namespace DayTide.Controllers
 
 
 
-        DayTideEntities3 db = new DayTideEntities3();
+        DayTideEntities db = new DayTideEntities();
         public ActionResult Aru()
         {
             return View(db.DeleveryMen.ToList());

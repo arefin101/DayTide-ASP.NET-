@@ -1874,6 +1874,8 @@
     <Compile Include="Models\Admin.cs">
       <DependentUpon>DayTideModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Admin2.cs" />
+    <Compile Include="Models\AdminMetaData.cs" />
     <Compile Include="Models\Application.cs">
       <DependentUpon>DayTideModel.tt</DependentUpon>
     </Compile>
@@ -1917,9 +1919,13 @@
     <Compile Include="Models\Moderator.cs">
       <DependentUpon>DayTideModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Moderator2.cs" />
+    <Compile Include="Models\ModeratorMetaData.cs" />
     <Compile Include="Models\Notice.cs">
       <DependentUpon>DayTideModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Notice2.cs" />
+    <Compile Include="Models\NoticeMetaData.cs" />
     <Compile Include="Models\OrderRequest.cs">
       <DependentUpon>DayTideModel.tt</DependentUpon>
     </Compile>
@@ -1952,6 +1958,7 @@
     <Compile Include="Repositories\ModeratorRepository.cs" />
     <Compile Include="Repositories\NoticeRepository.cs" />
     <Compile Include="Repositories\OrderRequestRepository.cs" />
+    <Compile Include="Repositories\Order_DetailRepository.cs" />
     <Compile Include="Repositories\ProductRepository.cs" />
     <Compile Include="Repositories\Repository.cs" />
     <Compile Include="Repositories\UserRepository.cs" />
@@ -2230,6 +2237,17 @@
     <Content Include="Views\Shared\_site.cshtml" />
     <Content Include="Views\Customer\Edit.cshtml" />
     <Content Include="Views\Customer\Delete.cshtml" />
+    <Content Include="Views\Admin\AddDelMan.cshtml" />
+    <Content Include="Views\Admin\AddModerator.cshtml" />
+    <Content Include="Views\Admin\Adprofile.cshtml" />
+    <Content Include="Views\Admin\EditBio.cshtml" />
+    <Content Include="Views\Admin\Editdelreq.cshtml" />
+    <Content Include="Views\Admin\EditNotice.cshtml" />
+    <Content Include="Views\Admin\Mynotification.cshtml" />
+    <Content Include="Views\Admin\OrderDetailcus.cshtml" />
+    <Content Include="Views\Admin\OrderHistory.cshtml" />
+    <Content Include="Views\Admin\OrderRequest.cshtml" />
+    <Content Include="Views\Admin\PostedNotification.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

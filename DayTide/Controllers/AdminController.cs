@@ -310,7 +310,7 @@ namespace DayTide.Controllers
             return View(moderator);
         }
         [HttpGet]
-        public ActionResult DelMan()
+        public ActionResult AddDelMan()
         {
             return View();
         }

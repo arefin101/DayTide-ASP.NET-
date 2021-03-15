@@ -26,6 +26,5 @@ namespace DayTide.Models
     
         public virtual Customer Customer { get; set; }
         public virtual DeleveryMan DeleveryMan { get; set; }
-        public virtual OrderRequest OrderRequest { get; set; }
     }
 }

@@ -35,7 +35,7 @@
     <Key>
       <PropertyRef Name="ID" />
     </Key>
-    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID" Type="int" Nullable="false" />
     <Property Name="CustomerId" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="ProductId" Type="int" Nullable="false" />
     <Property Name="Quantiry" Type="int" Nullable="false" />
@@ -281,11 +281,11 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Notice_User">
-    <End Role="Admin" Type="Self.Admin" Multiplicity="1" />
+    <End Role="User" Type="Self.User" Multiplicity="1" />
     <End Role="Notice" Type="Self.Notice" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="Admin">
-        <PropertyRef Name="AdminId" />
+      <Principal Role="User">
+        <PropertyRef Name="UserId" />
       </Principal>
       <Dependent Role="Notice">
         <PropertyRef Name="Send_by" />
@@ -325,18 +325,6 @@
       </Principal>
       <Dependent Role="Order_Detail">
         <PropertyRef Name="DelManId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Order_Detail_OrderRequest">
-    <End Role="OrderRequest" Type="Self.OrderRequest" Multiplicity="1" />
-    <End Role="Order_Detail" Type="Self.Order_Detail" Multiplicity="0..1" />
-    <ReferentialConstraint>
-      <Principal Role="OrderRequest">
-        <PropertyRef Name="OrderId" />
-      </Principal>
-      <Dependent Role="Order_Detail">
-        <PropertyRef Name="OrderId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -442,7 +430,7 @@
       <End Role="Moderator" EntitySet="Moderator" />
     </AssociationSet>
     <AssociationSet Name="FK_Notice_User" Association="Self.FK_Notice_User">
-      <End Role="Admin" EntitySet="Admin" />
+      <End Role="User" EntitySet="User" />
       <End Role="Notice" EntitySet="Notice" />
     </AssociationSet>
     <AssociationSet Name="FK_Notice_User1" Association="Self.FK_Notice_User1">
@@ -455,10 +443,6 @@
     </AssociationSet>
     <AssociationSet Name="FK_Order_Detail_DeleveryMan" Association="Self.FK_Order_Detail_DeleveryMan">
       <End Role="DeleveryMan" EntitySet="DeleveryMan" />
-      <End Role="Order_Detail" EntitySet="Order_Detail" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Order_Detail_OrderRequest" Association="Self.FK_Order_Detail_OrderRequest">
-      <End Role="OrderRequest" EntitySet="OrderRequest" />
       <End Role="Order_Detail" EntitySet="Order_Detail" />
     </AssociationSet>
     <AssociationSet Name="FK_OrderRequest_Customer" Association="Self.FK_OrderRequest_Customer">

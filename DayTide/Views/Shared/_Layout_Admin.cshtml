@@ -1,6 +1,6 @@
 ﻿
 @{
-    ViewBag.Title = "_Layout_Moderator";
+    ViewBag.Title = "_Layout_Admin";
 }
 
 <!DOCTYPE html>
@@ -15,7 +15,7 @@
     <meta name="author" content="">
 
     <title>Agro Glow</title>
-    @RenderSection("CSS",required:false)
+    @RenderSection("CSS", required: false)
     <!-- Custom fonts for this template-->
     <link href="~/Scripts/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
@@ -35,19 +35,21 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{route('home')}}">
-                <div class="sidebar-brand-icon rotate-n-15">
-                    <i class="fab fa-yelp"></i>
-                </div>
-                <div class="sidebar-brand-text mx-3">DayTide</div>
-            </a>
+            <li class="nav-item">
+                <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{route('home')}}">
+                    <div class="sidebar-brand-icon rotate-n-15">
+                        <i class="fab fa-yelp"></i>
+                    </div>
+                    <div class="sidebar-brand-text mx-3">DayTide</div>
+                </a>
 
-            <!-- Divider -->
-            <hr class="sidebar-divider my-0">
 
-            <!-- Nav Item - Dashboard -->
-            <!-- Divider -->
-            <!-- Heading -->
+                <!-- Divider -->
+                <hr class="sidebar-divider my-0">
+
+                <!-- Nav Item - Dashboard -->
+                <!-- Divider -->
+                <!-- Heading -->
 
 
             <li class="nav-item">
@@ -84,7 +86,7 @@
                     </div>
                 </div>
             </li>
-            
+
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
@@ -96,17 +98,24 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" href="/Admin/AddAdmin/">Add Admin</a>
                         <a class="collapse-item" href="/Admin/AddModerator/">Add Moderator</a>
-                        <a class="collapse-item" href="/Admin/DelMan/">Add Delivery Man</a>
+                        <a class="collapse-item" href="/Admin/AddDelMan/">Add Delivery Man</a>
                     </div>
                 </div>
             </li>
 
 
             <li class="nav-item">
-                <a class="nav-link collapsed" href="{{route('addCategory')}}" data-target="#collapseTwo"
+                <a class="nav-link collapsed" href="/Admin/OrderRequest" data-target="#collapseTwo"
                    aria-expanded="true" aria-controls="collapseTwo">
-                    <i class="fa fa-list-alt"></i>
-                    <span>Add Category</span>
+                    <i class="fas fa-cart-plus"></i>
+                    <span>Pending Order Request</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="/admin/OrderHistory" data-target="#collapseTwo"
+                   aria-expanded="true" aria-controls="collapseTwo">
+                    <i class="far fa-eye"></i>
+                    <span>Order History</span>
                 </a>
             </li>
 
@@ -114,28 +123,28 @@
                 <a class="nav-link collapsed" href="{{route('seeCategories')}}" data-target="#collapseTwo"
                    aria-expanded="true" aria-controls="collapseTwo">
                     <i class="far fa-eye"></i>
-                    <span>Customize Categories</span>
+                    <span>Pending Sign Up Request (DeleveryMan)</span>
                 </a>
             </li>
 
             <li class="nav-item">
-                <a class="nav-link collapsed" href="{{route('addProduct')}}" data-target="#collapseTwo"
+                <a class="nav-link collapsed" href="/Admin/PostedNotification" data-target="#collapseTwo"
                    aria-expanded="true" aria-controls="collapseTwo">
-                    <i class="fas fa-cart-plus"></i>
-                    <span>Add Product</span>
+                    <i class="far fa-comment"></i>
+                    <span>Check Posted Notification</span>
                 </a>
             </li>
-
+            @*
+                <li class="nav-item">
+                    <a class="nav-link collapsed" href="{{route('customizeProducts')}}" data-target="#collapseTwo"
+                       aria-expanded="true" aria-controls="collapseTwo">
+                        <i class="fas fa-fw fa-wrench"></i>
+                        <span>Customize Products</span>
+                    </a>
+                </li>
+            *@
             <li class="nav-item">
-                <a class="nav-link collapsed" href="{{route('customizeProducts')}}" data-target="#collapseTwo"
-                   aria-expanded="true" aria-controls="collapseTwo">
-                    <i class="fas fa-fw fa-wrench"></i>
-                    <span>Customize Products</span>
-                </a>
-            </li>
-
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="{{route('checkNotifications')}}" data-target="#collapseTwo"
+                <a class="nav-link collapsed" href="/Admin/Mynotification" data-target="#collapseTwo"
                    aria-expanded="true" aria-controls="collapseTwo">
                     <i class="far fa-comment"></i>
                     <span>Check Notifications</span>
@@ -143,35 +152,34 @@
             </li>
 
 
+        </ul>
 
+        <!-- Nav Item - Charts -->
+        <!-- <li class="nav-item">
+            <a class="nav-link" href="charts.html">
+                <i class="fas fa-fw fa-chart-area"></i>
+                <span>Charts</span></a>
+        </li> -->
+        <!-- Nav Item - Tables -->
+        <!-- <li class="nav-item">
+            <a class="nav-link" href="tables.html">
+                <i class="fas fa-fw fa-table"></i>
+                <span>Tables</span></a>
+        </li> -->
+        <!-- Divider -->
+        <hr class="sidebar-divider d-none d-md-block">
 
-            <!-- Nav Item - Charts -->
-            <!-- <li class="nav-item">
-        <a class="nav-link" href="charts.html">
-            <i class="fas fa-fw fa-chart-area"></i>
-            <span>Charts</span></a>
-    </li> -->
-            <!-- Nav Item - Tables -->
-            <!-- <li class="nav-item">
-        <a class="nav-link" href="tables.html">
-            <i class="fas fa-fw fa-table"></i>
-            <span>Tables</span></a>
-    </li> -->
-            <!-- Divider -->
-            <hr class="sidebar-divider d-none d-md-block">
+        <!-- Sidebar Toggler (Sidebar) -->
+        <div class="text-center d-none d-md-inline">
+            <button class="rounded-circle border-0" id="sidebarToggle"></button>
+        </div>
 
-            <!-- Sidebar Toggler (Sidebar) -->
-            <div class="text-center d-none d-md-inline">
-                <button class="rounded-circle border-0" id="sidebarToggle"></button>
-            </div>
-
-            <!-- Sidebar Message -->
-            <!-- <div class="sidebar-card">
-        <img class="sidebar-card-illustration mb-2" src="/assets/img/undraw_rocket.svg" alt="">
-        <p class="text-center mb-2"><strong>SB Admin Pro</strong> is packed with premium features, components, and more!</p>
-        <a class="btn btn-success btn-sm" href="https://startbootstrap.com/theme/sb-admin-pro">Upgrade to Pro!</a>
-    </div> -->
-
+        <!-- Sidebar Message -->
+        <!-- <div class="sidebar-card">
+            <img class="sidebar-card-illustration mb-2" src="/assets/img/undraw_rocket.svg" alt="">
+            <p class="text-center mb-2"><strong>SB Admin Pro</strong> is packed with premium features, components, and more!</p>
+            <a class="btn btn-success btn-sm" href="https://startbootstrap.com/theme/sb-admin-pro">Upgrade to Pro!</a>
+        </div> -->
         </ul>
         <!-- End of Sidebar -->
         <!-- Content Wrapper -->
@@ -190,17 +198,17 @@
 
                     <!-- Topbar Search -->
                     @* <form method="post"
-                        class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-                        <div class="input-group">
-                            <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
-                                aria-label="Search" aria-describedby="basic-addon2" name="user">
-                            <div class="input-group-append">
-                                <button class="btn btn-primary" type="button">
-                                    <i class="fas fa-search fa-sm"></i>
-                                </button>
+                            class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                            <div class="input-group">
+                                <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
+                                    aria-label="Search" aria-describedby="basic-addon2" name="user">
+                                <div class="input-group-append">
+                                    <button class="btn btn-primary" type="button">
+                                        <i class="fas fa-search fa-sm"></i>
+                                    </button>
+                                </div>
                             </div>
-                        </div>
-                    </form>*@
+                        </form>*@
 
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
@@ -228,34 +236,30 @@
                                 </form>
                             </div>
                         </li>
+                    </ul>
 
-                        <div class="topbar-divider d-none d-sm-block"></div>
+                    <div class="topbar-divider d-none d-sm-block"></div>
 
-                        <!-- Nav Item - User Information -->
+                    <!-- Nav Item - User Information -->
+                    <ul>
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{$name}}</span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">@Session["name"]</span>
                                 <img class="img-profile rounded-circle"
-                                     src="~/Content/Users/me.jpg">
+                                     src="~/Content/Users/@Session["picture"]">
                             </a>
+
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                  aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="{{route('profile')}}">
+                                <a class="dropdown-item" href="/Admin/Adprofile/@Session["UserId"]">
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Profile
                                 </a>
-                                <!-- <a class="dropdown-item" href="#">
-                                    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Settings
-                                </a> -->
-                                <!-- <a class="dropdown-item" href="#">
-                                    <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Activity Log
-                                </a> -->
+
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                                <a class="dropdown-item" href="/Logout" data-toggle="modal" data-target="#logoutModal">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Logout
                                 </a>
@@ -315,12 +319,12 @@
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="{{route('logout')}}">Logout</a>
+                    <a class="btn btn-primary" href="/Login/Logout">Logout</a>
                 </div>
             </div>
         </div>
     </div>
-    @RenderSection("script",required:false)
+    @RenderSection("script", required: false)
     <!-- Bootstrap core JavaScript-->
     <script src="~/Scripts/vendor/jquery/jquery.min.js"></script>
     <script src="~/Scripts/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -335,8 +339,11 @@
     <script src="~/Scripts/vendor/chart.js/Chart.min.js"></script>
 
     <!-- Page level custom scripts -->
-    <script src="~/Content/js/demo/chart-area-demo.js"></script>
+    <script src="~/Scripts/js/demo/chart-area-demo.js"></script>
     <script src="~/Scripts/js/demo/chart-pie-demo.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.11/jquery.validate.unobtrusive.min.js"></script>
 
 </body>
 

@@ -13,10 +13,10 @@ namespace DayTide.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class DayTideEntities3 : DbContext
+    public partial class DayTideEntities : DbContext
     {
-        public DayTideEntities3()
-            : base("name=DayTideEntities3")
+        public DayTideEntities()
+            : base("name=DayTideEntities")
         {
         }
     

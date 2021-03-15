@@ -21,6 +21,7 @@
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Massage, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Massage, "", new { @class = "text-danger" })
+                <p style="color:red">@TempData["UserError"]</p>
             </div>
         </div>
 
