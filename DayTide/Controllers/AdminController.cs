@@ -314,6 +314,31 @@ namespace DayTide.Controllers
         {
             return View();
         }
+        [HttpGet]
+        public ActionResult DelManReq ()
+        {
+            return View(userRepository.GetUserSignUpReq());
+        }
+        [HttpGet]
+        public ActionResult DeleteDelSignup(string id)
+        {
+            delmanRepository.DeleteUser(id);
+            userRepository.DeleteUser(id);
+            return RedirectToAction("DelManReq","Admin");
+        }
+        [HttpGet]
+        public ActionResult EditDelSignup(string id)
+        {
+            return View(delmanRepository.GetUserById(id));
+        }
+        [HttpPost]
+        public ActionResult EditDelSignup(User user ,DeleveryMan delman)
+        {
+            user.Status = "valid";
+            delmanRepository.Update(delman);
+            userRepository.Update(user);
+            return RedirectToAction("DelManReq","Admin");
+        }
         [HttpPost]
         public ActionResult AddDelMan(DeleveryMan delman)
         {

@@ -2,6 +2,7 @@
 using DayTide.Repositories;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -24,7 +25,7 @@ namespace DayTide.Controllers
             User usr= loginRepository.GetUserById(user.UserId);
 
             string userid = user.UserId;
-
+            Debug.WriteLine(usr);
             if (usr != null && usr.Password == user.Password)
             {
                 Session["UserId"] = user.UserId;

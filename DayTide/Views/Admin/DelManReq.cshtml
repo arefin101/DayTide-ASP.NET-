@@ -1,0 +1,70 @@
+﻿@model IEnumerable<DayTide.Models.User>
+
+@{
+    ViewBag.Title = "DelManReq";
+    Layout = "~/Views/Shared/_Layout_Admin.cshtml";
+}
+
+<h2>DelManReq</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.DeleveryMan.Picture)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DeleveryMan.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DeleveryMan.Phone)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.DeleveryMan.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DeleveryMan.Address)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.DeleveryMan.Picture)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DeleveryMan.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DeleveryMan.Phone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DeleveryMan.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DeleveryMan.Address)
+        </td>
+        <td>
+            <div class="btn btn-primary" style="background-color:cornsilk">
+                @Html.ActionLink("Edit", "EditDelSignup", new { id = item.UserId })
+            </div>
+            <div class="btn btn-primary" style="background-color:cornsilk">
+                @Html.ActionLink("Delete", "DeleteDelSignup", new { id = item.UserId })
+            </div>
+
+           
+        </td>
+    </tr>
+}
+
+</table>

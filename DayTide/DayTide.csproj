@@ -1861,6 +1861,7 @@
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\CartController.cs" />
+    <Compile Include="Controllers\ChangePasswordController.cs" />
     <Compile Include="Controllers\CheckoutController.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\DelevaryManController.cs" />
@@ -2248,6 +2249,9 @@
     <Content Include="Views\Admin\OrderHistory.cshtml" />
     <Content Include="Views\Admin\OrderRequest.cshtml" />
     <Content Include="Views\Admin\PostedNotification.cshtml" />
+    <Content Include="Views\ChangePassword\Index.cshtml" />
+    <Content Include="Views\Admin\DelManReq.cshtml" />
+    <Content Include="Views\Admin\EditDelSignup.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

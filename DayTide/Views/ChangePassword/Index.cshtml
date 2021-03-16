@@ -1,0 +1,105 @@
+﻿@model DayTide.Models.User
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <!--===============================================================================================-->
+    <link rel="icon" type="image/png" href="~/Scripts/imagesLogin/icons/favicon.ico" />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/Scripts/vendorLogin/bootstrap/css/bootstrap.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/Scripts/fontsLogin/font-awesome-4.7.0/css/font-awesome.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/Scripts/fontsLogin/Linearicons-Free-v1.0.0/icon-font.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/Scripts/vendorLogin/animate/animate.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/Scripts/vendorLogin/css-hamburgers/hamburgers.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/Scripts/vendorLogin/animsition/css/animsition.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/Scripts/vendorLogin/select2/select2.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/Scripts/vendorLogin/daterangepicker/daterangepicker.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/Scripts/cssLogin/util.css">
+    <link rel="stylesheet" type="text/css" href="~/Scripts/cssLogin/main.css">
+    <!--===============================================================================================-->
+    <title>Index</title>
+</head>
+<body>
+
+    <div class="limiter">
+        <div class="container-login100">
+            <div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-50">
+                <form class="login100-form validate-form" method="post">
+                    <span class="login100-form-title p-b-33">
+                        Change Password
+                    </span>
+
+                    <div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
+                        <input class="input100" type="text" name="UserId" placeholder="Email" value="@Model.UserId" readonly>
+                        <span class="focus-input100-1"></span>
+                        <span class="focus-input100-2"></span>
+                    </div>
+
+                    <div class="wrap-input100 rs1 validate-input" data-validate="Password is required">
+                        <input class="input100" type="password" name="Password" placeholder="Password" value="@Model.Password " readonly>
+                        <span class="focus-input100-1"></span>
+                        <span class="focus-input100-2"></span>
+                    </div>
+                    <div class="wrap-input100 rs1 validate-input" data-validate="Password is required">
+                        <input class="input100" type="password" name="newpass" placeholder=" New Password">
+                        <span class="focus-input100-1"></span>
+                        <span class="focus-input100-2"></span>
+                    </div>
+                    <div class="wrap-input100 rs1 validate-input" data-validate="Password is required">
+                        <input class="input100" type="text" name="Type" value="@Model.Type " hidden>
+                        <span class="focus-input100-1"></span>
+                        <span class="focus-input100-2"></span>
+                    </div>
+                    <div class="wrap-input100 rs1 validate-input" data-validate="Password is required">
+                        <input class="input100" type="text" name="Status" value="@Model.Status " hidden>
+                        <span class="focus-input100-1"></span>
+                        <span class="focus-input100-2"></span>
+                    </div>
+                    <div class="container-login100-form-btn m-t-20" id="ChangepassModal">
+                        <button class="login100-form-btn">
+                            Change Password
+                        </button>
+                    </div>
+
+                    <div class="text-center p-t-45 p-b-4">
+                        <a href="#" class="txt2 hov1">
+                            Back
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!--===============================================================================================-->
+    <script src="~/Scripts/vendorLogin/jquery/jquery-3.2.1.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/Scripts/vendorLogin/animsition/js/animsition.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/Scripts/vendorLogin/bootstrap/js/popper.js"></script>
+    <script src="~/Scripts/vendorLogin/bootstrap/js/bootstrap.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/Scripts/vendorLogin/select2/select2.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/Scripts/vendorLogin/daterangepicker/moment.min.js"></script>
+    <script src="~/Scripts/vendorLogin/daterangepicker/daterangepicker.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/Scripts/vendorLogin/countdowntime/countdowntime.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/Scripts/ContentLogin/js/main.js"></script>
+
+</body>
+</html>
