@@ -2252,6 +2252,7 @@
     <Content Include="Views\ChangePassword\Index.cshtml" />
     <Content Include="Views\Admin\DelManReq.cshtml" />
     <Content Include="Views\Admin\EditDelSignup.cshtml" />
+    <Content Include="Views\Admin\viewFullMassege.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

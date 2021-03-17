@@ -52,6 +52,7 @@ namespace DayTide.Controllers
         [HttpPost]
         public ActionResult Notifyad(Notice notice)
         {
+            notice.Status = "Unread";
             noticeRepository.Insert(notice);
             return RedirectToAction("AdminList", "Admin");
 
@@ -69,6 +70,7 @@ namespace DayTide.Controllers
         [HttpPost]
         public ActionResult Notifymod(Notice notice)
         {
+            notice.Status = "Unread";
             noticeRepository.Insert(notice);
             return RedirectToAction("ModeratorList", "Admin");
 
@@ -86,6 +88,7 @@ namespace DayTide.Controllers
         [HttpPost]
         public ActionResult Notifydelman(Notice notice)
         {
+            notice.Status = "Unread";
             noticeRepository.Insert(notice);
             return RedirectToAction("DeleveryManList", "Admin");
 
@@ -103,6 +106,7 @@ namespace DayTide.Controllers
         [HttpPost]
         public ActionResult Notifycus(Notice notice)
         {
+            notice.Status = "Unread";
             noticeRepository.Insert(notice);
             return RedirectToAction("CustomerList", "Admin");
 
@@ -133,6 +137,14 @@ namespace DayTide.Controllers
         {
             noticeRepository.Update(notice);
             return RedirectToAction("PostedNotification", "Admin");
+        }
+        [HttpGet]
+        public ActionResult viewFullMassege(int id)
+        {
+            Notice notice = noticeRepository.GetNoticeById(id);
+            notice.Status = "read";
+            noticeRepository.Update(notice);
+            return View(notice);
         }
         [HttpGet]
         public ActionResult DeleteNotice(int id)

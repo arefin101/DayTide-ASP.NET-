@@ -50,22 +50,47 @@
 <div class="row">
     @foreach (var item in Model)
     {
+        if (item.Status == "Unread")
+        {
+            <div class="col-sm-6">
+                <div class="card">
+                    <div class="card-body" style="background-color:rgba(0,0,255,0.1);">
+                        <h4>A  New Massage From @item.Send_by <b>@item.User.Type</b></h4>
 
-        <div class="col-sm-6">
-            <div class="card">
-                <div class="card-body">
-                    <h4>Massage</h4>
+                        @* <p class="card-text"> @Html.DisplayFor(modelItem => item.Massage)</p>
 
-                    <p class="card-text"> @Html.DisplayFor(modelItem => item.Massage)</p>
+                            <h5>Sent By :</h5>
 
-                    <h5>Sent By :</h5>
-
-                    @Html.DisplayFor(modelItem => item.Send_by)<br />
-                    @Html.DisplayFor(modelItem => item.User.Type)
-                    @*<a href="#" class="btn btn-primary">Go somewhere</a>*@
+                            @Html.DisplayFor(modelItem => item.Send_by)<br />
+                            @Html.DisplayFor(modelItem => item.User.Type)*@
+                        <a href="/Admin/viewFullMassege/@item.Id" class="btn btn-primary">Detail</a>
+                    </div>
                 </div>
             </div>
-        </div>
+
+        }
+        if (item.Status == "read")
+        {
+            <div class="col-sm-6">
+                <div class="card">
+                    <div class="card-body" >
+                        <h4>A  New Massage From @item.Send_by <b>@item.User.Type</b></h4>
+
+                        @* <p class="card-text"> @Html.DisplayFor(modelItem => item.Massage)</p>
+
+                            <h5>Sent By :</h5>
+
+                            @Html.DisplayFor(modelItem => item.Send_by)<br />
+                            @Html.DisplayFor(modelItem => item.User.Type)*@
+                        <a href="/Admin/viewFullMassege/@item.Id" class="btn btn-primary">Detail</a>
+                    </div>
+                </div>
+            </div>
+
+
+        }
+
+
 
     }
 </div>

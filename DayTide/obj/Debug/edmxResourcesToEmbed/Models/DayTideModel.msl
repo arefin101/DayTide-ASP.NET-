@@ -21,6 +21,7 @@
           <ScalarProperty Name="ApplicationType" ColumnName="ApplicationType" />
           <ScalarProperty Name="Massage" ColumnName="Massage" />
           <ScalarProperty Name="SentBy" ColumnName="SentBy" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -112,6 +113,7 @@
           <ScalarProperty Name="Massage" ColumnName="Massage" />
           <ScalarProperty Name="Send_For" ColumnName="Send_For" />
           <ScalarProperty Name="Send_by" ColumnName="Send_by" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

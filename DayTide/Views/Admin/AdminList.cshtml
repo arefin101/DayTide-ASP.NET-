@@ -31,6 +31,8 @@
     </tr>
 
 @foreach (var item in Model) {
+    if(item.AdminId.ToString() != Session["UserID"].ToString())
+    { 
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.Name)
@@ -52,6 +54,7 @@
            
         </td>
     </tr>
+    }
 }
 
 </table>

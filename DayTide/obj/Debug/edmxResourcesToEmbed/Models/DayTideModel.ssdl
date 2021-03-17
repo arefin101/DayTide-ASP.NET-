@@ -20,6 +20,7 @@
     <Property Name="ApplicationType" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="Massage" Type="nchar" MaxLength="100" Nullable="false" />
     <Property Name="SentBy" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Status" Type="varchar" MaxLength="50" Nullable="false" />
   </EntityType>
   <EntityType Name="Cart">
     <Key>
@@ -64,7 +65,7 @@
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="DelManID" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="Rating" Type="int" Nullable="false" />
     <Property Name="Comments" Type="varchar" MaxLength="150" Nullable="false" />
@@ -103,6 +104,7 @@
     <Property Name="Massage" Type="varchar" MaxLength="500" Nullable="false" />
     <Property Name="Send_For" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="Send_by" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Status" Type="varchar" MaxLength="50" Nullable="false" />
   </EntityType>
   <EntityType Name="Order_Detail">
     <Key>

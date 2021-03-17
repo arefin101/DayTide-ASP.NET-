@@ -25,6 +25,7 @@
           <Property Name="ApplicationType" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Massage" Type="nchar" MaxLength="100" Nullable="false" />
           <Property Name="SentBy" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Status" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="Cart">
           <Key>
@@ -69,7 +70,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="DelManID" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Rating" Type="int" Nullable="false" />
           <Property Name="Comments" Type="varchar" MaxLength="150" Nullable="false" />
@@ -108,6 +109,7 @@
           <Property Name="Massage" Type="varchar" MaxLength="500" Nullable="false" />
           <Property Name="Send_For" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Send_by" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Status" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="Order_Detail">
           <Key>
@@ -493,6 +495,7 @@
           <Property Name="ApplicationType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Massage" Type="String" MaxLength="100" FixedLength="true" Unicode="true" Nullable="false" />
           <Property Name="SentBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="User" Relationship="Self.FK_Application_User" FromRole="Application" ToRole="User" />
         </EntityType>
         <EntityType Name="Cart">
@@ -547,7 +550,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="DelManID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Rating" Type="Int32" Nullable="false" />
           <Property Name="Comments" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
@@ -592,6 +595,7 @@
           <Property Name="Massage" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Send_For" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Send_by" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="User" Relationship="Self.FK_Notice_User" FromRole="Notice" ToRole="User" />
           <NavigationProperty Name="User1" Relationship="Self.FK_Notice_User1" FromRole="Notice" ToRole="User" />
         </EntityType>
@@ -994,6 +998,7 @@
                 <ScalarProperty Name="ApplicationType" ColumnName="ApplicationType" />
                 <ScalarProperty Name="Massage" ColumnName="Massage" />
                 <ScalarProperty Name="SentBy" ColumnName="SentBy" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1085,6 +1090,7 @@
                 <ScalarProperty Name="Massage" ColumnName="Massage" />
                 <ScalarProperty Name="Send_For" ColumnName="Send_For" />
                 <ScalarProperty Name="Send_by" ColumnName="Send_by" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

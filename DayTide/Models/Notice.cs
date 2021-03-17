@@ -18,6 +18,7 @@ namespace DayTide.Models
         public string Massage { get; set; }
         public string Send_For { get; set; }
         public string Send_by { get; set; }
+        public string Status { get; set; }
     
         public virtual User User { get; set; }
         public virtual User User1 { get; set; }
