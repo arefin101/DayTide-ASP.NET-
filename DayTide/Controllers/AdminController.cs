@@ -295,9 +295,9 @@ namespace DayTide.Controllers
             return RedirectToAction("ModeratorList", "Admin");
         }
         [HttpGet]
-        public ActionResult Adprofile(string id)
+        public ActionResult Adprofile()
         {
-            return View(adminRepository.GetUserById(id));
+            return View(adminRepository.GetUserById(Session["UserId"].ToString()));
         }
         [HttpGet]
         public ActionResult AddModerator()
@@ -381,7 +381,7 @@ namespace DayTide.Controllers
             {
                 Session["Name"] = admin.Name;
                 adminRepository.Update(admin);
-                return RedirectToAction("Adprofile", "Admin", Session["UserId"]);
+                return RedirectToAction("Adprofile", "Admin");
             }
             else if (Picture != null)
             {
@@ -397,10 +397,10 @@ namespace DayTide.Controllers
 
                 adminRepository.Update(admin);
 
-                return RedirectToAction("AdProfile", "Admin", Session["UserId"]);
+                return RedirectToAction("AdProfile", "Admin");
             }
             else
-                return RedirectToAction("AdProfile", "Admin", Session["UserId"]);
+                return RedirectToAction("AdProfile", "Admin");
         }
 
 

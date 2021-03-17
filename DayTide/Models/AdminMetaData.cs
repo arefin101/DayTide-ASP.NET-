@@ -18,7 +18,7 @@ namespace DayTide.Models
         public string Phone { get; set; }
         [Required]
         public string Address { get; set; }
-        [Required]
+        
         public double Salary { get; set; }
         
         public string Picture { get; set; }
