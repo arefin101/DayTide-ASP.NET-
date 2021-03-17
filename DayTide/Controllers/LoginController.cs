@@ -12,6 +12,7 @@ namespace DayTide.Controllers
     public class LoginController : Controller
     {
         LoginRepository loginRepository = new LoginRepository();
+        AdminRepository adminRepository = new AdminRepository();
         
         [HttpGet]
         public ActionResult Login()
@@ -33,6 +34,8 @@ namespace DayTide.Controllers
 
                 if (usr.Type == "Admin")
                 {
+                    Admin admin = adminRepository.GetUserById(user.UserId);
+                    Session["name"] = admin.Name;
                     Session["UserId"] = user.UserId;
                     Session["type"] = user.Type;
                     return RedirectToAction("Index", "Admin");

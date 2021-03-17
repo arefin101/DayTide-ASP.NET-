@@ -1,0 +1,32 @@
+﻿@model IEnumerable<DayTide.Models.Application>
+
+@{
+    ViewBag.Title = "viewApplication";
+    Layout = "~/Views/Shared/_Layout_Admin.cshtml";
+}
+
+<h2>viewApplication</h2>
+<div class="row">
+    @foreach (var item in Model)
+    {
+        if (item.Status == "Processing" && item.SentBy != Session["UserId"].ToString())
+        {
+            <div class="col-sm-6">
+                <div class="card">
+                    <div class="card-body" style="background-color:rgba(0,0,255,0.1);">
+                        <h4>A  New Application Posted By @item.SentBy <b>@item.User.Type</b></h4>
+                        <h4><b>Application Subject:</b> @item.ApplicationType</h4>
+                        @* <p class="card-text"> @Html.DisplayFor(modelItem => item.Massage)</p>
+
+        <h5>Sent By :</h5>
+
+        @Html.DisplayFor(modelItem => item.Send_by)<br />
+        @Html.DisplayFor(modelItem => item.User.Type)*@
+                        <a href="/Admin/applicationDetail/@item.Id" class="btn btn-primary">Detail</a>
+                    </div>
+                </div>
+            </div>
+
+        }
+    }
+    </div>

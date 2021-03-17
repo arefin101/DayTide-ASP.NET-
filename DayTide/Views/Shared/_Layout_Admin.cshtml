@@ -127,7 +127,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link collapsed" href="/Admin/DelManReq" data-target="#collapseTwo"
+                <a class="nav-link collapsed" href="/Admin/viewApplication" data-target="#collapseTwo"
                    aria-expanded="true" aria-controls="collapseTwo">
                     <i class="far fa-eye"></i>
                     <span>Application</span>
@@ -140,15 +140,15 @@
                     <span>Check Posted Notification</span>
                 </a>
             </li>
-            @*
-        <li class="nav-item">
-            <a class="nav-link collapsed" href="{{route('customizeProducts')}}" data-target="#collapseTwo"
+            
+       @* <li class="nav-item">
+            <a class="nav-link collapsed" href="/Admin/ViewApplication" data-target="#collapseTwo"
                aria-expanded="true" aria-controls="collapseTwo">
                 <i class="fas fa-fw fa-wrench"></i>
-                <span>Customize Products</span>
+                <span>Applications</span>
             </a>
-        </li>
-            *@
+        </li>*@
+            
             <li class="nav-item">
                 <a class="nav-link collapsed" href="/Admin/Mynotification" data-target="#collapseTwo"
                    aria-expanded="true" aria-controls="collapseTwo">
@@ -240,7 +240,7 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">@Session["name"]</span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 "><b>@Session["name"]</b></span>
                                 <img class="img-profile rounded-circle"
                                      src="~/Content/Users/@Session["picture"]">
                             </a>

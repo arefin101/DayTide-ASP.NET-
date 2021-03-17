@@ -18,6 +18,7 @@ namespace DayTide.Models
         public User()
         {
             this.Applications = new HashSet<Application>();
+            this.Applications1 = new HashSet<Application>();
             this.Notices = new HashSet<Notice>();
             this.Notices1 = new HashSet<Notice>();
         }
@@ -30,6 +31,8 @@ namespace DayTide.Models
         public virtual Admin Admin { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Application> Applications { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Application> Applications1 { get; set; }
         public virtual Customer Customer { get; set; }
         public virtual DeleveryMan DeleveryMan { get; set; }
         public virtual Moderator Moderator { get; set; }

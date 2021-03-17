@@ -18,7 +18,7 @@ namespace DayTide.Controllers
         CustomerRepository customerrRepository = new CustomerRepository();
         DeleveryManRepository delmanRepository = new DeleveryManRepository();
         UserRepository userRepository = new UserRepository();
-        //PendingSignupRepository pensignupRepo = new PendingSignupRepository();
+        ApplicationRepository applicationRepository = new ApplicationRepository();
         NoticeRepository noticeRepository = new NoticeRepository();
         Order_DetailRepository order_detailRepo = new Order_DetailRepository();
         OrderRequestRepository orderreqRepo = new OrderRequestRepository();
@@ -121,7 +121,48 @@ namespace DayTide.Controllers
         {
             return View(order_detailRepo.GetOrderDetailByUsertId(id));
         }
+        [HttpGet]
+        public ActionResult viewApplication()
+        {
+            return View(applicationRepository.GetAll());
+        }
+        [HttpGet]
+        public ActionResult applicationReject(int id )
+        {
+            Application app=applicationRepository.GetApplicationById(id);
+            app.Status = "Rejected";
+            app.Accepted_RejectedBy = Session["UserId"].ToString();
+            applicationRepository.Update(app);
+            Notice notice = new Notice();
+            notice.Massage = "Your Application Is Rejected For Some Internal Issue Please Contuct Admin panel For More Detail";
+            notice.Send_For = app.SentBy;
+            notice.Send_by = Session["UserId"].ToString();
+            notice.Status = "Unread";
+            noticeRepository.Insert(notice);
+            return RedirectToAction("ViewApplication", "Admin");
 
+        }
+        [HttpGet]
+        public ActionResult applicationAccept(int id)
+        {
+            Application app = applicationRepository.GetApplicationById(id);
+            app.Status = "Accepted";
+            app.Accepted_RejectedBy= Session["UserId"].ToString();
+            applicationRepository.Update(app);
+            Notice notice = new Notice();
+            notice.Massage = "Your Application Is Accepted By Our Admin Panel";
+            notice.Send_For = app.SentBy;
+            notice.Send_by = Session["UserId"].ToString();
+            notice.Status = "Unread";
+            noticeRepository.Insert(notice);
+            return RedirectToAction("ViewApplication", "Admin");
+
+        }
+        [HttpGet]
+        public ActionResult applicationDetail(int id)
+        {
+            return View(applicationRepository.GetApplicationById(id));
+        }
         [HttpGet]
         public ActionResult Mynotification()
         {

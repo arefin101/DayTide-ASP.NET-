@@ -14,12 +14,14 @@ namespace DayTide.Models
     
     public partial class Application
     {
-        public string Id { get; set; }
+        public int Id { get; set; }
         public string ApplicationType { get; set; }
         public string Massage { get; set; }
         public string SentBy { get; set; }
         public string Status { get; set; }
+        public string Accepted_RejectedBy { get; set; }
     
         public virtual User User { get; set; }
+        public virtual User User1 { get; set; }
     }
 }

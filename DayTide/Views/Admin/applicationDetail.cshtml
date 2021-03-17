@@ -1,0 +1,37 @@
+﻿@model DayTide.Models.Application
+
+@{
+    ViewBag.Title = "applicationDetail";
+    Layout = "~/Views/Shared/_Layout_Admin.cshtml";
+}
+
+<h2>applicationDetail</h2>
+
+<div>
+    <h4>Application</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ApplicationType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ApplicationType)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Massage)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Massage)
+        </dd>
+    </dl>
+</div>
+
+<p>
+    <a href="/Admin/applicationAccept/@Model.Id" class="btn btn-primary">Accept</a>
+    <a href="/Admin/applicationReject/@Model.Id" class="btn btn-danger">Reject</a>
+    <a href="/Admin/viewApplication" class="btn btn-secondary">Back</a>
+
+</p>

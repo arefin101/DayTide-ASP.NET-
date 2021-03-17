@@ -16,11 +16,12 @@
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Name="Id" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="ApplicationType" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="Massage" Type="nchar" MaxLength="100" Nullable="false" />
     <Property Name="SentBy" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="Status" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Accepted/RejectedBy" Type="varchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="Cart">
     <Key>
@@ -195,6 +196,18 @@
       </Principal>
       <Dependent Role="Application">
         <PropertyRef Name="SentBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Application_User1">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="Application" Type="Self.Application" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="Application">
+        <PropertyRef Name="Accepted/RejectedBy" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -400,6 +413,10 @@
       <End Role="Admin" EntitySet="Admin" />
     </AssociationSet>
     <AssociationSet Name="FK_Application_User" Association="Self.FK_Application_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="Application" EntitySet="Application" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Application_User1" Association="Self.FK_Application_User1">
       <End Role="User" EntitySet="User" />
       <End Role="Application" EntitySet="Application" />
     </AssociationSet>
