@@ -62,11 +62,13 @@
                 @*<td>
                         @Html.DisplayFor(modelItem => item.User.Password)
                     </td>*@
-                <td>
-                    @Html.ActionLink("Notify", "Notifymod", new { id = item.ModeratorId }) |
-                    @Html.ActionLink("Block", "Blockmod", new { id = item.ModeratorId }) |
-                    @Html.ActionLink("Delete", "Deletemod", new { id = item.ModeratorId })
-                </td>
+            <td>
+                @Html.ActionLink("Notify", "Notifymod", new { id = item.ModeratorId }) |
+                @Html.ActionLink("Detail", "DetailModerator", new { id = item.ModeratorId }) |
+
+                @*  @Html.ActionLink("Block", "Blockmod", new { id = item.ModeratorId }) |
+        @Html.ActionLink("Delete", "Deletemod", new { id = item.ModeratorId })*@
+            </td>
             </tr>
         }
     }

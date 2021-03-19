@@ -1,14 +1,14 @@
-﻿@model DayTide.Models.DeleveryMan
+﻿@model DayTide.Models.Moderator
 
 @{
-    ViewBag.Title = "DetailDelman";
+    ViewBag.Title = "DetailModerator";
     Layout = "~/Views/Shared/_Layout_Admin.cshtml";
 }
 
-<h2>DetailDelman</h2>
+<h2>DetailModerator</h2>
 
 <div>
-    <h4>DeleveryMan</h4>
+    <h4>Moderator</h4>
     <hr />
     <table>
         <tr>
@@ -49,14 +49,14 @@
                     <dd>
                         @Html.DisplayFor(model => model.Address)
                     </dd>
+
                     <dt>
-                        @Html.DisplayNameFor(model => model.Complete_Task)
+                        @Html.DisplayNameFor(model => model.Salary)
                     </dt>
 
                     <dd>
-                        @Html.DisplayFor(model => model.Complete_Task)
+                        @Html.DisplayFor(model => model.Salary)
                     </dd>
-
                 </dl>
 
             </td>
@@ -64,13 +64,21 @@
         <tr>
             <td colspan="2" style="text-align:center;padding-top:30px">
                 <p>
-                    @Html.ActionLink("Block", "Blockdel", new { id = Model.DelManId }, new { @class = "btn btn-primary" }) |
-                    @Html.ActionLink("Delete", "Deletedelman", new { id = Model.DelManId }, new { @class = "btn btn-danger" }) |
-                    @Html.ActionLink("Update Salary", "updatesalDeletedelman", new { id = Model.DelManId }, new { @class = "btn btn-default", @style = "background-color:green" }) |
-                    @Html.ActionLink("Back ", "DeleveryManList", new { @class = "btn btn-default", @style = "background-color:grey" })
+                    @Html.ActionLink("Block", "Blockmod", new { id = Model.ModeratorId }, new { @class = "btn btn-primary" }) |
+                    @Html.ActionLink("Delete", "Deletemod", new { id = Model.ModeratorId }, new { @class = "btn btn-danger" }) |
+                    @Html.ActionLink("Update Salary", "updatesalmod", new { id = Model.ModeratorId }, new { @class = "btn btn-default", @style = "background-color:green" }) |
+                    @Html.ActionLink("Back ", "ModeratorList", new { @class = "btn btn-default", @style = "background-color:grey" })
                 </p>
 
             </td>
         </tr>
     </table>
 </div>
+
+<dl class="dl-horizontal">
+   
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ModeratorId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

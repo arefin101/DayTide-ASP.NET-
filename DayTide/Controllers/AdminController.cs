@@ -267,6 +267,12 @@ namespace DayTide.Controllers
 
         }
         [HttpGet]
+        public ActionResult DetailModerator(string id)
+        {
+            return View(moderatorRepository.GetUserById(id));
+
+        }
+        [HttpGet]
         public ActionResult Blockmod(string id)
         {
             User usr = new User();
@@ -285,6 +291,23 @@ namespace DayTide.Controllers
             userRepository.Update(usr);
             return RedirectToAction("ModeratorList", "Admin");
 
+        }
+          [HttpGet]
+        public ActionResult updatesalmod(string id)
+        {
+            return View(moderatorRepository.GetUserById(id));
+        }
+        [HttpPost]
+        public ActionResult updatesalmod(Moderator moderator)
+        {
+            moderatorRepository.Update(moderator);
+            Notice notice = new Notice();
+            notice.Massage = "Your Salary Has been Changed by Admin/Moderator Panel";
+            notice.Send_For = moderator.ModeratorId;
+            notice.Send_by = Session["UserId"].ToString();
+            notice.Status = "Unread";
+            noticeRepository.Insert(notice);
+            return RedirectToAction("ModeratorList", "Admin");
         }
         [HttpGet]
         public ActionResult DetailDelman(string id)

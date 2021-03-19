@@ -2264,6 +2264,8 @@
     <Content Include="Views\Admin\applicationDetail.cshtml" />
     <Content Include="Views\Admin\DetailDelman.cshtml" />
     <Content Include="Views\Admin\updatesalDeletedelman.cshtml" />
+    <Content Include="Views\Admin\DetailModerator.cshtml" />
+    <Content Include="Views\Admin\updatesalmod.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
