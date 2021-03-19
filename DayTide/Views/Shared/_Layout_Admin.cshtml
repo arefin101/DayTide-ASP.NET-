@@ -53,7 +53,7 @@
 
 
             <li class="nav-item">
-                <a class="nav-link collapsed" href="{{route('home')}}" data-target="#collapseTwo"
+                <a class="nav-link collapsed" href="/Admin/Index" data-target="#collapseTwo"
                    aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-fw fa-home"></i>
                     <span>Home</span>
@@ -140,15 +140,15 @@
                     <span>Check Posted Notification</span>
                 </a>
             </li>
-            
-       @* <li class="nav-item">
-            <a class="nav-link collapsed" href="/Admin/ViewApplication" data-target="#collapseTwo"
-               aria-expanded="true" aria-controls="collapseTwo">
-                <i class="fas fa-fw fa-wrench"></i>
-                <span>Applications</span>
-            </a>
-        </li>*@
-            
+
+            @* <li class="nav-item">
+                    <a class="nav-link collapsed" href="/Admin/ViewApplication" data-target="#collapseTwo"
+                       aria-expanded="true" aria-controls="collapseTwo">
+                        <i class="fas fa-fw fa-wrench"></i>
+                        <span>Applications</span>
+                    </a>
+                </li>*@
+
             <li class="nav-item">
                 <a class="nav-link collapsed" href="/Admin/Mynotification" data-target="#collapseTwo"
                    aria-expanded="true" aria-controls="collapseTwo">
@@ -160,7 +160,7 @@
 
         </ul>
 
-       
+
         <!-- Divider -->
         <hr class="sidebar-divider d-none d-md-block">
 
@@ -342,6 +342,7 @@
             </div>
         </div>
     </div>
+    @RenderSection("Chart", required: false)
     @RenderSection("script", required: false)
     <!-- Bootstrap core JavaScript-->
     <script src="~/Scripts/vendor/jquery/jquery.min.js"></script>

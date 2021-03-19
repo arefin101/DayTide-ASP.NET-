@@ -296,3 +296,6 @@ G:\ASP.NET Project(Mid)\DayTide-ASP.NET-\DayTide\obj\Debug\DayTide.csproj.CopyCo
 G:\ASP.NET Project(Mid)\DayTide-ASP.NET-\DayTide\obj\Debug\DayTide.dll
 G:\ASP.NET Project(Mid)\DayTide-ASP.NET-\DayTide\obj\Debug\DayTide.pdb
 F:\ASP Project file\DayTide-ASP.NET-\DayTide\obj\Debug\DayTide.csprojAssemblyReference.cache
+E:\.net\DayTide\DayTide-ASP.NET-\DayTide\bin\BouncyCastle.Crypto.dll
+E:\.net\DayTide\DayTide-ASP.NET-\DayTide\bin\itextsharp.dll
+E:\.net\DayTide\DayTide-ASP.NET-\DayTide\bin\itextsharp.xml

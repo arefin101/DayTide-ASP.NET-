@@ -3,68 +3,67 @@
 @{
     ViewBag.Title = "AdminHome";
     Layout = "~/Views/Shared/_Layout_Admin.cshtml";
+   
+    var data1 = ViewBag.userCount;
 }
 
 <h2>AdminHome</h2>
 
-<p>
-    @*@Html.ActionLink("Create New", "Create")*@
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Email)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Phone)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Address)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Salary)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Picture)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.User.Password)
-        </th>
-        <th></th>
-    </tr>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Pie Charts</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.2.2/Chart.bundle.min.js"></script>
+    <script>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Email)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Phone)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Address)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Salary)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Picture)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.User.Password)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.AdminId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.AdminId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.AdminId })
-        </td>
-    </tr>
-}
+        var PieChartData =
+        {
+            labels: ["Admin", "Moderator", "DeleveryMan", "Customer","Blocked", "Pending_Sign_Up(Delevery Man)"],
+            datasets: [{
+            label: 'User Detail Chart',
+            backgroundColor: [
+                "#f990a7",
+                "#aad2ed",
+                "#9966FF",
+                "#99e5e5",
+                "#f7bd83",
+            ],
+            borderWidth: 2,
+                data: [@ViewBag.adminCount, @ViewBag.ModeratorCount, @ViewBag.DelmanCount-@ViewBag.Pensign, @ViewBag.cusCount, @ViewBag.BlkUserCount,@ViewBag.Pensign]
+            }]
+    };
 
-</table>
+    window.onload = function () {
+        var ctx1 = document.getElementById("Piecanvas").getContext("2d");
+        window.myBar = new Chart(ctx1,
+            {
+                type: 'pie',
+                data: PieChartData,
+                options:
+                {
+                    title:
+                    {
+                        display: true,
+                        text: "User Lists"
+                    },
+                    responsive: true,
+                    maintainAspectRatio: true
+                }
+            });
+    }
+    </script>
+</head>
+<body>
+    <div style="text-align: center">
+        <canvas id="Piecanvas"></canvas>
+    </div>
+    <div style="text-align: center">
+        @ViewBag.adminCount;
+    </div>
+</body>
+
+</html>
+
+
+

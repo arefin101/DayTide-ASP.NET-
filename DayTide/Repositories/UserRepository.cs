@@ -12,5 +12,9 @@ namespace DayTide.Repositories
         {
             return this.context.Users.Where(x => x.Status == "Processing").ToList();
         }
+        public List<User> GetBlockedUser()
+        {
+            return this.context.Users.Where(x => x.Status == "invalid").ToList();
+        }
     }
 }

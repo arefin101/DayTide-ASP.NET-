@@ -22,12 +22,20 @@ namespace DayTide.Controllers
         NoticeRepository noticeRepository = new NoticeRepository();
         Order_DetailRepository order_detailRepo = new Order_DetailRepository();
         OrderRequestRepository orderreqRepo = new OrderRequestRepository();
+        ProductRepository productRepository = new ProductRepository();
         User usr = new User();
         // GET: Admin
         [HttpGet]
         public ActionResult Index()
         {
-            return View("AdminHome", adminRepository.GetAll());
+            
+            ViewBag.adminCount = adminRepository.GetAll().Count;
+            ViewBag.ModeratorCount = moderatorRepository.GetAll().Count;
+            ViewBag.DelmanCount = delmanRepository.GetAll().Count;
+            ViewBag.cusCount = customerrRepository.GetAll().Count;
+            ViewBag.BlkUserCount = userRepository.GetBlockedUser().Count;
+            ViewBag.Pensign = userRepository.GetUserSignUpReq().Count;
+            return View("AdminHome");
         }
         [HttpGet]
         public ActionResult AdminList()
