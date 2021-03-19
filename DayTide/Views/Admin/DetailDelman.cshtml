@@ -1,0 +1,149 @@
+﻿@model DayTide.Models.DeleveryMan
+
+@{
+    ViewBag.Title = "DetailDelman";
+    Layout = "~/Views/Shared/_Layout_Admin.cshtml";
+}
+
+<h2>DetailDelman</h2>
+
+<div>
+    <h4>DeleveryMan</h4>
+    <hr />
+    <table>
+        <tr>
+            <td>
+                <img class="img-profile " style="height: 400px; width: 450px; margin-left: 40px "
+                     src="~/Content/Users/@Model.Picture">
+            </td>
+            <td>
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Name)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Name)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Email)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Email)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Phone)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Phone)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Address)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Address)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Complete_Task)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Complete_Task)
+                    </dd>
+
+                </dl>
+
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" style="text-align:center;padding-top:30px">
+                <p>
+                    @Html.ActionLink("Block", "Blockdel", new { id = Model.DelManId }, new { @class = "btn btn-primary" }) |
+                    @Html.ActionLink("Delete", "Deletedelman", new { id = Model.DelManId }, new { @class = "btn btn-danger" }) |
+                    @Html.ActionLink("Update Salary", "updatesalDeletedelman", new { id = Model.DelManId }, new { @class = "btn btn-default", @style = "background-color:green" }) |
+                    @Html.ActionLink("Back ", "DeleveryManList", new { @class = "btn btn-default", @style = "background-color:grey" })
+                </p>
+
+            </td>
+        </tr>
+    </table>
+</div>
+
+@*<dl class="dl-horizontal">
+    <dt>
+        @Html.DisplayNameFor(model => model.Name)
+    </dt>
+
+    <dd>
+        @Html.DisplayFor(model => model.Name)
+    </dd>
+
+    <dt>
+        @Html.DisplayNameFor(model => model.Email)
+    </dt>
+
+    <dd>
+        @Html.DisplayFor(model => model.Email)
+    </dd>
+
+    <dt>
+        @Html.DisplayNameFor(model => model.Phone)
+    </dt>
+
+    <dd>
+        @Html.DisplayFor(model => model.Phone)
+    </dd>
+
+    <dt>
+        @Html.DisplayNameFor(model => model.Address)
+    </dt>
+
+    <dd>
+        @Html.DisplayFor(model => model.Address)
+    </dd>
+
+    <dt>
+        @Html.DisplayNameFor(model => model.Salary)
+    </dt>
+
+    <dd>
+        @Html.DisplayFor(model => model.Salary)
+    </dd>
+
+    <dt>
+        @Html.DisplayNameFor(model => model.Picture)
+    </dt>
+
+    <dd>
+        @Html.DisplayFor(model => model.Picture)
+    </dd>
+
+    <dt>
+        @Html.DisplayNameFor(model => model.Complete_Task)
+    </dt>
+
+    <dd>
+        @Html.DisplayFor(model => model.Complete_Task)
+    </dd>
+
+    <dt>
+        @Html.DisplayNameFor(model => model.User.Password)
+    </dt>
+
+    <dd>
+        @Html.DisplayFor(model => model.User.Password)
+    </dd>
+
+</dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.DelManId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
+*@

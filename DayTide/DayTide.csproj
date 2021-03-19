@@ -2262,6 +2262,8 @@
     <Content Include="Views\Admin\viewFullMassege.cshtml" />
     <Content Include="Views\Admin\viewApplication.cshtml" />
     <Content Include="Views\Admin\applicationDetail.cshtml" />
+    <Content Include="Views\Admin\DetailDelman.cshtml" />
+    <Content Include="Views\Admin\updatesalDeletedelman.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

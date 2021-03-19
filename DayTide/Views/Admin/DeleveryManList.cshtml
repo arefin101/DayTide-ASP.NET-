@@ -68,11 +68,11 @@
                 @*<td>
                         @Html.DisplayFor(modelItem => item.User.Password)
                     </td>*@
-                <td>
-                    @Html.ActionLink("Notify", "Notifydelman", new { id = item.DelManId }) |
-                    @Html.ActionLink("Block", "Blockdel", new { id = item.DelManId }) |
-                    @Html.ActionLink("Delete", "Deletedelman", new { id = item.DelManId })
-                </td>
+            <td>
+                @Html.ActionLink("Notify", "Notifydelman", new { id = item.DelManId }) |
+                @Html.ActionLink("Detail", "DetailDelman", new { id = item.DelManId }) |
+                @* *@
+            </td>
             </tr>
         }
     }

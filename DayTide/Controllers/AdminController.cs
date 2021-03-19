@@ -287,13 +287,19 @@ namespace DayTide.Controllers
 
         }
         [HttpGet]
+        public ActionResult DetailDelman(string id)
+        {
+            return View(delmanRepository.GetUserById(id));
+           
+        }
+        [HttpGet]
         public ActionResult Blockdel(string id)
         {
             User usr = new User();
             usr = userRepository.GetUserById(id);
             usr.Status = "invalid";
             userRepository.Update(usr);
-            return RedirectToAction("ModeratorList", "Admin");
+            return RedirectToAction("DeleveryManList", "Admin");
 
         }
         [HttpGet]
@@ -303,8 +309,25 @@ namespace DayTide.Controllers
             usr = userRepository.GetUserById(id);
             usr.Status = "valid";
             userRepository.Update(usr);
-            return RedirectToAction("ModeratorList", "Admin");
+            return RedirectToAction("DeleveryManList", "Admin");
 
+        }
+        [HttpGet]
+        public ActionResult updatesalDeletedelman(string id)
+        {
+            return View(delmanRepository.GetUserById(id));
+        }
+        [HttpPost]
+        public ActionResult updatesalDeletedelman(DeleveryMan delman)
+        {
+            delmanRepository.Update(delman);
+            Notice notice = new Notice();
+            notice.Massage = "Your Salary Has been Changed by Admin/Moderator Panel";
+            notice.Send_For = delman.DelManId;
+            notice.Send_by = Session["UserId"].ToString();
+            notice.Status = "Unread";
+            noticeRepository.Insert(notice);
+            return RedirectToAction("DeleveryManList", "Admin");
         }
         [HttpGet]
         public ActionResult AddAdmin()
