@@ -13,6 +13,7 @@ namespace DayTide.Controllers
     public class AdminController : Controller
     {
 
+        Delevary_Man_RatingRepository delevary_Man_RatingRepository = new Delevary_Man_RatingRepository();
         AdminRepository adminRepository = new AdminRepository();
         ModeratorRepository moderatorRepository = new ModeratorRepository();
         CustomerRepository customerrRepository = new CustomerRepository();
@@ -312,6 +313,21 @@ namespace DayTide.Controllers
         [HttpGet]
         public ActionResult DetailDelman(string id)
         {
+           List< Delevary_Man_Rating >delmanratinhg= delevary_Man_RatingRepository.GetDeleveryMenRatingById(id);
+            ViewBag.comments = delmanratinhg;
+            int count = delevary_Man_RatingRepository.GetDeleveryMenRatingById(id).Count;
+            int  ratingCount = 0;
+            if (count != 0)
+            {
+                foreach (var v in delmanratinhg)
+                {
+                    ratingCount = ratingCount + Convert.ToInt32(v.Rating);
+                }
+                float finalrating = (ratingCount / count);
+                ViewBag.Rating = Math.Ceiling(finalrating);
+            }
+            else
+                ViewBag.Rating = 0;
             return View(delmanRepository.GetUserById(id));
            
         }

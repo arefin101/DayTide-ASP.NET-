@@ -1960,6 +1960,7 @@
     <Compile Include="Repositories\CartRepository.cs" />
     <Compile Include="Repositories\CategoryRepository.cs" />
     <Compile Include="Repositories\CustomerRepository.cs" />
+    <Compile Include="Repositories\Delevary_Man_RatingRepository.cs" />
     <Compile Include="Repositories\DeleveryManRepository.cs" />
     <Compile Include="Repositories\IRepository.cs" />
     <Compile Include="Repositories\LoginRepository.cs" />
