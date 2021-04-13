@@ -14,6 +14,7 @@ namespace DayTide.Controllers
         CategoryRepository categoryRepository = new CategoryRepository();
         public ActionResult Index()
         {
+            Session["type"] = "";
             TempData["categotyProd"] =  categoryRepository.GetAll();
             return View(productRepository.GetAll());
         }

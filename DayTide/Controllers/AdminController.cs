@@ -10,7 +10,7 @@ using System.Web.Mvc;
 
 namespace DayTide.Controllers
 {
-    public class AdminController : Controller
+    public class AdminController : BaseAdminController
     {
 
         Delevary_Man_RatingRepository delevary_Man_RatingRepository = new Delevary_Man_RatingRepository();

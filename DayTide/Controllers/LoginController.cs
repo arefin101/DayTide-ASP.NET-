@@ -30,14 +30,14 @@ namespace DayTide.Controllers
             if (usr != null && usr.Password == user.Password)
             {
                 Session["UserId"] = user.UserId;
-                Session["type"] = user.Type;
+                Session["type"] = usr.Type;
 
                 if (usr.Type == "Admin")
                 {
                     Admin admin = adminRepository.GetUserById(user.UserId);
                     Session["name"] = admin.Name;
-                    Session["UserId"] = user.UserId;
-                    Session["type"] = user.Type;
+                      Session["UserId"] = user.UserId;
+                       Session["type"] = usr.Type;
                     return RedirectToAction("Index", "Admin");
                 }
                 else if (usr.Type == "Moderator")
