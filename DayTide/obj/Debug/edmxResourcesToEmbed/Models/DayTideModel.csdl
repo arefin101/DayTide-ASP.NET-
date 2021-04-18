@@ -98,10 +98,10 @@
     <Property Name="Salary" Type="Double" Nullable="false" />
     <Property Name="Picture" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="Complete_Task" Type="Int32" Nullable="false" />
-    <Property Name="In_Service" Type="Int32" />
     <NavigationProperty Name="Delevary_Man_Rating" Relationship="Self.FK_Delevary_Man_Rating_DeleveryMan" FromRole="DeleveryMan" ToRole="Delevary_Man_Rating" />
     <NavigationProperty Name="User" Relationship="Self.FK_DeleveryMan_User" FromRole="DeleveryMan" ToRole="User" />
     <NavigationProperty Name="Order_Detail" Relationship="Self.FK_Order_Detail_DeleveryMan" FromRole="DeleveryMan" ToRole="Order_Detail" />
+    <Property Name="In_Service" Type="Int32" />
   </EntityType>
   <EntityType Name="Moderator">
     <Key>
@@ -428,7 +428,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="DaytideEntities2" annotation:LazyLoadingEnabled="true">
+  <EntityContainer Name="DaytideEntities3" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="Admins" EntityType="Self.Admin" />
     <EntitySet Name="Applications" EntityType="Self.Application" />
     <EntitySet Name="Carts" EntityType="Self.Cart" />

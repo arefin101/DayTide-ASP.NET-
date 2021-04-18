@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="DaytideModelStoreContainer" CdmEntityContainer="DaytideEntities2">
+  <EntityContainerMapping StorageEntityContainer="DaytideModelStoreContainer" CdmEntityContainer="DaytideEntities3">
     <EntitySetMapping Name="Admins">
       <EntityTypeMapping TypeName="DaytideModel.Admin">
         <MappingFragment StoreEntitySet="Admin">
@@ -83,6 +83,7 @@
     <EntitySetMapping Name="DeleveryMen">
       <EntityTypeMapping TypeName="DaytideModel.DeleveryMan">
         <MappingFragment StoreEntitySet="DeleveryMan">
+          <ScalarProperty Name="In_Service" ColumnName="In_Service" />
           <ScalarProperty Name="DelManId" ColumnName="DelManId" />
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="Email" ColumnName="Email" />
@@ -91,7 +92,6 @@
           <ScalarProperty Name="Salary" ColumnName="Salary" />
           <ScalarProperty Name="Picture" ColumnName="Picture" />
           <ScalarProperty Name="Complete_Task" ColumnName="Complete_Task" />
-          <ScalarProperty Name="In_Service" ColumnName="In_Service" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

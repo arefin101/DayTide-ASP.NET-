@@ -1,0 +1,41 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>DemoPage</title>
+</head>
+<body>
+    <div> 
+        <table>
+            <tr>
+                <th>Customer ID</th>
+                <th>Quantity</th>
+                <th>Price (unit)</th>
+                <th>Product ID</th>
+                <th>Product Name</th>
+                <th>Picture</th>
+            </tr>
+
+            @foreach(var items in TempData["testingitem"] as IList<DayTide.Models.CartViewModelDemo>)
+            {
+                <tr>
+                    <td>@items.CustomerId</td>
+                    <td>@items.Quantiry</td>
+                    <td>@items.Price_unit_</td>
+                    <td>@items.ProductId</td>
+                    <td>@items.ProductName</td>
+                    <td>@items.Picture</td>
+                </tr>
+            }
+
+        </table>
+
+    </div>
+</body>
+</html>

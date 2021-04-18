@@ -23,6 +23,13 @@ namespace DayTide.Repositories
             return this.context.Products.OrderByDescending(i => i.Selling_Price).Take(top).ToList();
         }
 
+        public List<Product> GetProductSearch(string key)
+        {
+
+
+            return this.context.Products.Where(l => l.ProductName.Contains(key)).ToList();
+        }
+
 
     }
 }

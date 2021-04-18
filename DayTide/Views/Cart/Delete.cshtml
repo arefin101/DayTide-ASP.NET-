@@ -1,0 +1,131 @@
+﻿@model DayTide.Models.Cart
+@{
+    ViewBag.Title = "Delete Product";
+    Layout = "~/Views/Shared/_site.cshtml";
+
+}
+
+@*<div style="border:double; width:300px; height:300px; margin: 0 auto">
+        <h4 style="text-align:center;">Confirm Delete from Cart</h4>
+
+        <dl class="dl-horizontal" style="text-align:center">
+            <dt>
+                Product Name
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Product.ProductName)
+
+            </dd>
+
+            <dt>
+                Price (Unit)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Price_unit_)
+            </dd>
+
+            <dt>
+                Customer Name
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Customer.Name)
+            </dd>
+
+            <dt>
+                Quantity
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Quantiry)
+            </dd>
+
+        </dl>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color">
+                <input type="submit" value="Delete" class="btn btn-default" /> |
+                @Html.ActionLink("Back to List", "Index")
+            </div>
+        }
+    </div>*@
+
+
+<span class="d-block p-2 bg-danger text-white" style="text-align: center;">Confirmation Delete</span>
+
+
+<div class="shadow-lg p-3 mb-5 bg-white rounded" style="margin-left: 30%; margin-right:30%">
+
+    <!----Write code from here-->
+
+    <table class="table text-center">
+        <thead>
+            <tr>
+
+                <th scope="col" colspan="2">Details</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            <tr>
+                <td>Product Name:</td>
+                <td>@Html.DisplayFor(model => model.Product.ProductName)</td>
+
+            </tr>
+            <tr>
+                <td>Price (Unit):</td>
+                <td>@Html.DisplayFor(model => model.Price_unit_)</td>
+
+            </tr>
+            <tr>
+                <td>Customer Name: </td>
+                <td>@Html.DisplayFor(model => model.Customer.Name)</td>
+
+            </tr>
+            <tr>
+
+                <td>Quantity</td>
+                <td>@Html.DisplayFor(model => model.Quantiry) </td>
+
+            </tr>
+
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+
+
+
+                <tr>
+                    
+                    <td colspan="2">
+                        <input type="submit" value="Delete" class="btn btn-danger btn-lg btn-block" /> 
+                    </td>
+                </tr>
+                <tr>
+                    
+                    <td colspan="2">
+                        <a href="/cart/customercart" class="btn btn-outline-warning btn-lg btn-block">Back</a>
+                    </td>
+                </tr>
+            }
+
+
+
+
+
+        </tbody>
+    </table>
+
+
+
+
+</div>
+
+</body>
+</html>

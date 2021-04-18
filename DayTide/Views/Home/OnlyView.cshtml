@@ -3,6 +3,8 @@
     ViewBag.Title = "Product Full View";
     Layout = "~/Views/Shared/_site.cshtml";
        var user_id  = Session["userid"];
+
+    var itmCount = 0;
 }
 
 <div class="container">
@@ -38,15 +40,15 @@
 
                         { addRatingValue += items.Rating; }
 
-
+                        { itmCount++; }
 
                     }
 
                     @{
-                        avrageRating = addRatingValue / 2;
+                        avrageRating = addRatingValue / itmCount;
                     }
                     <span class="text-warning">&#9733; &#9733; &#9733; &#9733; &#9734;</span>
-                    @avrageRating stars
+                    @avrageRating.ToString("N2") stars
                     <br />
                     <br />
 
@@ -114,7 +116,7 @@
                         <hr>
                     }
 
-                    <a href="#" class="btn btn-success">Leave a Review</a>
+                    
                 </div>
             </div>
             <!-- /.card -->

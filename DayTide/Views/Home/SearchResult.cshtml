@@ -1,0 +1,136 @@
+﻿@model DayTide.Models.Product
+@{
+    ViewBag.Title = "Search Result";
+    Layout = "~/Views/Shared/_site.cshtml";
+
+}
+
+@*<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>*@
+
+
+
+
+
+
+
+
+<div style="margin-bottom:20px;">
+   
+
+
+
+    @*<table class="table" border="1">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Buying_Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Selling_Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Quantity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Picture)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Category.CategoryName)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProductName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Buying_Price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Selling_Price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Quantity)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Picture)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Category.CategoryName)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.ProductId }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.ProductId }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.ProductId })
+                </td>
+            </tr>
+        }
+
+    </table>*@
+
+</div>
+
+
+@{
+    int myInt = 0;
+}
+
+
+@*<form >*@
+
+<div class="container p-2" id="myDIV" style="margin-bottom:30px; margin-top:30px;">
+    <div class="row">
+        @*@foreach (var item in Model)
+        {*@
+
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card p-3">
+                        <img class="card-img-top" src="~/Content/Products/@Model.Picture" alt="Card image cap" style="height:200px; width:300px;">
+                        <div class="card-body">
+                            <h5 class="card-title">@Model.ProductName</h5>
+                            <p class="card-text">@Model.Description</p>
+                            <p class="card-text">$ @Model.Selling_Price</p>
+
+                            @*<a href="/home/FullView/@item.ProductId" type="button" class="btn btn-primary">View Product</a>*@
+                            <a href="/home/onlyview/@Model.ProductId" type="button" class="btn btn-primary">View Product</a>
+
+
+                            @*<p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>*@
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+        @*}*@
+
+
+    </div>
+
+</div>
+
+@*</form>*@
+
+
+<div>
+
+</div>
+
+
+
+

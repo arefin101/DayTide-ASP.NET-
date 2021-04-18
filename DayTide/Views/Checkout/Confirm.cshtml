@@ -4,23 +4,40 @@
     Layout = "~/Views/Shared/_site.cshtml";
 
 }
-<table>
-    <tr>
-        <th>Order ID</th>
-        <th>Date</th>
-        <th>Address</th>
-        <th>District</th>
-        <th>Amount</th>
-        <th>Payment Type</th>
-        <th>Customer ID</th>
-    </tr>
-    <tr>
-        <td>@Model.OrderId</td>
-        <td>@Model.Date</td>
-        <td>@Model.Address</td>
-        <td>@Model.District</td>
-        <td>@Model.Amount</td>
-        <td>@Model.Payment_Type</td>
-        <td>@Model.CustomerId</td>
-    </tr>
-</table>
+<div id = "pdfMytry">
+
+    <h3 style="text-align:center">DayTide (Online Store)</h3>
+    <h4 style="text-align:center">Phone: 01851048555</h4>
+    <h5 style="text-align:center">Location: Mohammadpur, Dhaka-1207</h5>
+    <hr />
+    <br />
+
+    <table class="table table-dark" style="margin:0 auto " border="1">
+        <tr>
+            <th>Order ID</th>
+            <th>Date</th>
+            <th>Address</th>
+            <th>District</th>
+            <th>Amount</th>
+            <th>Payment Type</th>
+            <th>Customer ID</th>
+        </tr>
+        <tr>
+            <td>@Model.OrderId</td>
+            <td>@Model.Date</td>
+            <td>@Model.Address</td>
+            <td>@Model.District</td>
+            <td>@Model.Amount</td>
+            <td>@Model.Payment_Type</td>
+            <td>@Model.CustomerId</td>
+        </tr>
+    </table>
+    <h4 style="text-align:center">Thank You for Your Order</h4>
+    <h5 style="text-align:center">Delivary Team will get you soon</h5>
+    
+</div>
+<h6>Please download the Receipt for Any Query</h6>
+
+<button type="button" class="btn btn-danger btn-sm" id="btnpdf">Download receipt</button>
+
+

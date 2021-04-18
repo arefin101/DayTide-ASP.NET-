@@ -1,0 +1,32 @@
+﻿
+@{ 
+    ViewBag.Title = "Previous Products";
+    Layout = "~/Views/Shared/_site.cshtml";
+}
+
+    <div> 
+        <table class="table table-dark">
+            <tr>
+                <td>Customer ID</td>
+                <td>Product Name</td>
+                <td>Price</td>
+                <td>Quantity</td>
+                <td>Total Amount(Inc.Tax)</td>
+                <td>Add Review</td>
+            </tr>
+            @foreach (var item in TempData["TryOrder"] as IList<DayTide.Models.OrderDetailsViewModel>)
+            {
+                <tr>
+                    <td>@item.CustomerId</td>
+                    <td>@item.ProductName</td>
+                    <td>@item.Price</td>
+                    <td>@item.Quantiry</td>
+                    <td>@item.Amount</td>
+                    <td><a href="~/customer/ProductRating/@item.ProductId"  class="btn btn-light">Review</a></td>
+                </tr>
+            }
+
+
+        </table>
+
+    </div>

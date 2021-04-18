@@ -1,0 +1,84 @@
+﻿
+
+@{
+    ViewBag.Title = "Product Full View";
+    Layout = "~/Views/Shared/_site.cshtml";
+    //var all = TempData["OrderDetailsDemo1"] as IList<DayTide.Models.OrderDetailsViewModel>;
+    var all = TempData["ABCD"] as IList<DayTide.Models.OrderDetailsViewModel>;
+
+    //var aaa = all.Where()
+
+
+    foreach (var item in all)
+    {
+        // item.
+    }
+}
+
+
+<div style="width:500px; margin: 0 auto">
+    <h3 style="text-align:center;"> <u>Previous Orders</u></h3>
+    <br />
+    <div id="accordion">
+
+        <div class="card">
+            @foreach (var item in all)
+            {
+                <div class="card-header" id="headingOne">
+                    <h5 class="mb-0">
+                        <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            <a href="~/Home/OrderDetailsFull/@item.OrderId">
+                                Order ID: @item.OrderId
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  Date: @item.Date
+                            </a>
+                        </button>
+                    </h5>
+                </div>
+            }
+
+        </div>
+
+
+
+
+
+
+    </div>
+
+    @*<table>
+            <thead>
+                <tr>
+                    <th>Customer ID</th>
+                    <th>Product ID</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                    <th>Order ID</th>
+                    <th>Address</th>
+                    <th>Date</th>
+                    <th>Amount</th>
+                    <th>District</th>
+                    <th>Payment Type</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach(var items in TempData["OrderDetailsDemo1"] as IList<DayTide.Models.OrderDetailsViewModel>)
+                {
+                    <tr>
+                        <td>@items.CustomerId</td>
+                        <td>@items.ProductId</td>
+                        <td>@items.Quantiry</td>
+                        <td>@items.Price</td>
+                        <td>@items.OrderId</td>
+                        <td>@items.Address</td>
+                        <td>@items.Date</td>
+                        <td>@items.Amount</td>
+                        <td>@items.District</td>
+                        <td>@items.Payment_Type</td>
+                    </tr>
+                }
+            </tbody>
+        </table>*@
+
+
+
+</div>

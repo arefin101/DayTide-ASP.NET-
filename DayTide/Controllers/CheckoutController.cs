@@ -1,5 +1,6 @@
 ﻿using DayTide.Models;
 using DayTide.Repositories;
+using SelectPdf;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -59,6 +60,37 @@ namespace DayTide.Controllers
 
             return View(orderReqRepository.GetProductById(orderRequest.OrderId));
         }
+
+
+        public ActionResult GeneratePdf(string html)
+        {
+            html = html.Replace("StrTag", "<").Replace("EndTag", ">");
+
+            HtmlToPdf ohtmlToPdf = new HtmlToPdf();
+            PdfDocument oPdfDocument = ohtmlToPdf.ConvertHtmlString(html);
+
+            byte[] pdf = oPdfDocument.Save();
+            oPdfDocument.Close();
+
+
+            return File(
+                pdf,
+                "application/pdf",
+                "Invoice.pdf"
+                );
+
+        }
+
+        ///Please Edit web.config and add ---->
+              // <system.webServer>
+              //  <security>
+              //    <requestFiltering>
+              //      <requestLimits maxQueryString = "32768" />
+              //    </requestFiltering >
+              //  </security >
+              //</system.webServer >
+
+
 
     }
 }

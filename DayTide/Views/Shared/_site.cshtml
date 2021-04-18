@@ -1,7 +1,8 @@
-﻿@{ 
+﻿
+@{
     var afterLogin = Session["userid"];
 
-    
+
 }
 
 
@@ -35,34 +36,65 @@
 
             <!---search box-->
 
-            <input class="form-control form-control-primary w-100" type="text" id="myInput" placeholder="Search" aria-label="Search">
+            <input class="form-control form-control-primary w-100" type="text" id="search" onkeyup="search()" placeholder="Search" aria-label="Search">
+
             <ul class="navbar-nav px-3">
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         @if (afterLogin == null)
                         {
-                            <em>Daytide Not login</em>
+                            <em>Please Login for purchase</em>
                         }
                         else
                         {
                             <em>Welcome </em>@afterLogin.ToString()
                         }
                     </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="#">Change Password</a>
-                        <a class="dropdown-item" href="/logout/LogoutUser">Log out</a>
-                        <!--<a class="dropdown-item" href="#">Something else here</a>-->
-                    </div>
-                </li>
+
+                    @if (afterLogin == null)
+                    {
+
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <a class="dropdown-item" href="/login/login">Login</a>
+                </div>
+
+                            }
+                            else
+                            {
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+
+                    <a class="dropdown-item" href="/customer/MyprofileCustomer">Profile</a>
+                    <a class="dropdown-item" href="/customer/ChangePassword">Change Password</a>
+
+                    <a class="dropdown-item" href="/Home/OrderDetails">Orders</a>
+                    <a class="dropdown-item" href="/logout/LogoutUser">Log out</a>
+                    <!--<a class="dropdown-item" href="#">Something else here</a>-->
+                </div>
+                            }
+
+                    </li>
+
             </ul>
+
+
         </nav>
 
+
         @* End of navbar *@
-        <div style="margin-top:50px;"></div>
+        <div style="margin-top:100px;"></div>
+
+
+        @* Search suggestions *@
+        <div id="suggestion"  style="background-color:#ddd; margin:0px 0px 0px 270px; margin-top:-45px;  width:1000px; z-index:1; position:absolute;overflow:auto; border:1px solid #ddd">
+
+        </div>
+        @* End  Search suggestions *@
+
+
 
         @* START Menu*@
 
-        <nav class="navbar navbar-dark bg-dark navbar-expand-md">
+        <!--<nav class="navbar navbar-dark bg-dark navbar-expand-md">
             <div class="container">
                 <button class="navbar-toggler d-none" data-toggle="collapse" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navcol-1">
@@ -70,14 +102,14 @@
                         <li class="nav-item dropdown">
                             <a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#">Navbar link 1</a>
                             <div class="dropdown-menu" role="menu">
-                                <a class="dropdown-item" role="presentation" href="#">This is a very very long dropdown item and it may overflow the viewport</a>
+                                <a class="dropdown-item" role="presentation" href="#">This is a very very long dropdown item and it may overflow the viewport</a>-->
                                 @*<a class="dropdown-item" role="presentation" href="#">Second Item</a><a class="dropdown-item" role="presentation" href="#">Third Item</a>*@
-                            </div>
+                            <!--</div>
                         </li>
                         <li class="nav-item dropdown">
-                            
-                            
-                        </li>
+
+
+                        </li>-->
 
                         @*
                             <li class="nav-item dropdown">
@@ -92,10 +124,10 @@
                                 <a class="dropdown-toggle nav-link" data-toggle="dropdown" data-display="static" aria-expanded="false" href="#">Navbar link 5</a>
                                 <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="#">This is a very very long dropdown item and it may overflow the viewport</a><a class="dropdown-item" role="presentation" href="#">Second Item</a><a class="dropdown-item" role="presentation" href="#">Third Item</a></div>
                             </li>*@
-                    </ul>
+                    <!--</ul>
                 </div>
             </div>
-        </nav>
+        </nav>-->
         @*<div class="text-center mt-4">
                 <button type="button" id="trigger-btn" class="btn btn-lg btn-danger">Click me</button>
                 <hr class="my-4">
@@ -223,71 +255,71 @@
 
 
 
-            function myff() {
-                var iii = $("#adess").val();
-                var amnt = $("#amnt").val();
-                var payType = $("#payTy").val();
-                var cname = $("#cc-name").val();
-                var cnumber = $("#cc-number").val();
+        function myff() {
+            var iii = $("#adess").val();
+            var amnt = $("#amnt").val();
+            var payType = $("#payTy").val();
+            var cname = $("#cc-name").val();
+            var cnumber = $("#cc-number").val();
 
 
-                var ooo = true;
-                if (iii == "") {
-                    ooo = false;
-                    $("#adess").focus();
-                    $("#errAdess").text("Please Enter Address");
-                    $("#errAdess").css("color", "red");
-                }
-                else {
-                    $("#errAdess").text(" ");
-                }
-
-
-                if (amnt == "") {
-                    ooo = false;
-                    $("#amnt").focus();
-                    $("#errAmnt").text("Order Amount is not available");
-                    $("#errAmnt").css("color", "red");
-                }
-                else {
-                    $("#errAmnt").text("");
-                }
-
-                if (payType == "") {
-
-                    ooo = false;
-                    $("#payTy").focus();
-                    $("#errPay").text("Please select Card type");
-                    $("#errPay").css("color", "red");
-                }
-                else {
-                    $("#errPay").text("");
-                }
-
-                if (cname == "") {
-                    ooo = false;
-                    $("#cc-name").focus();
-                    $("#errNam").text("Name on card is required");
-                    $("#errNam").css("color", "red");
-                }
-                else {
-                    $("#errNam").text("");
-                }
-
-                if (cnumber == "") {
-                    ooo = false;
-                    $("#cc-number").focus();
-                    $("#errcNum").text("Please Enter Credit Card Number");
-                    $("#errcNum").css("color", "red");
-                }
-                else {
-                    $("#errcNum").text("");
-                }
-
-
-
-                return ooo;
+            var ooo = true;
+            if (iii == "") {
+                ooo = false;
+                $("#adess").focus();
+                $("#errAdess").text("Please Enter Address");
+                $("#errAdess").css("color", "red");
             }
+            else {
+                $("#errAdess").text(" ");
+            }
+
+
+            if (amnt == "") {
+                ooo = false;
+                $("#amnt").focus();
+                $("#errAmnt").text("Order Amount is not available");
+                $("#errAmnt").css("color", "red");
+            }
+            else {
+                $("#errAmnt").text("");
+            }
+
+            if (payType == "") {
+
+                ooo = false;
+                $("#payTy").focus();
+                $("#errPay").text("Please select Card type");
+                $("#errPay").css("color", "red");
+            }
+            else {
+                $("#errPay").text("");
+            }
+
+            if (cname == "") {
+                ooo = false;
+                $("#cc-name").focus();
+                $("#errNam").text("Name on card is required");
+                $("#errNam").css("color", "red");
+            }
+            else {
+                $("#errNam").text("");
+            }
+
+            if (cnumber == "") {
+                ooo = false;
+                $("#cc-number").focus();
+                $("#errcNum").text("Please Enter Credit Card Number");
+                $("#errcNum").css("color", "red");
+            }
+            else {
+                $("#errcNum").text("");
+            }
+
+
+
+            return ooo;
+        }
 
         function myProView() {
 
@@ -299,16 +331,15 @@
             if (inpPro == "") {
                 ppp = false;
                 $("#inputGroupSelect01").focus();
-               
+
             }
 
             return ppp;
-           
+
 
 
         }
 
-        
 
 
 
@@ -318,10 +349,39 @@
 
 
 
-        //////////////////////////MyChart///////////////////////////
+
+        //////////////////////////Ajax///////////////////////////
 
 
-        
+
+        function search() {
+            var sear = $("#search").val();
+            console.log(sear);
+
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    $("#suggestion").html(this.responseText);
+                }
+            };
+
+            xhttp.open("GET", "Mysearch?key=" + sear, true);
+            xhttp.send();
+
+
+        }
+
+        /////////////////PDF///////////////////////////////////////////////
+
+
+        var ppi = document.getElementById("btnpdf");
+        ppi.addEventListener("click", function () {
+
+            var sHtml = document.getElementById("pdfMytry").innerHTML;
+            sHtml = sHtml.replace(/</g, "StrTag").replace(/>/g, "EndTag");
+            window.open('../Checkout/GeneratePdf?html=' + sHtml, "_blank");
+        });
+           
 
 
 

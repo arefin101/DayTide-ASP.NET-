@@ -63,6 +63,9 @@
     <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.5.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="Select.HtmlToPdf, Version=21.1.0.0, Culture=neutral, PublicKeyToken=e0ae9f6e27a97018, processorArchitecture=MSIL">
+      <HintPath>..\packages\Select.HtmlToPdf.21.1.0-rc1\lib\net40\Select.HtmlToPdf.dll</HintPath>
+    </Reference>
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
@@ -115,6 +118,18 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\Ads\bee.jpg" />
+    <Content Include="Content\Ads\erwans.jpg" />
+    <Content Include="Content\Ads\flower1.jpg" />
+    <Content Include="Content\Ads\flower3.jpg" />
+    <Content Include="Content\Ads\person-in-orange-rides-bike-under-bridge.jpg" />
+    <Content Include="Content\bee-6047004_960_720.jpg" />
+    <Content Include="Content\daytide-logo.png" />
+    <Content Include="Content\erwans-socks-aQMhEZl0s6M-unsplash.jpg" />
+    <Content Include="Content\freeShipping.jpeg" />
+    <Content Include="Content\newYearSell.jpg" />
+    <Content Include="Content\person-in-orange-rides-bike-under-bridge.jpg" />
+    <Content Include="Content\postAds.jpeg" />
     <Content Include="Content\Users\me.jpg" />
     <Content Include="Models\DayTideModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -1894,6 +1909,7 @@
     <Compile Include="Models\CartBackup.cs">
       <DependentUpon>DayTideModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\CartViewModelDemo.cs" />
     <Compile Include="Models\Category.cs">
       <DependentUpon>DayTideModel.tt</DependentUpon>
     </Compile>
@@ -1902,6 +1918,8 @@
     <Compile Include="Models\Customer.cs">
       <DependentUpon>DayTideModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Customer2.cs" />
+    <Compile Include="Models\CustomerMetaData.cs" />
     <Compile Include="Models\DayTideModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -1935,6 +1953,7 @@
     </Compile>
     <Compile Include="Models\Notice2.cs" />
     <Compile Include="Models\NoticeMetaData.cs" />
+    <Compile Include="Models\OrderDetailsViewModel.cs" />
     <Compile Include="Models\OrderRequest.cs">
       <DependentUpon>DayTideModel.tt</DependentUpon>
     </Compile>
@@ -1950,6 +1969,8 @@
     <Compile Include="Models\Product_Rating.cs">
       <DependentUpon>DayTideModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Product_Rating2.cs" />
+    <Compile Include="Models\Product_RatingMetaData.cs" />
     <Compile Include="Models\Request.cs" />
     <Compile Include="Models\TrackProfit.cs">
       <DependentUpon>DayTideModel.tt</DependentUpon>
@@ -1957,6 +1978,8 @@
     <Compile Include="Models\User.cs">
       <DependentUpon>DayTideModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\User2.cs" />
+    <Compile Include="Models\UserMetaData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\AdminRepository.cs" />
     <Compile Include="Repositories\ApplicationRepository.cs" />
@@ -1972,6 +1995,7 @@
     <Compile Include="Repositories\NoticeRepository.cs" />
     <Compile Include="Repositories\OrderRequestRepository.cs" />
     <Compile Include="Repositories\Order_DetailRepository.cs" />
+    <Compile Include="Repositories\ProductRatingRepository.cs" />
     <Compile Include="Repositories\ProductRepository.cs" />
     <Compile Include="Repositories\Repository.cs" />
     <Compile Include="Repositories\UserRepository.cs" />
@@ -2205,7 +2229,6 @@
       <DependentUpon>DayTideModel.edmx</DependentUpon>
     </Content>
     <None Include="packages.config" />
-    <Content Include="Views\Login\Index.cshtml" />
     <Content Include="Views\Home\Create.cshtml" />
     <Content Include="Views\Home\FullView.cshtml" />
     <Content Include="Views\Cart\ShowCartData.cshtml" />
@@ -2219,18 +2242,8 @@
     <Content Include="Views\Shared\_Layout_Admin.cshtml" />
     <Content Include="Views\Admin\AddAdmin.cshtml" />
     <Content Include="Views\Cart\Edit.cshtml" />
-    <Content Include="Views\Home\OnlyView.cshtml" />
     <Content Include="Views\Admin\Detailscus.cshtml" />
-    <Content Include="Views\Cart\Index.cshtml" />
-    <Content Include="Views\Cart\CustomerCart.cshtml" />
-    <Content Include="Views\Checkout\Confirm.cshtml" />
-    <Content Include="Views\Customer\Create.cshtml" />
     <Content Include="Views\Customer\Index.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Home\CategotySort.cshtml" />
-    <Content Include="Views\Home\PriceSort.cshtml" />
-    <Content Include="Views\Shared\_site.cshtml" />
-    <Content Include="Views\Customer\Edit.cshtml" />
     <Content Include="Views\Customer\Delete.cshtml" />
     <Content Include="Views\Admin\AddDelMan.cshtml" />
     <Content Include="Views\Admin\AddModerator.cshtml" />
@@ -2275,6 +2288,28 @@
     <Content Include="Views\Moderator\Profile.cshtml" />
     <Content Include="Views\Moderator\RequestCustomization.cshtml" />
     <Content Include="Views\Shared\_Layout_Moderator.cshtml" />
+    <Content Include="Views\Cart\Delete.cshtml" />
+    <Content Include="Views\Cart\DemoPage.cshtml" />
+    <Content Include="Views\Cart\CustomerCart.cshtml" />
+    <Content Include="Views\Cart\Index.cshtml" />
+    <Content Include="Views\Checkout\Confirm.cshtml" />
+    <Content Include="Views\Customer\ChangePassword.cshtml" />
+    <Content Include="Views\Customer\MyprofileCustomer.cshtml" />
+    <Content Include="Views\Customer\ProductRating.cshtml" />
+    <Content Include="Views\Customer\Create.cshtml" />
+    <Content Include="Views\Customer\Edit.cshtml" />
+    <Content Include="Views\Home\FirstPage.cshtml" />
+    <Content Include="Views\Home\Header.cshtml" />
+    <Content Include="Views\Home\Mysearch.cshtml" />
+    <Content Include="Views\Home\OrderDetails.cshtml" />
+    <Content Include="Views\Home\OrderDetailsFull.cshtml" />
+    <Content Include="Views\Home\SearchResult.cshtml" />
+    <Content Include="Views\Home\CategotySort.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\OnlyView.cshtml" />
+    <Content Include="Views\Home\PriceSort.cshtml" />
+    <Content Include="Views\Login\Index.cshtml" />
+    <Content Include="Views\Shared\_site.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

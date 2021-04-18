@@ -11,10 +11,35 @@
 
 
 
+<div style="height:150px; width:1050px; background-color:#d7a4a4; margin-left:200px; margin-bottom:10px;">
+
+   <img src="~/Content/daytide-logo.png" height="100%" width="100%" />
+
+</div>
+
+<div style="height:150px; width:1050px; background-color:#d7a4a4; margin-left:200px; margin-bottom:10px;">
+
+    <img src="~/Content/freeShipping.jpeg" height="100%" width="100%" />
+
+</div>
+
+<div style="height:150px; width:1050px; background-color: azure; margin-left:200px; margin-bottom:10px;">
+    <table border="0" cellpadding="0" cellspacing="0" style="table-layout: fixed; width: 100%;">
+        <tr>
+            <td><img src="~/Content/postAds.jpeg" height="150" width="500" /></td>
+            <td><img src="~/Content/newYearSell.jpg" height="150" width="550" /></td>
+        </tr>
+    </table>
+    
+    
+
+</div>
 
 
-<div class="">
-    <form method="post" action="/home/categotySort">
+
+
+<div class="" style="width:300px; float:left; display:grid; border:0px solid #ae8d8d; margin-right:20px;">
+    <form style="margin-top:8px" method="post" action="/home/categotySort">
 
         <div class="input-group">
             <select class="custom-select" id="inputGroupSelect04" name="categoryId">
@@ -30,9 +55,9 @@
             </div>
         </div>
     </form>
-</div>
 
-<br />
+
+    <br />
 
 
     <form method="post" action="/home/priceSort">
@@ -40,88 +65,95 @@
 
         <input type="hidden" name="pricesSort" />
 
-        <button class="btn btn-outline-dark" type="submit">Top (5) Product</button>
+        <button class="btn btn-outline-dark btn-block" type="submit">Top (2) Product</button>
 
 
     </form>
-    <a href="/Cart/CustomerCart" type="button" class="btn btn-outline-info" style="float:right;">Customer Cart</a>
 
-
-
-
-
-
-
-
-<div style="margin-bottom:20px;">
-
-    @*<p>
-        @Html.ActionLink("Create New", "Create")
-    </p>*@
-
-
-
-    <table class="table" border="1">
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.ProductName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Description)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Buying_Price)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Selling_Price)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Quantity)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Picture)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Category.CategoryName)
-            </th>
-            <th></th>
-        </tr>
-
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ProductName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Description)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Buying_Price)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Selling_Price)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Quantity)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Picture)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Category.CategoryName)
-                </td>
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.ProductId }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.ProductId }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.ProductId })
-                </td>
-            </tr>
-        }
-
-    </table>
+    <br />
+    <a href="/Cart/CustomerCart" type="button" class="btn btn-outline-info" style="">Customer Cart</a>
 
 </div>
+
+
+
+
+
+
+    <div style="margin-bottom:20px;">
+
+        @*<p>
+            @Html.ActionLink("Create New", "Create")
+        </p>*@
+
+        
+
+      
+
+
+
+
+        @*<table class="table" border="1">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.ProductName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Description)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Buying_Price)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Selling_Price)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Quantity)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Picture)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Category.CategoryName)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ProductName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Buying_Price)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Selling_Price)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Quantity)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Picture)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Category.CategoryName)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.ProductId }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.ProductId }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.ProductId })
+                    </td>
+                </tr>
+            }
+
+        </table>*@
+
+    </div>
 
 
 @{
@@ -171,7 +203,7 @@
             
         </div>
 
-        <button id="joy" onclick="myFunction()">Hello</button>
+        <button style="display:none" id="joy" onclick="myFunction()">Hello</button>
         <br />
         
 

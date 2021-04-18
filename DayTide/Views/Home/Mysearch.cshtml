@@ -1,0 +1,12 @@
+﻿@model IEnumerable<DayTide.Models.Product>
+@{
+    var key = Request["key"];
+
+
+}
+
+@foreach(var items in Model)
+{
+    @*<p>@items.ProductName</p>*@
+    <p class="alert alert-secondary"><a class="alert-link" href="/Home/SearchResult?id=@items.ProductId">@items.ProductName</a></p>
+}

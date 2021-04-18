@@ -11,7 +11,7 @@ namespace DayTide.Controllers
 {
     public class ModeratorController : BaseController
     {
-        protected DaytideEntities2 context1 = new DaytideEntities2();
+        protected DaytideEntities3 context1 = new DaytideEntities3();
         UserRepository userRepository = new UserRepository(); 
         ModeratorRepository moderatorRepository = new ModeratorRepository();
         CategoryRepository categoryRepository = new CategoryRepository();
@@ -368,7 +368,7 @@ namespace DayTide.Controllers
         [HttpGet]
         public ActionResult CheckOrder()
         {
-            using (DaytideEntities2 db = new DaytideEntities2())
+            using (DaytideEntities3 db = new DaytideEntities3())
             {
                 List<OrderRequest> orders = db.OrderRequests.ToList();
                 List<CartBackup> carts = db.CartBackups.ToList();
@@ -387,7 +387,7 @@ namespace DayTide.Controllers
         [HttpGet]
         public ActionResult RequestCustomization(int OrderId)
         {
-            using (DaytideEntities2 db = new DaytideEntities2())
+            using (DaytideEntities3 db = new DaytideEntities3())
             {
                 List<OrderRequest> orders = db.OrderRequests.ToList();
                 List<CartBackup> carts = db.CartBackups.ToList();

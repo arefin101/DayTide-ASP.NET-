@@ -43,7 +43,7 @@
                 Delivery Man Id
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.OrderRequest.Date)
+                @Html.DisplayNameFor(model => model.Date)
             </th>
             <th></th>
         </tr>
@@ -75,7 +75,7 @@
                 @Html.DisplayFor(modelItem => item.DeleveryMan.Name)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.OrderRequest.Date)
+                @Html.DisplayFor(modelItem => item.Date)
             </td>
             <td>
                 @if (item.Status == "Done")

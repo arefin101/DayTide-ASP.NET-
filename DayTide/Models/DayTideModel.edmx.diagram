@@ -4,23 +4,23 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="c06c44e7f6c044bca298497482260439" Name="Diagram1">
+      <Diagram DiagramId="a80812fa8abf41af8ace8af5434ccd49" Name="Diagram1">
         <EntityTypeShape EntityType="DaytideModel.Admin" Width="1.5" PointX="3" PointY="8.75" IsExpanded="true" />
         <EntityTypeShape EntityType="DaytideModel.Application" Width="1.5" PointX="3" PointY="12" IsExpanded="true" />
         <EntityTypeShape EntityType="DaytideModel.Cart" Width="1.5" PointX="5.25" PointY="15.75" IsExpanded="true" />
         <EntityTypeShape EntityType="DaytideModel.CartBackup" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="DaytideModel.Category" Width="1.5" PointX="3.75" PointY="5.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="DaytideModel.Customer" Width="1.5" PointX="3" PointY="15.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="DaytideModel.Delevary_Man_Rating" Width="1.5" PointX="5.25" PointY="19.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DaytideModel.Customer" Width="1.5" PointX="3" PointY="15.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DaytideModel.Delevary_Man_Rating" Width="1.5" PointX="5.25" PointY="19.75" IsExpanded="true" />
         <EntityTypeShape EntityType="DaytideModel.DeleveryMan" Width="1.5" PointX="3" PointY="19.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="DaytideModel.Moderator" Width="1.5" PointX="3" PointY="23.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="DaytideModel.Notice" Width="1.5" PointX="3" PointY="26.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DaytideModel.Order_Detail" Width="1.5" PointX="8.25" PointY="17.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="DaytideModel.OrderRequest" Width="1.5" PointX="5.25" PointY="25.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DaytideModel.Moderator" Width="1.5" PointX="3" PointY="23.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DaytideModel.Notice" Width="1.5" PointX="3" PointY="26.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DaytideModel.Order_Detail" Width="1.5" PointX="8.25" PointY="17.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DaytideModel.OrderRequest" Width="1.5" PointX="5.25" PointY="25.75" IsExpanded="true" />
         <EntityTypeShape EntityType="DaytideModel.Product" Width="1.5" PointX="6" PointY="4.375" IsExpanded="true" />
         <EntityTypeShape EntityType="DaytideModel.Product_Rating" Width="1.5" PointX="8.25" PointY="13.75" IsExpanded="true" />
         <EntityTypeShape EntityType="DaytideModel.TrackProfit" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DaytideModel.User" Width="1.5" PointX="0.75" PointY="17.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DaytideModel.User" Width="1.5" PointX="0.75" PointY="17.125" IsExpanded="true" />
         <AssociationConnector Association="DaytideModel.FK_Admin_User" ManuallyRouted="false" />
         <AssociationConnector Association="DaytideModel.FK_Application_User" ManuallyRouted="false" />
         <AssociationConnector Association="DaytideModel.FK_Application_User1" ManuallyRouted="false" />
