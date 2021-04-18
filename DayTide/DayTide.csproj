@@ -1872,6 +1872,7 @@
     <Compile Include="Controllers\CheckoutController.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\DelevaryManController.cs" />
+    <Compile Include="Controllers\DeliveryManController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\LogoutController.cs" />
@@ -1937,6 +1938,7 @@
     <Compile Include="Models\OrderRequest.cs">
       <DependentUpon>DayTideModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Orders.cs" />
     <Compile Include="Models\Order_Detail.cs">
       <DependentUpon>DayTideModel.tt</DependentUpon>
     </Compile>
@@ -1948,6 +1950,7 @@
     <Compile Include="Models\Product_Rating.cs">
       <DependentUpon>DayTideModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Request.cs" />
     <Compile Include="Models\TrackProfit.cs">
       <DependentUpon>DayTideModel.tt</DependentUpon>
     </Compile>
@@ -2218,24 +2221,6 @@
     <Content Include="Views\Cart\Edit.cshtml" />
     <Content Include="Views\Home\OnlyView.cshtml" />
     <Content Include="Views\Admin\Detailscus.cshtml" />
-    <Content Include="Views\Shared\_Layout_Moderator.cshtml" />
-    <Content Include="Views\Moderator\AddCategory.cshtml" />
-    <Content Include="Views\Moderator\AddProduct.cshtml" />
-    <Content Include="Views\Moderator\aru.cshtml" />
-    <Content Include="Views\Moderator\CreateDeliveryMan.cshtml" />
-    <Content Include="Views\Moderator\CustomizeCategory.cshtml" />
-    <Content Include="Views\Moderator\CustomizeDeliveryMan.cshtml" />
-    <Content Include="Views\Moderator\CustomizeProduct.cshtml" />
-    <Content Include="Views\Moderator\DeleteCategory.cshtml" />
-    <Content Include="Views\Moderator\DeleteDeliveryMan.cshtml" />
-    <Content Include="Views\Moderator\DeleteProduct.cshtml" />
-    <Content Include="Views\Moderator\DetailDeliveryMan.cshtml" />
-    <Content Include="Views\Moderator\EditCategory.cshtml" />
-    <Content Include="Views\Moderator\EditDeliveryMan.cshtml" />
-    <Content Include="Views\Moderator\EditProduct.cshtml" />
-    <Content Include="Views\Moderator\Index.cshtml" />
-    <Content Include="Views\Moderator\Notify.cshtml" />
-    <Content Include="Views\Moderator\Profile.cshtml" />
     <Content Include="Views\Cart\Index.cshtml" />
     <Content Include="Views\Cart\CustomerCart.cshtml" />
     <Content Include="Views\Checkout\Confirm.cshtml" />
@@ -2268,6 +2253,28 @@
     <Content Include="Views\Admin\updatesalDeletedelman.cshtml" />
     <Content Include="Views\Admin\DetailModerator.cshtml" />
     <Content Include="Views\Admin\updatesalmod.cshtml" />
+    <Content Include="Views\DeliveryMan\Index.cshtml" />
+    <Content Include="Views\Moderator\AddCategory.cshtml" />
+    <Content Include="Views\Moderator\AddProduct.cshtml" />
+    <Content Include="Views\Moderator\Appoint.cshtml" />
+    <Content Include="Views\Moderator\aru.cshtml" />
+    <Content Include="Views\Moderator\CheckOrder.cshtml" />
+    <Content Include="Views\Moderator\CreateDeliveryMan.cshtml" />
+    <Content Include="Views\Moderator\CustomizeCategory.cshtml" />
+    <Content Include="Views\Moderator\CustomizeDeliveryMan.cshtml" />
+    <Content Include="Views\Moderator\CustomizeProduct.cshtml" />
+    <Content Include="Views\Moderator\DeleteCategory.cshtml" />
+    <Content Include="Views\Moderator\DeleteDeliveryMan.cshtml" />
+    <Content Include="Views\Moderator\DeleteProduct.cshtml" />
+    <Content Include="Views\Moderator\DetailDeliveryMan.cshtml" />
+    <Content Include="Views\Moderator\EditCategory.cshtml" />
+    <Content Include="Views\Moderator\EditDeliveryMan.cshtml" />
+    <Content Include="Views\Moderator\EditProduct.cshtml" />
+    <Content Include="Views\Moderator\Index.cshtml" />
+    <Content Include="Views\Moderator\Notify.cshtml" />
+    <Content Include="Views\Moderator\Profile.cshtml" />
+    <Content Include="Views\Moderator\RequestCustomization.cshtml" />
+    <Content Include="Views\Shared\_Layout_Moderator.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

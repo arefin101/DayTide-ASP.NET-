@@ -1,0 +1,95 @@
+﻿@model IEnumerable<DayTide.Models.Order_Detail>
+
+@{
+    Layout = null;
+}
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <br /><br />
+    <p>
+        <a href="/Logout/Logout" class="btn btn-danger">Logout</a>
+    </p>
+    <table class="table" border="1">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Address)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.District)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Amount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Payment_Type)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+            <th>
+                Customer Id
+            </th>
+            <th>
+                Delivery Man Id
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OrderRequest.Date)
+            </th>
+            <th></th>
+        </tr>
+    
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Address)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.District)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Amount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Payment_Type)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Customer.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DeleveryMan.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OrderRequest.Date)
+            </td>
+            <td>
+                @if (item.Status == "Done")
+                {
+                    <a href="#" class="btn btn-success disabled">Done</a>
+                }
+                else
+                {
+                    <a href="/DeliveryMan/Done/?OrderId=@item.OrderId" class="btn btn-primary">Accept</a>
+                }
+            </td>
+        </tr>
+    }
+    
+    </table>
+</body>
+</html>

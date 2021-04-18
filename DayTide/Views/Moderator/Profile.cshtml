@@ -101,7 +101,14 @@
                                         <div style="color:red; text-align:center">{{$message}}</div>
                                         @enderror*@
                                 </div>
-
+                                @*FromUserTable*@
+                                <div class="form-group">
+                                    <input type="text" class="form-control form-control-user" id="exampleInputphoneNo"
+                                           placeholder="Password" name="Phone" value="@ViewBag.Password">
+                                    @*@error('contact')
+                                        <div style="color:red; text-align:center">{{$message}}</div>
+                                        @enderror*@
+                                </div>
                                 <hr>
                                 <!-- <a href="/login/register" class="btn btn-primary btn-user btn-block">
                                     Update Account

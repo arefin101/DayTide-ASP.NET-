@@ -1,7 +1,6 @@
 ﻿@model IEnumerable<DayTide.Models.DeleveryMan>
 
 @{
-    ViewBag.Title = "CustomizeDeliveryMan";
     Layout = "~/Views/Shared/_Layout_Moderator.cshtml";
 }
 
@@ -34,10 +33,7 @@
 
 
 <div class="container" style="color:#4e73df">
-    <h2 style="color:#4e73df"><b>CustomizeDeliveryMan</b></h2>
-    <p>
-        @Html.ActionLink("Create New", "CreateDeliveryMan", new { }, new { @class = "btn btn-outline-primary" })
-    </p>
+    <h2 style="color:#4e73df"><b>DeliveryMan(@ViewData["Address"] Area)</b></h2>
     <form>
         <table class="table table-bordered dataTable" id="dataTable" width="100%" cellspacing="0" role="grid" aria-describedby="dataTable_info" style="width: 100%;">
 
@@ -64,7 +60,7 @@
                     @Html.DisplayNameFor(model => model.Complete_Task)
                 </th>
                 <th>
-                    <p>In Service</p>
+                    @Html.DisplayNameFor(model => model.In_Service)
                 </th>
                 <th>
                     <p>Action</p>
@@ -104,23 +100,13 @@
                         @Html.DisplayFor(modelItem => item.In_Service)
                     </td>
                     <td>
-                        @Html.ActionLink("Edit", "EditDeliveryMan", new { id = item.DelManId }, new { @class = "btn btn-facebook" }) |
-                        @Html.ActionLink("Details", "DetailDeliveryMan", new { id = item.DelManId }, new { @class = "btn btn-info" })
-                        @Html.ActionLink("Delete", "DeleteDeliveryMan", new { id = item.DelManId }, new { @class = "btn btn-danger" }) |
-                        @foreach (var user in ViewData["status"] as IList<DayTide.Models.User>)
+                        @if (item.In_Service == 1)
                         {
-                            if (user.UserId == item.DelManId)
-                            {
-                                if (user.Status == "valid")
-                                {
-                                    <a class="btn btn-warning" href="/Moderator/DelManStatus/@user.UserId">Block</a>
-                                }
-                                else
-                                {
-                                    <a class="btn btn-dark" href="/Moderator/DelManStatus/@user.UserId">Unblock</a>
-                                }
-
-                            }
+                            <a href="#" class="btn btn-success disabled">Appointed</a>
+                        }
+                        else
+                        {
+                            <a href="/Moderator/Appointed/?id=@item.DelManId&Address=@item.Address&OrderId=@ViewData["OrderId"]" class="btn btn-facebook">Appoint</a>
                         }
                     </td>
                 </tr>

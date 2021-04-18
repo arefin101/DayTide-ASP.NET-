@@ -43,6 +43,7 @@ namespace DayTide.Controllers
                 else if (usr.Type == "Moderator")
                 {
                     Session["UserId"] = usr.UserId;
+                    Session["UserType"] = "Moderator";
                     return RedirectToAction("Index" , "Moderator");
                 }
                 else if (usr.Type == "Customer")
@@ -52,7 +53,8 @@ namespace DayTide.Controllers
                 }
                 else
                 {
-                    return RedirectToAction("Login");
+                    Session["UserId"] = usr.UserId;
+                    return RedirectToAction("Index", "DeliveryMan");
                 }
                     
 

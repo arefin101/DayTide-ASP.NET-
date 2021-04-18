@@ -29,6 +29,7 @@ namespace DayTide.Models
         public double Salary { get; set; }
         public string Picture { get; set; }
         public int Complete_Task { get; set; }
+        public Nullable<int> In_Service { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Delevary_Man_Rating> Delevary_Man_Rating { get; set; }

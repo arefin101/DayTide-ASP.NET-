@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="DayTideModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="DaytideModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Admin">
           <Key>
             <PropertyRef Name="AdminId" />
@@ -89,6 +89,7 @@
           <Property Name="Salary" Type="float" Nullable="false" />
           <Property Name="Picture" Type="varchar" MaxLength="50" />
           <Property Name="Complete_Task" Type="int" Nullable="false" />
+          <Property Name="In_Service" Type="int" />
         </EntityType>
         <EntityType Name="Moderator">
           <Key>
@@ -396,7 +397,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="DayTideModelStoreContainer">
+        <EntityContainer Name="DaytideModelStoreContainer">
           <EntitySet Name="Admin" EntityType="Self.Admin" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Application" EntityType="Self.Application" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Cart" EntityType="Self.Cart" Schema="dbo" store:Type="Tables" />
@@ -490,7 +491,7 @@
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="DayTideModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="DaytideModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="Admin">
           <Key>
             <PropertyRef Name="AdminId" />
@@ -589,6 +590,7 @@
           <Property Name="Salary" Type="Double" Nullable="false" />
           <Property Name="Picture" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Complete_Task" Type="Int32" Nullable="false" />
+          <Property Name="In_Service" Type="Int32" />
           <NavigationProperty Name="Delevary_Man_Rating" Relationship="Self.FK_Delevary_Man_Rating_DeleveryMan" FromRole="DeleveryMan" ToRole="Delevary_Man_Rating" />
           <NavigationProperty Name="User" Relationship="Self.FK_DeleveryMan_User" FromRole="DeleveryMan" ToRole="User" />
           <NavigationProperty Name="Order_Detail" Relationship="Self.FK_Order_Detail_DeleveryMan" FromRole="DeleveryMan" ToRole="Order_Detail" />
@@ -918,7 +920,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="DayTideEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="DaytideEntities2" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Admins" EntityType="Self.Admin" />
           <EntitySet Name="Applications" EntityType="Self.Application" />
           <EntitySet Name="Carts" EntityType="Self.Cart" />
@@ -1013,9 +1015,9 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="DayTideModelStoreContainer" CdmEntityContainer="DayTideEntities">
+        <EntityContainerMapping StorageEntityContainer="DaytideModelStoreContainer" CdmEntityContainer="DaytideEntities2">
           <EntitySetMapping Name="Admins">
-            <EntityTypeMapping TypeName="DayTideModel.Admin">
+            <EntityTypeMapping TypeName="DaytideModel.Admin">
               <MappingFragment StoreEntitySet="Admin">
                 <ScalarProperty Name="AdminId" ColumnName="AdminId" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -1028,7 +1030,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Applications">
-            <EntityTypeMapping TypeName="DayTideModel.Application">
+            <EntityTypeMapping TypeName="DaytideModel.Application">
               <MappingFragment StoreEntitySet="Application">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="ApplicationType" ColumnName="ApplicationType" />
@@ -1040,7 +1042,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Carts">
-            <EntityTypeMapping TypeName="DayTideModel.Cart">
+            <EntityTypeMapping TypeName="DaytideModel.Cart">
               <MappingFragment StoreEntitySet="Cart">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
@@ -1051,7 +1053,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="CartBackups">
-            <EntityTypeMapping TypeName="DayTideModel.CartBackup">
+            <EntityTypeMapping TypeName="DaytideModel.CartBackup">
               <MappingFragment StoreEntitySet="CartBackup">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
@@ -1063,7 +1065,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Categories">
-            <EntityTypeMapping TypeName="DayTideModel.Category">
+            <EntityTypeMapping TypeName="DaytideModel.Category">
               <MappingFragment StoreEntitySet="Category">
                 <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
                 <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
@@ -1071,7 +1073,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Customers">
-            <EntityTypeMapping TypeName="DayTideModel.Customer">
+            <EntityTypeMapping TypeName="DaytideModel.Customer">
               <MappingFragment StoreEntitySet="Customer">
                 <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -1083,7 +1085,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Delevary_Man_Rating">
-            <EntityTypeMapping TypeName="DayTideModel.Delevary_Man_Rating">
+            <EntityTypeMapping TypeName="DaytideModel.Delevary_Man_Rating">
               <MappingFragment StoreEntitySet="Delevary_Man_Rating">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="DelManID" ColumnName="DelManID" />
@@ -1094,7 +1096,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="DeleveryMen">
-            <EntityTypeMapping TypeName="DayTideModel.DeleveryMan">
+            <EntityTypeMapping TypeName="DaytideModel.DeleveryMan">
               <MappingFragment StoreEntitySet="DeleveryMan">
                 <ScalarProperty Name="DelManId" ColumnName="DelManId" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -1104,11 +1106,12 @@
                 <ScalarProperty Name="Salary" ColumnName="Salary" />
                 <ScalarProperty Name="Picture" ColumnName="Picture" />
                 <ScalarProperty Name="Complete_Task" ColumnName="Complete_Task" />
+                <ScalarProperty Name="In_Service" ColumnName="In_Service" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Moderators">
-            <EntityTypeMapping TypeName="DayTideModel.Moderator">
+            <EntityTypeMapping TypeName="DaytideModel.Moderator">
               <MappingFragment StoreEntitySet="Moderator">
                 <ScalarProperty Name="ModeratorId" ColumnName="ModeratorId" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -1121,7 +1124,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Notices">
-            <EntityTypeMapping TypeName="DayTideModel.Notice">
+            <EntityTypeMapping TypeName="DaytideModel.Notice">
               <MappingFragment StoreEntitySet="Notice">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Massage" ColumnName="Massage" />
@@ -1132,7 +1135,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Order_Detail">
-            <EntityTypeMapping TypeName="DayTideModel.Order_Detail">
+            <EntityTypeMapping TypeName="DaytideModel.Order_Detail">
               <MappingFragment StoreEntitySet="Order_Detail">
                 <ScalarProperty Name="OrderId" ColumnName="OrderId" />
                 <ScalarProperty Name="Date" ColumnName="Date" />
@@ -1147,7 +1150,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="OrderRequests">
-            <EntityTypeMapping TypeName="DayTideModel.OrderRequest">
+            <EntityTypeMapping TypeName="DaytideModel.OrderRequest">
               <MappingFragment StoreEntitySet="OrderRequest">
                 <ScalarProperty Name="OrderId" ColumnName="OrderId" />
                 <ScalarProperty Name="Date" ColumnName="Date" />
@@ -1160,7 +1163,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Products">
-            <EntityTypeMapping TypeName="DayTideModel.Product">
+            <EntityTypeMapping TypeName="DaytideModel.Product">
               <MappingFragment StoreEntitySet="Product">
                 <ScalarProperty Name="ProductId" ColumnName="ProductId" />
                 <ScalarProperty Name="ProductName" ColumnName="ProductName" />
@@ -1174,7 +1177,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Product_Rating">
-            <EntityTypeMapping TypeName="DayTideModel.Product_Rating">
+            <EntityTypeMapping TypeName="DaytideModel.Product_Rating">
               <MappingFragment StoreEntitySet="Product_Rating">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="ProductId" ColumnName="ProductId" />
@@ -1185,7 +1188,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TrackProfits">
-            <EntityTypeMapping TypeName="DayTideModel.TrackProfit">
+            <EntityTypeMapping TypeName="DaytideModel.TrackProfit">
               <MappingFragment StoreEntitySet="TrackProfit">
                 <ScalarProperty Name="ProductId" ColumnName="ProductId" />
                 <ScalarProperty Name="SelledQuantity" ColumnName="SelledQuantity" />
@@ -1196,7 +1199,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Users">
-            <EntityTypeMapping TypeName="DayTideModel.User">
+            <EntityTypeMapping TypeName="DaytideModel.User">
               <MappingFragment StoreEntitySet="User">
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="Password" ColumnName="Password" />

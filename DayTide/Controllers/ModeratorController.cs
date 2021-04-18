@@ -11,15 +11,18 @@ namespace DayTide.Controllers
 {
     public class ModeratorController : BaseController
     {
-        protected DayTideEntities context1 = new DayTideEntities();
+        protected DaytideEntities2 context1 = new DaytideEntities2();
         UserRepository userRepository = new UserRepository(); 
         ModeratorRepository moderatorRepository = new ModeratorRepository();
         CategoryRepository categoryRepository = new CategoryRepository();
         ProductRepository productRepository = new ProductRepository();
         CartRepository cartRepository = new CartRepository();
+        CartBackupRepository cartBackupRepository = new CartBackupRepository();
         Product context = new Product();
         DeleveryManRepository deleveryManRepository = new DeleveryManRepository();
         NoticeRepository noticeRepository = new NoticeRepository();
+        OrderRequestRepository orderRequestRepository = new OrderRequestRepository();
+        Order_DetailRepository Order_DetailRepository = new Order_DetailRepository();
 
         public ActionResult Index()
         {
@@ -27,6 +30,26 @@ namespace DayTide.Controllers
 
             Session["Name"] = moderator.Name;
             Session["Picture"] = moderator.Picture;
+            double sum = 0;
+            var orderDetails = Order_DetailRepository.GetAll().Where(x => x.Status == "Done").ToList();
+            foreach(var item in orderDetails)
+            {
+                sum += item.Amount;
+            }
+
+            ViewData["sum"] = sum;
+            ViewData["employee"] = deleveryManRepository.GetAll().Count();
+            int TotalRequest = cartBackupRepository.GetAll().GroupBy(x=>x.OrderId).Select(g=>g.First()).Where(x=>x.Quantiry!=-1 && x.Price!=0).Count();
+            int TotalDone = orderDetails.Count();
+            if (TotalRequest == 0)
+            {
+                ViewData["pendingRatio"] = 0;
+            }
+            else
+            {
+                ViewData["pendingRatio"] = (TotalDone * 100) / TotalRequest;
+            }
+            ViewData["pendingRequest"] = TotalRequest;
 
             return View();
         }
@@ -129,16 +152,16 @@ namespace DayTide.Controllers
 
         }
 
-        [HttpGet]
+        /*[HttpGet]
         public ActionResult Notifydelman(string id)
         {
             Notice notice = new Notice();
             notice.Send_For = id;
-            notice.Send_by = Session["ModeratorId"].ToString();
+            notice.Send_by = Session["UserId"].ToString();
             ViewBag.ids = notice;
             return View("Notify");
 
-        }
+        }*/
         [HttpPost]
         public ActionResult Notifydelman(Notice notice)
         {
@@ -171,6 +194,7 @@ namespace DayTide.Controllers
         [HttpGet]
         public ActionResult Profile(string id)
         {
+            ViewBag.Password = userRepository.GetUserById(id).Password;
             return View(moderatorRepository.GetUserById(id));
         }
         [HttpPost]
@@ -341,10 +365,107 @@ namespace DayTide.Controllers
             productRepository.DeleteProduct(id);
             return RedirectToAction("CustomizeProduct", "Moderator");
         }
+        [HttpGet]
+        public ActionResult CheckOrder()
+        {
+            using (DaytideEntities2 db = new DaytideEntities2())
+            {
+                List<OrderRequest> orders = db.OrderRequests.ToList();
+                List<CartBackup> carts = db.CartBackups.ToList();
+
+                var Orders = from o in orders
+                             join c in carts on o.OrderId equals c.OrderId into table1
+                             from c in table1.GroupBy(x => x.OrderId).Select(g => g.First()).ToList()
+                             select new Orders
+                              {
+                                  Order = o,
+                                  Cart = c
+                              };
+                return View(Orders);
+            }
+        }
+        [HttpGet]
+        public ActionResult RequestCustomization(int OrderId)
+        {
+            using (DaytideEntities2 db = new DaytideEntities2())
+            {
+                List<OrderRequest> orders = db.OrderRequests.ToList();
+                List<CartBackup> carts = db.CartBackups.ToList();
+                List<Product> products = db.Products.ToList();
+
+                var request = from o in orders
+                                     join c in carts on o.OrderId equals c.OrderId into table1
+                                     from c in table1.Where(x=>x.OrderId==OrderId).ToList()
+                                     join p in products on c.ProductId  equals p.ProductId into table2
+                                     from p in table2.ToList()
+                              select new Request
+                                     {
+                                         Order = o,
+                                         Cart = c,
+                                         Product = p
+                                     };
+                return View(request);
+            }
+        }
+        public ActionResult RequestClear(int OrderId)
+        {
+            var cart = cartBackupRepository.GetAll().Where(x=>x.OrderId==OrderId).ToList();
+            foreach(var item in cart)
+            {
+                item.Price = 0;
+                cartBackupRepository.Update(item);
+            }
+            return RedirectToAction("CheckOrder","Moderator");
+        }
+        [HttpGet]
+        public ActionResult Appoint(string address,int OrderId)
+        {
+            ViewData["Address"] = address;
+            ViewData["OrderId"] = OrderId;
+            var DeleveryMans = deleveryManRepository.GetAll().Where(x => x.Address == address).ToList();
+            return View(DeleveryMans);
+        }
+        
+        public ActionResult Appointed(string id,string address,int OrderId)
+        {
+            var del = deleveryManRepository.GetUserById(id);
+            var orderRequest = orderRequestRepository.GetOrderRequestById(OrderId);
+            var orderDetail = new Order_Detail();
+            /*if (del.In_Service==0)
+            {*/
+            orderDetail.OrderId = orderRequest.OrderId;
+            orderDetail.Date = orderRequest.Date;
+            orderDetail.Address = orderRequest.Address;
+            orderDetail.District = orderRequest.District;
+            orderDetail.Amount = orderRequest.Amount;
+            orderDetail.Payment_Type = orderRequest.Payment_Type;
+            orderDetail.CustomerId = orderRequest.CustomerId;
+            orderDetail.DelManId = del.DelManId;
+            orderDetail.Status = "Processing";
+            Order_DetailRepository.Insert(orderDetail);
+            del.In_Service = 1;
+            deleveryManRepository.Update(del);
+            var cart = cartBackupRepository.GetAll().Where(x=>x.OrderId==OrderId).ToList();
+            foreach(var item in cart)
+            {
+                item.Quantiry = 0;
+                cartBackupRepository.Update(item);
+            }
+            //cartBackupRepository.Update(item);
+            return RedirectToAction("CheckOrder", "Moderator");
+
+/*            }
+            else
+            {
+                del.In_Service = 0;
+                deleveryManRepository.Update(del);
+            }*/
+            //return RedirectToAction("Appoint","Moderator", new { address = address, OrderId=OrderId }) ;
+        }
 
 
 
-        DayTideEntities db = new DayTideEntities();
+        /*DayTideEntities2 db = new DayTideEntities2();
         public ActionResult Aru()
         {
             return View(db.DeleveryMen.ToList());
@@ -372,7 +493,7 @@ namespace DayTide.Controllers
                 return Json(StuList, JsonRequestBehavior.AllowGet);
             }
         }
-
+*/
 
     }
 }

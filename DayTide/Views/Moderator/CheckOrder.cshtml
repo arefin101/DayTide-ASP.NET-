@@ -1,0 +1,111 @@
+﻿@model IEnumerable<DayTide.Models.Orders>
+@{
+    Layout = "~/Views/Shared/_Layout_Moderator.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <style>
+        div.gallery {
+            margin: 5px;
+            border: 1px solid #ccc;
+            float: left;
+            width: 120px;
+        }
+
+            div.gallery img {
+                width: 100%;
+                height: auto;
+            }
+
+        div.desc {
+            padding: 15px;
+            text-align: center;
+        }
+
+        .warn {
+            color: #756e15;
+            background: #fffbd1;
+            border: 1px solid #87803e;
+            width: 100%;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid">
+
+
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <span style="float:right">@Html.ActionLink("Back to Home", "Index", new { }, new { @class = "btn btn-outline-primary" })</span>
+                <h2 class="m-0 font-weight-bold text-primary">Category</h2>
+            </div>
+            <div class="card-body">
+                <div class="">
+                    <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4">
+
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <form method="post">
+                                    <table class="table table-bordered dataTable" id="dataTable" width="100%" cellspacing="0" role="grid" aria-describedby="dataTable_info" style="width: 100%;">
+                                        <thead>
+                                            <tr role="row">
+                                                <th>Customer Id</th>
+                                                <th>Order Id</th>
+                                                <th>Date</th>
+                                                <th>District</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tfoot>
+                                            <tr>
+                                                <th>Customer Id</th>
+                                                <th>Order Id</th>
+                                                <th>Date</th>
+                                                <th>District</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </tfoot>
+                                        <tbody>
+                                            @foreach (var item in Model)
+                                            {
+                                                if (item.Cart.Price != 0)
+                                                {
+                                                    <tr role="row" class="odd">
+                                                        <td>@item.Order.CustomerId</td>
+                                                        <td>@item.Order.OrderId</td>
+                                                        <td>@item.Order.Date</td>
+                                                        <td>@item.Order.District</td>
+                                                        @if (item.Cart.Quantiry == 0)
+                                                        {
+                                                            <td><a href="#" class="btn btn-warning disabled">Running</a></td>
+                                                        }
+                                                        else if (item.Cart.Quantiry == -1)
+                                                        {
+                                                            <td>
+                                                                <a href="#" class="btn btn-success disabled">Done</a>
+                                                                <a href="/Moderator/RequestClear/?OrderId=@item.Order.OrderId" class="btn btn-facebook">Clear</a>
+                                                            </td>
+                                                        }
+                                                        else
+                                                        {
+                                                            <td><a href="/Moderator/RequestCustomization/?OrderId=@item.Order.OrderId" class="btn btn-primary">See Detail</a></td>
+                                                        }
+                                                    </tr>
+                                                }
+                                            }
+                                        </tbody>
+                                    </table>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
