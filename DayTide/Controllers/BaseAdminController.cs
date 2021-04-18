@@ -9,6 +9,7 @@ namespace DayTide.Controllers
 {
     public class BaseAdminController : Controller
     {
+
        // AdminRepository adminRepository = new AdminRepository();
         // GET: BaseAdmin
         protected override void OnActionExecuted(ActionExecutedContext filterContext)

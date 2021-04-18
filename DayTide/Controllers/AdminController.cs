@@ -429,7 +429,7 @@ namespace DayTide.Controllers
                 moderatorRepository.Insert(moderator);
                 return RedirectToAction("ModeratorList", "Admin");
             }
-            else ViewBag.errmsg = "Invalid USerID";
+            else ViewBag.errmsg = "Invalid UserID";
             return View(moderator);
         }
         [HttpGet]
@@ -476,7 +476,7 @@ namespace DayTide.Controllers
                 delmanRepository.Insert(delman);
                 return RedirectToAction("DeleveryManList", "Admin");
             }
-            else ViewBag.errmsg = "Invalid USerID";
+            else ViewBag.errmsg = "Invalid UserID";
             return View(delman);
 
         }
