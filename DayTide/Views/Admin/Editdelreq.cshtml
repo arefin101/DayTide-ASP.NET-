@@ -69,7 +69,12 @@
     <select name="DelManId" class="form-control">
         @foreach (var item in data)
         {
-            <option value="@item.DelManId">@item.Name</option>
+                    if (item.User.Status== "valid")
+                    {
+        <option value="@item.DelManId">@item.Name</option>
+                    }
+            
+            @*<option value="@item.DelManId">@item.Name</option>*@
         }
 
     </select>

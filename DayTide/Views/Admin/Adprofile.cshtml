@@ -67,6 +67,6 @@
 </div>
 <p class=""style="margin-left:50%">
    
-            @Html.ActionLink("Edit Bio", "EditBio") |
-            @Html.ActionLink("Back", "Index")
+            @Html.ActionLink("Edit Bio", "EditBio", new { id = Model.AdminId }, new { @class = "btn btn-primary" }) |
+            @Html.ActionLink("Back", "Index", new { @class = "btn btn-primary" })
   </p>
