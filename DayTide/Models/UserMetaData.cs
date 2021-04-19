@@ -9,7 +9,7 @@ namespace DayTide.Models
     public class UserMetaData
     {
         public string UserId { get; set; }
-        
+        [Required]
         public string Password { get; set; }
         
         public string Type { get; set; }
