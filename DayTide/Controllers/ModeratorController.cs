@@ -6,12 +6,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+//using System.IO;
+using iTextSharp.text;
+using iTextSharp.text.pdf;
+using iTextSharp.tool.xml;
+using iTextSharp.text.html.simpleparser;
 
 namespace DayTide.Controllers
 {
     public class ModeratorController : BaseController
     {
-        protected DaytideEntities3 context1 = new DaytideEntities3();
+        protected DayTideEntities context1 = new DayTideEntities();
         UserRepository userRepository = new UserRepository(); 
         ModeratorRepository moderatorRepository = new ModeratorRepository();
         CategoryRepository categoryRepository = new CategoryRepository();
@@ -24,6 +29,7 @@ namespace DayTide.Controllers
         OrderRequestRepository orderRequestRepository = new OrderRequestRepository();
         Order_DetailRepository Order_DetailRepository = new Order_DetailRepository();
 
+        
         public ActionResult Index()
         {
             Moderator moderator = moderatorRepository.GetUserById(Convert.ToString(Session["UserId"]));
@@ -39,19 +45,37 @@ namespace DayTide.Controllers
 
             ViewData["sum"] = sum;
             ViewData["employee"] = deleveryManRepository.GetAll().Count();
-            int TotalRequest = cartBackupRepository.GetAll().GroupBy(x=>x.OrderId).Select(g=>g.First()).Where(x=>x.Quantiry!=-1 && x.Price!=0).Count();
-            int TotalDone = orderDetails.Count();
+            var employeeAvailable = deleveryManRepository.GetAll().Where(x => x.In_Service == 0).Count();
+            int TotalRequest = cartBackupRepository.GetAll().GroupBy(x=>x.OrderId).Select(g=>g.First()).Where(y=>y.Price!=0).ToList().Count;
+            int TotalDone =cartBackupRepository.GetAll().Where(x=>x.Quantiry==-1 && x.Price!=0).ToList().Count;
             if (TotalRequest == 0)
             {
                 ViewData["pendingRatio"] = 0;
             }
             else
             {
-                ViewData["pendingRatio"] = (TotalDone * 100) / TotalRequest;
+                ViewData["pendingRatio"] = (TotalDone*100)/TotalRequest;
             }
-            ViewData["pendingRequest"] = TotalRequest;
-
+            ViewData["pendingRequest"] = cartBackupRepository.GetAll().GroupBy(x => x.OrderId).Select(g => g.First()).Where(x => x.Quantiry > -1).Count();
+            var pendingRequest = cartBackupRepository.GetAll().GroupBy(x => x.OrderId).Select(g => g.First()).Where(x => x.Quantiry != -1).Count();
+            ViewData["workdone"] = TotalDone;
+            ViewData["employeeAvailable"] = (employeeAvailable * 100) / pendingRequest;
             return View();
+        }
+        [HttpPost]
+        [ValidateInput(false)]
+        public FileResult Export1(string GridHtml)
+        {
+            using (MemoryStream stream = new System.IO.MemoryStream())
+            {
+                StringReader sr = new StringReader(GridHtml);
+                Document pdfDoc = new Document(PageSize.A4, 10f, 10f, 100f, 0f);
+                PdfWriter writer = PdfWriter.GetInstance(pdfDoc, stream);
+                pdfDoc.Open();
+                XMLWorkerHelper.GetInstance().ParseXHtml(writer, pdfDoc, sr);
+                pdfDoc.Close();
+                return File(stream.ToArray(), "application/pdf", "Grid.pdf");
+            }
         }
         [HttpGet]
         public ActionResult CustomizeDeliveryMan()
@@ -91,6 +115,7 @@ namespace DayTide.Controllers
                 userRepository.Insert(user);
 
                 deleveryMan.Complete_Task = 0;
+                deleveryMan.In_Service = 0;
                 deleveryMan.Picture = "default.jpg";
                 deleveryManRepository.Insert(deleveryMan);
                 return RedirectToAction("CustomizeDeliveryMan", "Moderator");
@@ -111,7 +136,7 @@ namespace DayTide.Controllers
             return View(deleveryManRepository.GetUserById(id));
         }
         [HttpGet]
-        public ActionResult DeleteDeliveryMan(string id)
+        /*public ActionResult DeleteDeliveryMan(string id)
         {
             return View(deleveryManRepository.GetUserById(id));
         }
@@ -121,7 +146,7 @@ namespace DayTide.Controllers
             deleveryManRepository.DeleteUser(id);
             userRepository.DeleteUser(id);
             return RedirectToAction("CustomizeDeliveryMan", "Moderator");
-        }
+        }*/
 
         public ActionResult DelManStatus(string id)
         {
@@ -198,16 +223,18 @@ namespace DayTide.Controllers
             return View(moderatorRepository.GetUserById(id));
         }
         [HttpPost]
-        public ActionResult Profile(string id, Moderator moderator, HttpPostedFileBase Picture)
+        public ActionResult Profile(string id, Moderator moderator, HttpPostedFileBase Picture,string password)
         {
-            if (Picture == null)
+            if (Picture == null && ModelState.IsValid && password!="")
             {
                 Session["Name"] = moderator.Name;
+                userRepository.GetUserById(id).Password = password;
+                userRepository.Update(userRepository.GetUserById(id));
                 moderator.ModeratorId = id;
                 moderatorRepository.Update(moderator);
                 return RedirectToAction("Profile", "Moderator");
             }
-            else if (Picture != null)
+            else if (Picture != null && ModelState.IsValid && password != "")
             {
                 string path = Server.MapPath("~/Content/Users");
                 string filename = Path.GetFileName(Picture.FileName);
@@ -368,7 +395,7 @@ namespace DayTide.Controllers
         [HttpGet]
         public ActionResult CheckOrder()
         {
-            using (DaytideEntities3 db = new DaytideEntities3())
+            using (DayTideEntities db = new DayTideEntities())
             {
                 List<OrderRequest> orders = db.OrderRequests.ToList();
                 List<CartBackup> carts = db.CartBackups.ToList();
@@ -384,10 +411,25 @@ namespace DayTide.Controllers
                 return View(Orders);
             }
         }
+        [HttpPost]
+        [ValidateInput(false)]
+        public FileResult Export(string GridHtml)
+        {
+            using (MemoryStream stream = new System.IO.MemoryStream())
+            {
+                StringReader sr = new StringReader(GridHtml);
+                Document pdfDoc = new Document(PageSize.A4, 10f, 10f, 100f, 0f);
+                PdfWriter writer = PdfWriter.GetInstance(pdfDoc, stream);
+                pdfDoc.Open();
+                XMLWorkerHelper.GetInstance().ParseXHtml(writer, pdfDoc, sr);
+                pdfDoc.Close();
+                return File(stream.ToArray(), "application/pdf", "Grid.pdf");
+            }
+        }
         [HttpGet]
         public ActionResult RequestCustomization(int OrderId)
         {
-            using (DaytideEntities3 db = new DaytideEntities3())
+            using (DayTideEntities db = new DayTideEntities())
             {
                 List<OrderRequest> orders = db.OrderRequests.ToList();
                 List<CartBackup> carts = db.CartBackups.ToList();
@@ -413,6 +455,7 @@ namespace DayTide.Controllers
             foreach(var item in cart)
             {
                 item.Price = 0;
+                item.Quantiry = -2;
                 cartBackupRepository.Update(item);
             }
             return RedirectToAction("CheckOrder","Moderator");

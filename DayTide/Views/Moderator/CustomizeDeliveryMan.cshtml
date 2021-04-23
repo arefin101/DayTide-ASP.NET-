@@ -106,7 +106,6 @@
                     <td>
                         @Html.ActionLink("Edit", "EditDeliveryMan", new { id = item.DelManId }, new { @class = "btn btn-facebook" }) |
                         @Html.ActionLink("Details", "DetailDeliveryMan", new { id = item.DelManId }, new { @class = "btn btn-info" })
-                        @Html.ActionLink("Delete", "DeleteDeliveryMan", new { id = item.DelManId }, new { @class = "btn btn-danger" }) |
                         @foreach (var user in ViewData["status"] as IList<DayTide.Models.User>)
                         {
                             if (user.UserId == item.DelManId)

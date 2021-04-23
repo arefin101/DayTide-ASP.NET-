@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="DaytideModelStoreContainer" CdmEntityContainer="DaytideEntities3">
+  <EntityContainerMapping StorageEntityContainer="DayTideModelStoreContainer" CdmEntityContainer="DayTideEntities">
     <EntitySetMapping Name="Admins">
-      <EntityTypeMapping TypeName="DaytideModel.Admin">
+      <EntityTypeMapping TypeName="DayTideModel.Admin">
         <MappingFragment StoreEntitySet="Admin">
           <ScalarProperty Name="AdminId" ColumnName="AdminId" />
           <ScalarProperty Name="Name" ColumnName="Name" />
@@ -15,7 +15,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Applications">
-      <EntityTypeMapping TypeName="DaytideModel.Application">
+      <EntityTypeMapping TypeName="DayTideModel.Application">
         <MappingFragment StoreEntitySet="Application">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="ApplicationType" ColumnName="ApplicationType" />
@@ -27,7 +27,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Carts">
-      <EntityTypeMapping TypeName="DaytideModel.Cart">
+      <EntityTypeMapping TypeName="DayTideModel.Cart">
         <MappingFragment StoreEntitySet="Cart">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
@@ -38,7 +38,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="CartBackups">
-      <EntityTypeMapping TypeName="DaytideModel.CartBackup">
+      <EntityTypeMapping TypeName="DayTideModel.CartBackup">
         <MappingFragment StoreEntitySet="CartBackup">
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
@@ -50,7 +50,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Categories">
-      <EntityTypeMapping TypeName="DaytideModel.Category">
+      <EntityTypeMapping TypeName="DayTideModel.Category">
         <MappingFragment StoreEntitySet="Category">
           <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
           <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
@@ -58,7 +58,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Customers">
-      <EntityTypeMapping TypeName="DaytideModel.Customer">
+      <EntityTypeMapping TypeName="DayTideModel.Customer">
         <MappingFragment StoreEntitySet="Customer">
           <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
           <ScalarProperty Name="Name" ColumnName="Name" />
@@ -70,7 +70,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Delevary_Man_Rating">
-      <EntityTypeMapping TypeName="DaytideModel.Delevary_Man_Rating">
+      <EntityTypeMapping TypeName="DayTideModel.Delevary_Man_Rating">
         <MappingFragment StoreEntitySet="Delevary_Man_Rating">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="DelManID" ColumnName="DelManID" />
@@ -81,9 +81,8 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="DeleveryMen">
-      <EntityTypeMapping TypeName="DaytideModel.DeleveryMan">
+      <EntityTypeMapping TypeName="DayTideModel.DeleveryMan">
         <MappingFragment StoreEntitySet="DeleveryMan">
-          <ScalarProperty Name="In_Service" ColumnName="In_Service" />
           <ScalarProperty Name="DelManId" ColumnName="DelManId" />
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="Email" ColumnName="Email" />
@@ -92,11 +91,12 @@
           <ScalarProperty Name="Salary" ColumnName="Salary" />
           <ScalarProperty Name="Picture" ColumnName="Picture" />
           <ScalarProperty Name="Complete_Task" ColumnName="Complete_Task" />
+          <ScalarProperty Name="In_Service" ColumnName="In_Service" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Moderators">
-      <EntityTypeMapping TypeName="DaytideModel.Moderator">
+      <EntityTypeMapping TypeName="DayTideModel.Moderator">
         <MappingFragment StoreEntitySet="Moderator">
           <ScalarProperty Name="ModeratorId" ColumnName="ModeratorId" />
           <ScalarProperty Name="Name" ColumnName="Name" />
@@ -109,7 +109,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Notices">
-      <EntityTypeMapping TypeName="DaytideModel.Notice">
+      <EntityTypeMapping TypeName="DayTideModel.Notice">
         <MappingFragment StoreEntitySet="Notice">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Massage" ColumnName="Massage" />
@@ -120,7 +120,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Order_Detail">
-      <EntityTypeMapping TypeName="DaytideModel.Order_Detail">
+      <EntityTypeMapping TypeName="DayTideModel.Order_Detail">
         <MappingFragment StoreEntitySet="Order_Detail">
           <ScalarProperty Name="OrderId" ColumnName="OrderId" />
           <ScalarProperty Name="Date" ColumnName="Date" />
@@ -135,7 +135,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="OrderRequests">
-      <EntityTypeMapping TypeName="DaytideModel.OrderRequest">
+      <EntityTypeMapping TypeName="DayTideModel.OrderRequest">
         <MappingFragment StoreEntitySet="OrderRequest">
           <ScalarProperty Name="OrderId" ColumnName="OrderId" />
           <ScalarProperty Name="Date" ColumnName="Date" />
@@ -148,7 +148,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Products">
-      <EntityTypeMapping TypeName="DaytideModel.Product">
+      <EntityTypeMapping TypeName="DayTideModel.Product">
         <MappingFragment StoreEntitySet="Product">
           <ScalarProperty Name="ProductId" ColumnName="ProductId" />
           <ScalarProperty Name="ProductName" ColumnName="ProductName" />
@@ -162,7 +162,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Product_Rating">
-      <EntityTypeMapping TypeName="DaytideModel.Product_Rating">
+      <EntityTypeMapping TypeName="DayTideModel.Product_Rating">
         <MappingFragment StoreEntitySet="Product_Rating">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="ProductId" ColumnName="ProductId" />
@@ -173,7 +173,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="TrackProfits">
-      <EntityTypeMapping TypeName="DaytideModel.TrackProfit">
+      <EntityTypeMapping TypeName="DayTideModel.TrackProfit">
         <MappingFragment StoreEntitySet="TrackProfit">
           <ScalarProperty Name="ProductId" ColumnName="ProductId" />
           <ScalarProperty Name="SelledQuantity" ColumnName="SelledQuantity" />
@@ -184,7 +184,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Users">
-      <EntityTypeMapping TypeName="DaytideModel.User">
+      <EntityTypeMapping TypeName="DayTideModel.User">
         <MappingFragment StoreEntitySet="User">
           <ScalarProperty Name="UserId" ColumnName="UserId" />
           <ScalarProperty Name="Password" ColumnName="Password" />

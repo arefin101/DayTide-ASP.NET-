@@ -13,7 +13,7 @@ namespace DayTide.Controllers
         ProductRepository productRepository = new ProductRepository();
         CategoryRepository categoryRepository = new CategoryRepository();
 
-        protected DaytideEntities3 context = new DaytideEntities3();
+        protected DayTideEntities context = new DayTideEntities();
         public ActionResult FirstPage()
         {
             return View();

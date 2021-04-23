@@ -428,3 +428,7 @@ F:\ASP Project Final\DayTide-ASP.NET-\DayTide\obj\Debug\DayTide.csproj.CopyCompl
 F:\ASP Project Final\DayTide-ASP.NET-\DayTide\bin\Select.HtmlToPdf.dll
 F:\ASP Project Final\DayTide-ASP.NET-\DayTide\bin\Select.HtmlToPdf.xml
 F:\ASP Project Final\DayTide-ASP.NET-\DayTide\bin\Select.Html.dep
+G:\ASP.NET Project(MID)SHajib\DayTide-ASP.NET-\DayTide\bin\Select.HtmlToPdf.dll
+G:\ASP.NET Project(MID)SHajib\DayTide-ASP.NET-\DayTide\bin\Select.HtmlToPdf.xml
+G:\ASP.NET Project(MID)SHajib\DayTide-ASP.NET-\DayTide\bin\Select.Html.dep
+G:\ASP.NET Project(MID)SHajib\DayTide-ASP.NET-\DayTide\bin\itextsharp.xmlworker.dll

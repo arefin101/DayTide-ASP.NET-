@@ -43,13 +43,20 @@
         <div class="card shadow mb-4">
             <div class="card-header py-3">
                 <span style="float:right">@Html.ActionLink("Back to Home", "Index", new { }, new { @class = "btn btn-outline-primary" })</span>
+                <div style="float:right; margin-right:10px">
+                    @using (Html.BeginForm("Export", "Moderator", FormMethod.Post))
+                    {
+                        <input type="hidden" name="GridHtml" />
+                        <input type="submit" id="btnSubmit" value="Download PDG" class="btn btn-danger" />
+                    }
+                </div>
                 <h2 class="m-0 font-weight-bold text-primary">Category</h2>
             </div>
             <div class="card-body">
                 <div class="">
                     <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4">
 
-                        <div class="row">
+                        <div class="row" id="Grid">
                             <div class="col-sm-12">
                                 <form method="post">
                                     <table class="table table-bordered dataTable" id="dataTable" width="100%" cellspacing="0" role="grid" aria-describedby="dataTable_info" style="width: 100%;">
@@ -109,3 +116,12 @@
             </div>
         </div>
     </div>
+
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $("#btnSubmit").click(function () {
+                $("input[name='GridHtml']").val($("#Grid").html());
+            });
+        });
+    </script>

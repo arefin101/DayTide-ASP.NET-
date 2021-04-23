@@ -13,7 +13,7 @@ namespace DayTide.Controllers
         ProductRepository productRepository = new ProductRepository();
         CartRepository cartRepository = new CartRepository();
         List<Product> productCartList = new List<Product>();
-        protected DaytideEntities3 context = new DaytideEntities3();
+        protected DayTideEntities context = new DayTideEntities();
 
         //string cid = "";
 
